@@ -1,0 +1,1068 @@
+/* ================================================================
+   Mudelli website — my custom styles added on top of Bootstrap
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   CSS PROPERTIES: stored all my colours and fonts as variables so I can reuse them easily throughout the stylesheet.
+---------------------------------------------------------------- */
+:root {
+  /* Main colours */
+  --mud-navy:       #1E2D4D;   /* dark blue used for the navbar and footer */
+  --mud-gold:       #C9A84E;   /* gold accent colour used for highlights and buttons */
+  --mud-mid-blue:   #354A72;   /* medium blue used for some button text */
+  --mud-cream:      #F5F2EC;   /* warm cream used for section backgrounds */
+  --mud-light-gray: #E0E4EB;   /* light grey used for card backgrounds and borders */
+  --mud-white:      #FFFFFF;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Spacing & padding */
+  --section-py: 40px;
+
+  /* Gold colour for the keyboard focus outline to help with accessibility */
+  --focus-ring: 0 0 0 3px rgba(201, 168, 78, 0.55);
+}
+
+
+/* ----------------------------------------------------------------
+   BASE / RESET
+---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* anchor links animate smoothly */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;         /* 16px base */
+  color: var(--mud-navy);
+  background-color: var(--mud-white);
+  /* Prevent horizontal scrollbar from the 3D slider overflow */
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* ----------------------------------------------------------------
+   SKIP LINK — hidden until the user tabs to it, lets them jump
+   straight to the main content without going through the menu
+---------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 9999;
+  background: var(--mud-gold);
+  color: var(--mud-navy);
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 10px 19px;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+
+/* ----------------------------------------------------------------
+   FOCUS STYLES — gold ring that appears around buttons and links
+   when the user navigates with the keyboard
+---------------------------------------------------------------- */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 2px;
+}
+
+
+/* ================================================================
+   NAVIGATION
+================================================================ */
+
+/* starts transparent over the hero; turns solid navy when the user scrolls */
+.mudelli-nav {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: transparent;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Solid state once user scrolls down */
+.mudelli-nav.nav-scrolled {
+  background-color: var(--mud-navy);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* the MUDELLI brand logo in the top-left of the navbar */
+.mudelli-logo {
+  font-family: var(--font-display);
+  font-size: 48px; /* 48px at full width */
+  font-weight: 500;
+  color: var(--mud-gold) !important;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  line-height: 1;
+}
+.mudelli-logo:hover,
+.mudelli-logo:focus {
+  color: var(--mud-gold) !important;
+  opacity: 0.85;
+}
+
+/* styles for the navigation links */
+.mudelli-nav .nav-link {
+  font-family: var(--font-display);
+  font-size: 20px;          /* 20px */
+  font-weight: 400;
+  color: var(--mud-gold) !important;
+  padding: 4px 2px;
+  transition: opacity 0.2s;
+  position: relative;
+}
+
+/* Underline animation on hover */
+.mudelli-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--mud-gold);
+  transition: width 0.25s ease;
+}
+.mudelli-nav .nav-link:hover::after,
+.mudelli-nav .nav-link.active::after {
+  width: 100%;
+}
+.mudelli-nav .nav-link:hover,
+.mudelli-nav .nav-link.active {
+  opacity: 0.85;
+}
+
+/* LOGIN and REGISTER NOW buttons in the top-right corner */
+.btn-nav-auth {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--mud-gold);
+  text-decoration: none;
+  padding: 0;
+  background: none;
+  border: none;
+  transition: opacity 0.2s;
+}
+.btn-nav-auth:hover,
+.btn-nav-auth:focus {
+  color: var(--mud-gold);
+  opacity: 0.75;
+}
+
+/* REGISTER NOW is bolder so it stands out more than LOGIN */
+.btn-nav-register {
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+
+/* ================================================================
+   HERO CAROUSEL — the full-width slideshow at the top of the page
+================================================================ */
+.hero-carousel {
+  /* pushes the carousel down so it doesn't hide behind the fixed navbar */
+  margin-top: 0;
+}
+
+.hero-img {
+  /* Approximate 65% viewport height */
+  height: 90vh;
+  min-height: 500px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* gold dots at the bottom of the hero carousel */
+#heroCarousel .carousel-indicators [data-bs-slide-to] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--mud-gold);
+  opacity: 0.5;
+  border: none;
+  margin: 0 4px;
+  transition: opacity 0.3s;
+}
+#heroCarousel .carousel-indicators .active {
+  opacity: 1;
+}
+
+/* left and right arrow buttons on the hero carousel */
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next {
+  width: 8%;
+  min-width: 52px;
+  opacity: 0.85;
+  z-index: 10;
+}
+#heroCarousel .carousel-control-prev:hover,
+#heroCarousel .carousel-control-next:hover {
+  opacity: 1;
+}
+
+
+/* ================================================================
+   SHARED TEXT STYLES — reused across multiple sections
+================================================================ */
+
+/* main heading used at the top of each section */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 28px; /* 28px */
+  font-weight: 700;
+  color: var(--mud-navy);
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+/* smaller description text under section headings */
+.section-subtitle {
+  font-family: var(--font-body);
+  font-size: 16px; /* 16px */
+  font-weight: 400;
+  color: var(--mud-navy);
+}
+
+
+/* ================================================================
+   SECTION 2 — TAGLINE 
+================================================================ */
+.tagline-section {
+  padding: var(--section-py) 0;
+  background-color: var(--mud-white);
+}
+
+/* the large gold headline in the tagline section */
+.tagline-headline {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--mud-gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  white-space: nowrap;
+  margin-bottom: 24px;
+}
+
+/* the description text below the tagline headline */
+.tagline-sub {
+  font-family: var(--font-body);
+  font-size: 20px; /* 20px at full width */
+  color: var(--mud-navy);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+
+/* ================================================================
+   SECTION 3 — WHY JOIN OUR PLATFORM?
+================================================================ */
+.why-section {
+  padding: var(--section-py) 0;
+  margin-bottom: 64px;
+  background-color: var(--mud-cream); /* cream background */
+}
+
+/* each card in the Why Join section */
+.why-card {
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 16px rgba(30, 45, 77, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(30, 45, 77, 0.15);
+}
+
+.why-card-inner {
+  padding: 40px 28px;
+  height: 100%;
+}
+
+/* title text on each Why Join card */
+.why-card-title {
+  font-family: var(--font-display);
+  font-size: 32px;  /* ~32px at full width */
+  font-weight: 400;
+  color: var(--mud-navy);
+  margin-bottom: 19px;
+}
+
+/* body text on each Why Join card */
+.why-card-text {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--mud-navy);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+
+/* ================================================================
+   SECTION 4 — LATEST CASTING CALLS
+================================================================ */
+.castings-section {
+  padding: var(--section-py) 0;
+  background-color: var(--mud-cream);
+}
+.castings-section .section-title,
+.castings-section .section-subtitle {
+  text-align: center;
+}
+
+/* the casting call card — image on the left, details on the right */
+.casting-card {
+  background-color: var(--mud-white);
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(30, 45, 77, 0.08);
+  transition: box-shadow 0.25s ease;
+}
+.casting-card:hover {
+  box-shadow: 0 8px 28px rgba(30, 45, 77, 0.15);
+}
+
+/* the photo on the left side of the casting card */
+.casting-img {
+  min-height: 280px;
+  max-height: 400px;
+}
+
+/* the right-hand content area of the casting card */
+.casting-content {
+  padding: 24px 32px;
+  background-color: #E0E4EB;
+}
+
+/* removes padding so the content sits flush with the image */
+.casting-details-col {
+  padding: 0;
+}
+
+/* the "Newly posted" gold badge */
+.newly-posted-label {
+  display: inline-block;
+  background-color: var(--mud-gold);
+  color: var(--mud-navy);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 12px;
+}
+
+/* the "Verified" badge with a navy background and gold checkmark */
+.casting-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--mud-navy);
+  color: var(--mud-white);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 12px 4px 6px;
+}
+.casting-verified-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--mud-gold);
+  color: var(--mud-navy);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* small grey badge showing the casting category (e.g. Fashion, Commercial) */
+.casting-badge {
+  display: inline-block;
+  width: fit-content;
+  align-self: flex-start;
+  background-color: #A6A3A3;
+  color: var(--mud-white);
+  font-family: var(--font-display);
+  font-size: 12px;          /* 12px */
+  font-weight: 400;
+  padding: 2px 10px;
+  border-radius: 0;
+}
+
+/* the title of the casting call */
+.casting-title {
+  font-family: var(--font-display);
+  font-size: 22px; /* 22px */
+  font-weight: 700;
+  color: var(--mud-navy);
+  margin: 8px 0 6px;
+}
+
+/* the list of casting details like location, date, and pay */
+.casting-meta li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 14px; /* 14px */
+  color: var(--mud-navy);
+  margin-bottom: 6px;
+}
+.casting-meta i {
+  font-size: 1.3em;
+  color: var(--mud-gold);
+  flex-shrink: 0;
+}
+.casting-dollar {
+  color: var(--mud-gold) !important;
+}
+
+/* the "View Details" button on each casting card */
+.btn-casting {
+  display: inline-block;
+  background-color: var(--mud-gold);
+  color: var(--mud-mid-blue);
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 19px;
+  border: 2px solid var(--mud-gold);
+  border-radius: 0;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-casting:hover,
+.btn-casting:focus {
+  background-color: var(--mud-mid-blue);
+  color: var(--mud-gold);
+  border-color: var(--mud-mid-blue);
+}
+
+/* the "View More" button used across multiple areas */
+.btn-view-more {
+  display: inline-block;
+  background-color: var(--mud-gold);
+  color: var(--mud-mid-blue);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-view-more:hover,
+.btn-view-more:focus {
+  background-color: var(--mud-mid-blue);
+  color: var(--mud-gold);
+}
+
+
+/* ================================================================
+   SECTION 5 — HOW IT WORKS
+================================================================ */
+.how-section {
+  padding: var(--section-py) 0;
+  background-color: var(--mud-cream);
+}
+
+/* makes the step card stretch to full height in its grid column */
+.step-card {
+  height: 100%;
+}
+
+/* the dark blue bar showing each step number and title */
+.step-bar {
+  background-color: var(--mud-navy);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  gap: 16px;
+  margin: 0;
+}
+
+/* gold circle containing the step number */
+.step-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--mud-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--mud-navy);
+  flex-shrink: 0;
+}
+
+/* the step title text inside the bar */
+.step-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--mud-gold);
+  line-height: 1.3;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ================================================================
+   3D FEATURED MODELS SLIDER
+================================================================ */
+.models-section {
+  padding: var(--section-py) 0;
+  background-color: var(--mud-white);
+}
+
+/* wraps the slider so the arrow buttons can sit on the edges */
+.models-slider-wrapper {
+  overflow: hidden;
+}
+
+/* the horizontal scrolling row of model cards */
+.models-slider {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 64px;            /* space for arrow buttons */
+  scrollbar-width: none;      /* hide scrollbar (Firefox) */
+}
+.models-slider::-webkit-scrollbar {
+  display: none;              /* hide scrollbar (Chrome/Safari) */
+}
+
+/* each individual model card in the slider */
+.model-card {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+}
+
+/* image wrapper that holds the photo and the verified badge on top */
+.model-img-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.model-portrait {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.model-card:hover .model-portrait {
+  transform: scale(1.04);
+}
+
+/* the "Verified" badge — sits at the bottom-left of the model photo */
+.verified-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--mud-mid-blue);
+  padding: 5px 13px 5px 6px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--mud-gold);
+}
+
+/* gold circle around the check icon inside the verified badge */
+.verified-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--mud-gold);
+  color: var(--mud-white);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* the left and right arrow buttons on the model slider */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--mud-navy);
+  background-color: var(--mud-white);
+  color: var(--mud-navy);
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+}
+.slider-arrow:hover,
+.slider-arrow:focus {
+  background-color: var(--mud-gold);
+  color: var(--mud-navy);
+  border-color: var(--mud-gold);
+}
+.slider-arrow-prev {
+  left: 8px;
+}
+.slider-arrow-next {
+  right: 8px;
+}
+
+
+/* ================================================================
+   SECTION 7 — NEW FACES
+   Five photos in the layout — the centre card is biggest and
+   the side cards angle back to give a 3D depth effect.
+================================================================ */
+.new-faces-section {
+  padding: var(--section-py) 0;
+  background-color: #F5F2EC;
+  overflow: hidden;     /* hides side cards that extend beyond viewport */
+}
+
+/* the container for all five face cards — 3D depth is turned on here */
+.faces-3d-stage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* bottom-align so all cards share a baseline */
+  gap: 16px;
+  perspective: 1200px;
+  padding: 32px 0;
+  cursor: grab;
+  user-select: none;
+}
+.faces-3d-stage:active {
+  cursor: grabbing;
+}
+
+/* shared styles for all five face cards */
+.face-card {
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.face-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* the two smallest cards on the far left and far right */
+.face-sm {
+  width: 210px;
+  height: 280px;
+  opacity: 0.7;
+  transform: rotateY(18deg) scale(0.88);
+}
+.face-sm:nth-child(5) {
+  transform: rotateY(-18deg) scale(0.88);
+}
+
+/* the two medium cards next to the centre */
+.face-md {
+  width: 255px;
+  height: 340px;
+  opacity: 0.85;
+  transform: rotateY(10deg) scale(0.94);
+}
+.face-md:nth-child(4) {
+  transform: rotateY(-10deg) scale(0.94);
+}
+
+/* the big centre card */
+.face-lg {
+  width: 300px;
+  height: 400px;
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 16px 48px rgba(30, 45, 77, 0.22);
+}
+
+/* lifts whichever face card the user hovers over */
+.face-card:hover {
+  box-shadow: 0 20px 60px rgba(30, 45, 77, 0.3);
+  opacity: 1;
+  z-index: 2;
+}
+
+
+/* ================================================================
+   SECTION 8 — BECOME A MODEL
+   Left side has the model photo; right side has the text and button.
+================================================================ */
+.become-section {
+  min-height: 60vh;
+  overflow: hidden;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+/* the text side of the Become A Model section */
+.become-content {
+  background-color: var(--mud-cream);
+  padding: 64px;
+  text-align: center;
+  align-items: center;
+}
+
+/* the large "BECOME A MODEL" heading */
+.become-title {
+  font-family: var(--font-display);
+  font-size: 128px; /* 128px at full width */
+  font-weight: 700;
+  color: var(--mud-gold);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+/* the description text in the Become A Model section */
+.become-subtitle {
+  font-family: var(--font-body);
+  font-size: 16px; /* 16px */
+  color: var(--mud-navy);
+  max-width: 500px;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* the "APPLY NOW!" button */
+.btn-apply-now {
+  display: inline-block;
+  background-color: var(--mud-gold);
+  color: var(--mud-mid-blue);
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 32px;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-apply-now:hover,
+.btn-apply-now:focus {
+  background-color: var(--mud-mid-blue);
+  color: var(--mud-gold);
+}
+
+/* the photo column — the image stretches to fill the full height of the section */
+.become-img-col {
+  position: relative;
+}
+.become-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+
+/* ================================================================
+   SECTION 9 — OUR IMPACT
+================================================================ */
+.impact-section {
+  padding: var(--section-py) 0 64px;
+  background-color: #F5F2EC;
+}
+
+/* each card in the Our Impact section */
+.impact-card {
+  background-color: var(--mud-white);
+  box-shadow: 0 4px 20px rgba(30, 45, 77, 0.08);
+  padding: 40px 24px;
+  height: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.impact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 32px rgba(30, 45, 77, 0.14);
+}
+
+/* the gold circle holding each impact icon */
+.impact-icon {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background-color: var(--mud-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 38px;
+  color: var(--mud-white);
+}
+
+/* the large number on each impact card */
+.impact-number {
+  font-family: var(--font-display);
+  font-size: 64px; /* 64px at full width */
+  font-weight: 400;
+  color: var(--mud-navy);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+/* the label text below each impact number */
+.impact-label {
+  font-family: var(--font-body);
+  font-size: 19px;
+  color: var(--mud-navy);
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+
+/* ================================================================
+   FOOTER
+================================================================ */
+.mudelli-footer {
+  background-color: var(--mud-navy);
+  color: var(--mud-white);
+}
+
+/* the Mudelli logo in the footer */
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--mud-gold);
+  text-decoration: none;
+  line-height: 1;
+  display: inline-block;
+}
+.footer-logo:hover,
+.footer-logo:focus {
+  color: var(--mud-gold);
+  opacity: 0.8;
+}
+
+/* the short description paragraph in the footer */
+.footer-about {
+  font-family: var(--font-body);
+  font-size: 15px;   /* 15px */
+  color: var(--mud-white);
+  line-height: 1.75;
+  max-width: 320px;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+/* headings for each footer column */
+.footer-heading {
+  font-family: var(--font-display);
+  font-size: 20px;    /* 20px */
+  font-weight: 700;
+  color: var(--mud-white);
+  margin-bottom: 16px;
+}
+
+/* the list of links in each footer column */
+.footer-links {
+  margin-bottom: 0;
+}
+.footer-links li {
+  margin-bottom: 10px;
+}
+.footer-links a {
+  font-family: var(--font-body);
+  font-size: 15px;  /* 15px */
+  color: var(--mud-white);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover,
+.footer-links a:focus {
+  color: var(--mud-gold);
+}
+
+/* Divider line */
+.footer-divider {
+  border-color: rgba(255, 255, 255, 0.15);
+  margin: 0;
+}
+
+/* the copyright text at the very bottom of the page */
+.footer-copyright {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: #D9D9D9;
+}
+
+/* the circular social media icon buttons in the footer */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--mud-mid-blue);
+  color: var(--mud-white);
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+.social-icon:hover,
+.social-icon:focus {
+  background-color: var(--mud-gold);
+  color: var(--mud-navy);
+}
+
+/* the accessibility button in the footer — white circle with a wheelchair icon */
+.accessibility-btn {
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--mud-white);
+  color: var(--mud-navy);
+  font-size: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.accessibility-btn:hover,
+.accessibility-btn:focus {
+  background-color: var(--mud-gold);
+  color: var(--mud-navy);
+}
+
+
+/* ================================================================
+   RESPONSIVE OVERRIDES
+================================================================ */
+
+/* tablet screens and smaller */
+@media (max-width: 991.98px) {
+
+  /* Hero shorter on tablet/mobile */
+  .hero-img {
+    height: 65vh;
+    min-height: 350px;
+  }
+
+  /* Nav becomes full-height overlay when expanded */
+  .mudelli-nav .navbar-collapse {
+    background-color: var(--mud-navy);
+    padding: 20px 24px;
+    margin-top: 8px;
+  }
+
+  /* Become section stacks vertically */
+  .become-content {
+    padding: 48px 32px;
+  }
+  .become-title {
+    font-size: 96px;
+  }
+
+  /* 3D faces shrink symmetrically */
+  .face-sm { opacity: 0.5; }
+  .face-md { opacity: 0.75; }
+}
+
+/* mobile screens */
+@media (max-width: 767.98px) {
+
+  :root {
+    --section-py: 48px;
+  }
+
+  /* Hero fills viewport on small screens */
+  .hero-img {
+    height: 55vh;
+    min-height: 300px;
+  }
+
+  /* Hide outermost 3D face cards on mobile — too cramped */
+  .face-sm {
+    display: none;
+  }
+
+  /* Full-width casting cards — image stacks above content */
+  .casting-img {
+    min-height: 220px;
+    max-height: 280px;
+  }
+
+  /* Casting content padding reduced */
+  .casting-content {
+    padding: 20px 20px;
+  }
+
+  /* Steps — allow bar to grow if text wraps on small screens */
+  .step-bar {
+    height: auto;
+    min-height: 80px;
+    padding: 16px 24px;
+  }
+
+  /* Model slider — fewer items visible */
+  .model-card {
+    flex: 0 0 200px;
+  }
+  .model-portrait {
+    height: 300px;
+  }
+
+  /* on mobile the columns stack, so we give the image column a fixed height
+     (the image is absolutely positioned and has no natural height of its own) */
+  .become-img-col {
+    min-height: 350px;
+  }
+}

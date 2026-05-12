@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- SEO description matches the platform's purpose -->
+  <meta name="description"
+    content="Mudelli — Connecting Maltese and international models with global opportunities in fashion, commercial, and editorial photography." />
+
+  <title>Mudelli — Connecting Talent with Opportunity</title>
+
+  <!-- ── Bootstrap 5.3 CSS ─────────────────────────────────── -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <!-- ── Bootstrap Icons 1.11 ──────────────────────────────── -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts: Playfair Display and Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- ── Custom styles ─────────────────────────────────────── -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       SKIP NAVIGATION — lets keyboard/screen-reader users jump past
+       repetitive navigation and straight to the page content
+  ============================================================ -->
+  <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+  <!-- ============================================================
+       HEADER — Fixed top navigation bar
+  ============================================================ -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
+      aria-label="Main site navigation">
+      <div class="container-xxl px-4">
+
+        <!-- ── Brand Logo ─────────────────────────────────────── -->
+        <!-- aria-label gives screen readers the full context -->
+        <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli — return to homepage">
+          MUDELLI
+        </a>
+
+        <!-- ── Mobile hamburger toggle ──────────────────────── -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+          aria-label="Toggle main navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- ── Collapsible menu ─────────────────────────────── -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+          <!-- Primary nav links centred between logo and auth buttons -->
+          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
+            <li class="nav-item" role="listitem">
+              <!-- aria-current="page" marks the active page for screen readers -->
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="models.html">Models</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="casting-calls.html">Casting Calls</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="become-a-model.html">Become A Model</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Auth action buttons -->
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <a href="login.html" class="btn-nav-auth" aria-label="Log in to your Mudelli account">LOGIN</a>
+            <a href="login.html#register" class="btn-nav-auth btn-nav-register"
+              aria-label="Create a new Mudelli account">REGISTER NOW!</a>
+          </div>
+
+        </div><!-- /navbar-collapse -->
+      </div><!-- /container -->
+    </nav>
+  </header>
+
+
+  <!-- ============================================================
+       MAIN — Primary page content 
+  ============================================================ -->
+  <main id="main-content">
+
+    <!-- ==========================================================
+         SECTION 1 — HERO CAROUSEL
+         Full-width, auto-rotating carousel with six high-quality images.
+         Bootstrap carousel
+    ========================================================== -->
+    <section id="hero" aria-label="Hero — featured imagery slideshow">
+
+      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/hero1.jpg" class="d-block w-100 hero-img" alt="Mudelli hero slide 1">
+          </div>
+          <div class="carousel-item">
+            <img src="images/hero2.jpg" class="d-block w-100 hero-img" alt="Mudelli hero slide 2">
+          </div>
+          <div class="carousel-item">
+            <img src="images/hero3.jpg" class="d-block w-100 hero-img" alt="Mudelli hero slide 3">
+          </div>
+          <div class="carousel-item">
+            <img src="images/hero4.jpg" class="d-block w-100 hero-img" alt="Mudelli hero slide 4">
+          </div>
+          <div class="carousel-item">
+            <img src="images/hero5.jpg" class="d-block w-100 hero-img" alt="Mudelli hero slide 5">
+          </div>
+          <div class="carousel-item">
+            <img src="images/hero6.jpg" class="d-block w-100 hero-img" alt="Mudelli hero slide 6">
+          </div>
+        </div>
+      </div><!-- /carousel -->
+    </section>
+
+
+    <!-- ==========================================================
+         SECTION 2 — TAGLINE 
+"CONNECTING TALENT WITH OPPORTUNITY"
+    ========================================================== -->
+    <section id="about" class="tagline-section" aria-label="About Mudelli">
+      <div class="container text-center">
+
+        <!-- Main tagline — gold, Playfair Display, all-caps -->
+        <p class="tagline-headline" aria-label="Connecting talent with opportunity">
+          CONNECTING TALENT WITH OPPORTUNITY
+        </p>
+
+        <!-- Supporting description -->
+        <p class="tagline-sub">
+          We are a platform focused on connecting Maltese and international models
+          with global opportunities in fashion, commercial, and editorial photography.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================
+         SECTION 3 — WHY JOIN OUR PLATFORM?
+    ========================================================== -->
+    <section id="why-join" class="why-section" aria-labelledby="why-heading">
+      <div class="container">
+
+        <h2 id="why-heading" class="section-title text-center mb-5">Why Join Our Platform?</h2>
+
+        <div class="row g-4 justify-content-center">
+
+          <!-- Card 1 — For Models -->
+          <div class="col-lg-3 col-md-6 col-sm-10">
+            <article class="why-card h-100" aria-label="Benefits for Models">
+              <div class="why-card-inner">
+                <h3 class="why-card-title">For Models:</h3>
+                <p class="why-card-text">
+                  Build your modeling career and get discovered by international agencies.
+                  Showcase your portfolio and land your dream jobs.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 2 — For Photographers -->
+          <div class="col-lg-3 col-md-6 col-sm-10">
+            <article class="why-card h-100" aria-label="Benefits for Photographers">
+              <div class="why-card-inner">
+                <h3 class="why-card-title">For Photographers:</h3>
+                <p class="why-card-text">
+                  Connect with talented models and expand your creative portfolio.
+                  Find the perfect talent for every project and vision.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 3 — For Brands -->
+          <div class="col-lg-3 col-md-6 col-sm-10">
+            <article class="why-card h-100" aria-label="Benefits for Brands">
+              <div class="why-card-inner">
+                <h3 class="why-card-title">For Brands:</h3>
+                <p class="why-card-text">
+                  Discover and hire top modeling talent efficiently.
+                  Streamline your casting process and bring campaigns to life faster.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 4 — Safety First -->
+          <div class="col-lg-3 col-md-6 col-sm-10">
+            <article class="why-card h-100" aria-label="Safety and verification policy">
+              <div class="why-card-inner">
+                <h3 class="why-card-title">Safety First:</h3>
+                <p class="why-card-text">
+                  All members and casting opportunities are carefully verified
+                  for your peace of mind. Your safety is our top priority.
+                </p>
+              </div>
+            </article>
+          </div>
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </section>
+
+
+
+
+    <!-- ==========================================================
+         SECTION 5 — HOW IT WORKS
+         Three numbered steps on a cream background.
+         The step numbers (1–3) are inside gold circles and are
+         aria-hidden because the visible text already conveys order.
+    ========================================================== -->
+    <section id="how-it-works" class="how-section" aria-labelledby="how-heading">
+      <div class="container">
+
+        <h2 id="how-heading" class="section-title text-center mb-5">How It Works?</h2>
+
+        <!-- Steps presented as an ordered list for semantic order -->
+        <ol class="row g-4 justify-content-center list-unstyled" aria-label="Platform steps">
+
+          <!-- Step 1: number circle sits inline on the left inside the navy bar -->
+          <li class="col-lg-4 col-md-6">
+            <div class="step-bar">
+              <div class="step-number" aria-hidden="true">1</div>
+              <span class="step-title">Create an Account</span>
+            </div>
+          </li>
+
+          <!-- Step 2 -->
+          <li class="col-lg-4 col-md-6">
+            <div class="step-bar">
+              <div class="step-number" aria-hidden="true">2</div>
+              <span class="step-title">Find the right fit</span>
+            </div>
+          </li>
+
+          <!-- Step 3 -->
+          <li class="col-lg-4 col-md-6">
+            <div class="step-bar">
+              <div class="step-number" aria-hidden="true">3</div>
+              <span class="step-title">Start working together</span>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+
+<!-- ==========================================================
+     SECTION 6 — FEATURED MODELS (3D perspective layout)
+     Five portrait cards — centre largest, scaling smaller outward.
+========================================================== -->
+<section id="featured-models" class="models-section" aria-labelledby="featured-heading">
+  <div class="container-xxl">
+
+    <!-- Section heading — centred above the 3D layout -->
+    <div class="text-center mb-4 px-4">
+      <h2 id="featured-heading" class="section-title mb-1">Featured Models</h2>
+      <p class="section-subtitle mb-0">Discover our top talent ready for your next project</p>
+    </div>
+
+    <!-- 3D fan layout — five cards, centre card largest -->
+    <div class="faces-3d-stage" role="list" aria-label="Featured models 3D showcase">
+
+      <!-- Far left — smallest -->
+      <div class="face-card face-sm" role="listitem">
+        <img src="images/first.jpg" alt="Featured model portrait" loading="lazy" />
+      </div>
+
+      <!-- Near left -->
+      <div class="face-card face-md" role="listitem">
+        <img src="images/second.jpg" alt="Featured model portrait" loading="lazy" />
+      </div>
+
+      <!-- Centre — largest, most prominent -->
+      <div class="face-card face-lg" role="listitem">
+        <img src="images/third.jpg" alt="Featured model centre portrait" loading="lazy" />
+      </div>
+
+      <!-- Near right -->
+      <div class="face-card face-md" role="listitem">
+        <img src="images/fourth.jpg" alt="Featured model portrait" loading="lazy" />
+      </div>
+
+      <!-- Far right — smallest -->
+      <div class="face-card face-sm" role="listitem">
+        <img src="images/fifth.jpg" alt="Featured model portrait" loading="lazy" />
+      </div>
+
+    </div><!-- /faces-3d-stage -->
+
+    <!-- View More centred below the carousel -->
+    <div class="text-center mt-4">
+      <a href="models.html" class="btn btn-view-more" aria-label="Browse all featured models">
+        View More
+      </a>
+    </div>
+
+  </div><!-- /container -->
+</section>
+
+
+    <!-- ==========================================================
+         SECTION 7 — NEW FACES
+         3D perspective-style card arrangement of five portrait
+         photos. The centre card is the largest; cards scale down
+         symmetrically outward to create visual depth.
+    ========================================================== -->
+    <section id="new-faces" class="new-faces-section" aria-labelledby="new-faces-heading">
+      <div class="container-xxl">
+
+        <!-- Section heading — centred -->
+        <div class="text-center mb-4 px-4">
+          <h2 id="new-faces-heading" class="section-title mb-0">New Faces</h2>
+        </div>
+
+        <!-- 3D fan-layout — five cards, centre is largest -->
+        <div class="faces-3d-stage" role="list" aria-label="New model faces showcase">
+
+          <!-- Far left — smallest -->
+          <div class="face-card face-sm" role="listitem">
+            <img
+              src="images/newfaces1.jpg"
+              alt="New face model — emerging talent portrait" loading="lazy" />
+          </div>
+
+          <!-- Near left — slightly larger -->
+          <div class="face-card face-md" role="listitem">
+            <img
+              src="images/newfaces2.jpg"
+              alt="New face model — rising star portrait" loading="lazy" />
+          </div>
+
+          <!-- Centre — largest, most prominent -->
+          <div class="face-card face-lg" role="listitem">
+            <img
+              src="images/newfaces3.jpg"
+              alt="New face model — featured centre portrait" loading="lazy" />
+          </div>
+
+          <!-- Near right — slightly larger -->
+          <div class="face-card face-md" role="listitem">
+            <img
+              src="images/newfaces4.jpg"
+              alt="New face model — portfolio portrait" loading="lazy" />
+          </div>
+
+          <!-- Far right — smallest -->
+          <div class="face-card face-sm" role="listitem">
+            <img
+              src="images/newfaces5.jpg"
+              alt="New face model — contemporary portrait" loading="lazy" />
+          </div>
+
+        </div><!-- /faces-3d-stage -->
+
+        <!-- View More centred below -->
+        <div class="text-center mt-4">
+          <a href="new-faces.html" class="btn btn-view-more" aria-label="Browse all new faces">
+            View More
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================
+         SECTION 8 — BECOME A MODEL
+         Split layout: left = large gold headline + description + CTA;
+         right = full-height model photograph.
+    ========================================================== -->
+    <section id="become-a-model" class="become-section" aria-labelledby="become-heading">
+      <div class="row g-0">
+
+        <!-- Left column — model photograph -->
+        <div class="col-lg-6 become-img-col">
+          <img
+            src="images/become-a-model.jpg"
+            class="become-img"
+            alt="Model in a professional photoshoot — representing the Mudelli modeling journey" loading="lazy" />
+        </div>
+
+        <!-- Right column — text content -->
+        <div class="col-lg-6 become-content d-flex flex-column justify-content-center">
+          <!-- "BECOME A MODEL" large display heading (gold) -->
+          <h2 id="become-heading" class="become-title" aria-label="Become a model with Mudelli">
+            BECOME<br />A MODEL
+          </h2>
+          <p class="become-subtitle">
+            From your first steps to international runways, we're here to guide your journey.
+          </p>
+          <!-- Large CTA button — links to the dedicated page -->
+          <div class="mt-4">
+            <a href="become-a-model.html" class="btn btn-apply-now"
+              aria-label="Apply now to start your modeling career with Mudelli">
+              APPLY NOW!
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================
+         SECTION 4 — LATEST CASTING CALLS
+         Three horizontal casting-call cards, each linking to the
+         detail page. Uses <article> per card; icons are decorative
+         (aria-hidden) while meaningful text is in <span> beside them.
+    ========================================================== -->
+    <section id="casting-calls" class="castings-section" aria-labelledby="castings-heading">
+      <div class="container">
+
+        <!-- Section heading + subtitle -->
+        <h2 id="castings-heading" class="section-title mb-2">Latest Castings Calls</h2>
+        <p class="section-subtitle mb-5">Find your next opportunity!</p>
+
+        <!-- ── Casting Card 1 — Summer Fashion Campaign ──────── -->
+        <article class="casting-card mb-4" aria-label="Casting call: Summer Fashion Campaign, Barcelona">
+          <div class="row g-0">
+
+            <!-- Casting image (left) -->
+            <div class="col-md-4 col-lg-3">
+              <img
+                src="images/summercampaign1.jpg"
+                class="casting-img w-100 h-100 object-fit-cover"
+                alt="Summer Fashion Campaign — Barcelona photoshoot scene" />
+            </div>
+
+            <!-- Casting details (right) -->
+            <div class="col-md-8 col-lg-9 casting-details-col">
+              <div class="casting-content h-100 d-flex flex-column justify-content-between">
+
+                <!-- Row 1: title + Newly posted + Verified — all on same line -->
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-1">
+                  <h3 class="casting-title mb-0">Summer Fashion Campaign</h3>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="newly-posted-label" aria-live="polite">Newly posted</span>
+                    <span class="casting-verified" aria-label="Verified listing">
+                      <span class="casting-verified-check" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                      Verified
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Row 2: category badge -->
+                <span class="casting-badge d-inline-block mb-2" aria-label="Category: Fashion">Fashion</span>
+
+                <!-- Meta info with icons — icons are decorative, text carries meaning -->
+                <ul class="casting-meta list-unstyled mt-3" aria-label="Casting details">
+                  <li>
+                    <i class="bi bi-calendar3" aria-hidden="true"></i>
+                    <span>May 15–17, 2026</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                    <span>Barcelona, Spain</span>
+                  </li>
+                  <li>
+                    <!-- Gold dollar icon indicates paid work -->
+                    <i class="bi bi-currency-dollar casting-dollar" aria-hidden="true"></i>
+                    <span>Paid shoot or event</span>
+                  </li>
+                </ul>
+
+                <!-- CTA button -->
+                <div class="mt-4">
+                  <a href="casting-detail.html" class="btn btn-casting"
+                    aria-label="View details for Summer Fashion Campaign">
+                    View Details
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── Casting Card 2 — Commercial Photoshoot ─────────── -->
+        <article class="casting-card mb-4" aria-label="Casting call: Commercial Photoshoot, Valletta">
+          <div class="row g-0">
+
+            <div class="col-md-4 col-lg-3">
+              <img
+                src="images/commercialshoot.jpg"
+                class="casting-img w-100 h-100 object-fit-cover"
+                alt="Commercial Photoshoot — Valletta location" />
+            </div>
+
+            <div class="col-md-8 col-lg-9 casting-details-col">
+              <div class="casting-content h-100 d-flex flex-column justify-content-between">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-1">
+                  <h3 class="casting-title mb-0">Commercial Photoshoot</h3>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="newly-posted-label" aria-live="polite">Newly posted</span>
+                    <span class="casting-verified" aria-label="Verified listing">
+                      <span class="casting-verified-check" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                      Verified
+                    </span>
+                  </div>
+                </div>
+                <span class="casting-badge d-inline-block mb-2" aria-label="Category: Commercial">Commercial</span>
+                <ul class="casting-meta list-unstyled mt-3" aria-label="Casting details">
+                  <li>
+                    <i class="bi bi-calendar3" aria-hidden="true"></i>
+                    <span>June 1–3, 2026</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                    <span>Valletta, Malta</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-currency-dollar casting-dollar" aria-hidden="true"></i>
+                    <span>Paid shoot or event</span>
+                  </li>
+                </ul>
+                <div class="mt-4">
+                  <a href="casting-detail.html" class="btn btn-casting"
+                    aria-label="View details for Commercial Photoshoot">
+                    View Details
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── Casting Card 3 — Editorial Photoshoot ──────────── -->
+        <article class="casting-card mb-4" aria-label="Casting call: Editorial Photoshoot, Valletta">
+          <div class="row g-0">
+
+            <div class="col-md-4 col-lg-3">
+              <img
+                src="images/editorialshoot.jpg"
+                class="casting-img w-100 h-100 object-fit-cover"
+                alt="Editorial Photoshoot — Valletta location" />
+            </div>
+
+            <div class="col-md-8 col-lg-9 casting-details-col">
+              <div class="casting-content h-100 d-flex flex-column justify-content-between">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-1">
+                  <h3 class="casting-title mb-0">Editorial Photoshoot</h3>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="newly-posted-label" aria-live="polite">Newly posted</span>
+                    <span class="casting-verified" aria-label="Verified listing">
+                      <span class="casting-verified-check" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                      Verified
+                    </span>
+                  </div>
+                </div>
+                <span class="casting-badge d-inline-block mb-2" aria-label="Category: Editorial">Editorial</span>
+                <ul class="casting-meta list-unstyled mt-3" aria-label="Casting details">
+                  <li>
+                    <i class="bi bi-calendar3" aria-hidden="true"></i>
+                    <span>June 1–3, 2026</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                    <span>Valletta, Malta</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-currency-dollar casting-dollar" aria-hidden="true"></i>
+                    <span>Paid shoot or event</span>
+                  </li>
+                </ul>
+                <div class="mt-4">
+                  <a href="casting-detail.html" class="btn btn-casting"
+                    aria-label="View details for Editorial Photoshoot">
+                    View Details
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- "View all" link below the cards -->
+        <div class="text-center mt-3">
+          <a href="casting-calls.html" class="btn btn-view-more" aria-label="Browse all casting calls">
+            View More
+          </a>
+        </div>
+
+      </div><!-- /container -->
+    </section>
+
+    <!-- ==========================================================
+         SECTION 9 — OUR IMPACT
+         Four statistics presented in white cards with gold icon
+         circles. Each stat has a visually large number and a label.
+    ========================================================== -->
+    <section id="our-impact" class="impact-section" aria-labelledby="impact-heading">
+      <div class="container">
+
+        <h2 id="impact-heading" class="section-title text-center mb-2">Our Impact</h2>
+        <p class="section-subtitle text-center mb-5">
+          Building connections that transform careers in the modeling industry
+        </p>
+
+        <div class="row g-4 justify-content-center">
+
+          <!-- Stat 1 — Active Models -->
+          <div class="col-lg-3 col-md-6 col-sm-10">
+            <div class="impact-card text-center">
+              <!-- Gold circle icon -->
+              <div class="impact-icon" aria-hidden="true">
+                <i class="bi bi-person-fill"></i>
+              </div>
+              <!-- Screen readers read the full stat -->
+              <p class="impact-number" aria-label="542 plus active models">542+</p>
+              <p class="impact-label">Active Models</p>
+            </div>
+          </div>
+
+          <!-- Stat 2 — Partner Brands -->
+          <div class="col-lg-3 col-md-6 col-sm-10">
+            <div class="impact-card text-center">
+              <div class="impact-icon" aria-hidden="true">
+                <i class="bi bi-graph-up-arrow"></i>
+              </div>
+              <p class="impact-number" aria-label="127 plus partner brands">127+</p>
+              <p class="impact-label">Partner Brands</p>
+            </div>
+          </div>
+
+          <!-- Stat 3 — Successful Bookings -->
+          <div class="col-lg-3 col-md-6 col-sm-10">
+            <div class="impact-card text-center">
+              <div class="impact-icon" aria-hidden="true">
+                <i class="bi bi-heart-fill"></i>
+              </div>
+              <p class="impact-number" aria-label="1250 plus successful bookings">1250+</p>
+              <p class="impact-label">Successful Bookings</p>
+            </div>
+          </div>
+
+          <!-- Stat 4 — Client Satisfaction -->
+          <div class="col-lg-3 col-md-6 col-sm-10">
+            <div class="impact-card text-center">
+              <div class="impact-icon" aria-hidden="true">
+                <i class="bi bi-bag-fill"></i>
+              </div>
+              <p class="impact-number" aria-label="98 percent client satisfaction">98%</p>
+              <p class="impact-label">Client Satisfaction</p>
+            </div>
+          </div>
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </section>
+
+  </main><!-- /main#main-content -->
+
+
+  <!-- ============================================================
+       FOOTER
+       Dark navy background. Four columns: brand, quick links,
+       support, and social. role="contentinfo" is the landmark.
+  ============================================================ -->
+  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+    <div class="container-xxl px-4">
+
+      <div class="row g-5 py-5">
+
+        <!-- Column 1 — Brand -->
+        <div class="col-lg-4 col-md-12">
+          <a href="index.html" class="footer-logo d-inline-block mb-3"
+            aria-label="Mudelli — return to homepage">MUDELLI</a>
+          <p class="footer-about">
+            Connecting talent with opportunity in Malta and internationally.
+          </p>
+        </div>
+
+        <!-- Column 2 — Quick Links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Quick Links</h3>
+          <!-- Distinct aria-label distinguishes this nav from the main header nav -->
+          <nav aria-label="Footer quick links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="models.html">Browse Models</a></li>
+              <li><a href="casting-calls.html">Casting Calls</a></li>
+              <li><a href="become-a-model.html">Become a Model</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 3 — Support -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Support</h3>
+          <nav aria-label="Footer support links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety &amp; Security</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 4 — Follow Us (social icons) -->
+        <div class="col-lg-4 col-md-4">
+          <h3 class="footer-heading">Follow Us</h3>
+          <!-- Each social link has a descriptive aria-label -->
+          <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+              <i class="bi bi-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+              <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+
+      <!-- Horizontal rule separating content from copyright -->
+      <hr class="footer-divider" aria-hidden="true" />
+
+      <!-- Bottom bar: copyright + accessibility button -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
+        <p class="footer-copyright mb-0">© 2026 Mudelli. All rights reserved.</p>
+
+        <!-- Accessibility widget trigger — opens a modal/panel (placeholder) -->
+        <button class="accessibility-btn" type="button" aria-label="Open accessibility options"
+          aria-haspopup="dialog">
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div><!-- /container -->
+  </footer>
+
+
+  <!-- ============================================================
+       BOOTSTRAP 5 BUNDLE — includes Popper for dropdowns/tooltips
+  ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
+    crossorigin="anonymous"></script>
+
+  <!-- Navbar scroll effect -->
+  <script>
+    window.addEventListener('scroll', function () {
+      var nav = document.getElementById('mainNav');
+      if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 80);
+    }, { passive: true });
+  </script>
+
+  <!-- Hero carousel autoplay -->
+  <script>
+    window.onload = function() {
+      var myCarousel = document.querySelector('#heroCarousel');
+      var carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 3000,
+        wrap: true,
+        ride: 'carousel'
+      });
+      carousel.cycle();
+    };
+  </script>
+
+  <!-- Featured Models 3D carousel — drag/swipe to rotate -->
+  <script>
+    (function () {
+      var stage = document.querySelector('#featured-models .faces-3d-stage');
+      if (!stage) return;
+
+      // All 5 image sources in carousel order
+      var images = [
+        'images/first.jpg',
+        'images/second.jpg',
+        'images/third.jpg',
+        'images/fourth.jpg',
+        'images/fifth.jpg'
+      ];
+      var centerIndex = 2; // third.jpg starts at centre
+      var cards = stage.querySelectorAll('.face-card img');
+      var THRESHOLD = 50; // minimum px drag to count as a swipe
+      var startX = 0;
+      var isDragging = false;
+
+      // Rewrite each card's src so the correct image sits in each DOM slot.
+      // DOM positions are fixed so nth-child CSS keeps the right transforms.
+      function render() {
+        for (var i = 0; i < cards.length; i++) {
+          var idx = (centerIndex - 2 + i + images.length * 10) % images.length;
+          cards[i].src = images[idx];
+        }
+      }
+
+      function rotate(dir) { // dir: +1 = left drag (next), -1 = right drag (prev)
+        centerIndex = (centerIndex + dir + images.length) % images.length;
+        render();
+      }
+
+      // ── Mouse ──────────────────────────────────────────────────────
+      stage.addEventListener('mousedown', function (e) {
+        startX = e.clientX;
+        isDragging = true;
+        e.preventDefault(); // stop browser text/image drag
+      });
+      window.addEventListener('mousemove', function (e) {
+        if (isDragging) e.preventDefault();
+      });
+      window.addEventListener('mouseup', function (e) {
+        if (!isDragging) return;
+        isDragging = false;
+        var dx = e.clientX - startX;
+        if (Math.abs(dx) >= THRESHOLD) rotate(dx < 0 ? 1 : -1);
+      });
+
+      // ── Touch ──────────────────────────────────────────────────────
+      stage.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+      stage.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) >= THRESHOLD) rotate(dx < 0 ? 1 : -1);
+      }, { passive: true });
+
+      // Prevent native image drag from interfering
+      stage.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    })();
+  </script>
+
+</body>
+</html>
