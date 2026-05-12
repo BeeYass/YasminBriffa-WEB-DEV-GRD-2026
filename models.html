@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- page description for search engines -->
+  <meta name="description"
+    content="Browse all Mudelli models — search by name, location, or category and discover professional models available for fashion, commercial, and editorial bookings." />
+
+  <title>Models — Mudelli</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <!-- Bootstrap Icons 1.11 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts: Playfair Display and Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- shared styles from the main stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ================================================================
+       PAGE BANNER — cream background with the "All Models" heading
+       and the search bar
+    ================================================================ */
+    .models-banner {
+      /* sits just below the fixed navbar */
+      padding-top: 80px;
+      padding-bottom: 56px;
+      background-color: var(--mud-cream);
+      text-align: center;
+    }
+
+    /* the main "All Models" heading */
+    .models-banner-title {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    /* the subtitle below the heading */
+    .models-banner-subtitle {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--mud-navy);
+      margin-bottom: 36px;
+    }
+
+    /* the search input field */
+    .models-search-input {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--mud-navy);
+      background-color: var(--mud-white);
+      border: 2px solid var(--mud-light-gray);
+      border-right: none;
+      border-radius: 0;
+      padding: 12px 16px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .models-search-input::placeholder {
+      color: #A6A3A3;
+    }
+
+    .models-search-input:focus {
+      outline: none;
+      border-color: var(--mud-navy);
+      box-shadow: none;
+    }
+
+    /* the Filters button next to the search input */
+    .btn-models-filter {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--mud-gold);
+      background-color: var(--mud-navy);
+      border: none;
+      border-radius: 0;
+      padding: 12px 24px;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-models-filter:hover,
+    .btn-models-filter:focus {
+      background-color: var(--mud-mid-blue);
+      color: var(--mud-gold);
+    }
+
+
+    /* ================================================================
+       MODEL GRID — the 4-column grid of model cards
+    ================================================================ */
+    .all-models-section {
+      padding: 56px 0 72px;
+      background-color: var(--mud-white);
+    }
+
+    /* each model card — holds the photo, hover overlay, and name */
+    .model-grid-card {
+      background: transparent;
+      outline: none;
+    }
+
+    /* focus ring for keyboard navigation */
+    .model-grid-card:focus-visible {
+      box-shadow: var(--focus-ring);
+    }
+
+    /* clips the hover overlay and the photo zoom */
+    .model-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* the model portrait photo */
+    .model-grid-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    /* zoom the photo slightly when the card is hovered or focused */
+    .model-grid-card:hover .model-grid-img,
+    .model-grid-card:focus-within .model-grid-img {
+      transform: scale(1.04);
+    }
+
+    /* dark navy overlay that fades in on hover showing measurements */
+    .model-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(30, 45, 77, 0.88);
+      padding: 28px 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* show the overlay when hovering or focusing the card */
+    .model-grid-card:hover .model-grid-overlay,
+    .model-grid-card:focus-within .model-grid-overlay {
+      opacity: 1;
+    }
+
+    /* measurements laid out in a two-column grid (label | value) */
+    .model-meas-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 16px;
+    }
+
+    /* the measurement label (e.g. "HEIGHT") */
+    .model-meas-list dt {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--mud-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 1px;
+    }
+
+    /* the measurement value (e.g. "175 cm / 5'9"") */
+    .model-meas-list dd {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--mud-white);
+      margin: 0;
+    }
+
+    /* the model name shown below the photo at all times */
+    .model-grid-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--mud-navy);
+      padding: 12px 0 4px;
+      margin: 0;
+      text-align: center;
+    }
+
+
+    /* ================================================================
+       RESPONSIVE OVERRIDES
+    ================================================================ */
+
+    /* tablet */
+    @media (max-width: 991.98px) {
+      .models-banner {
+        padding-top: 80px;
+        padding-bottom: 40px;
+      }
+
+      .models-banner-title {
+        font-size: 36px;
+      }
+
+      .model-grid-img {
+        height: 320px;
+      }
+    }
+
+    /* mobile */
+    @media (max-width: 767.98px) {
+      .models-banner-title {
+        font-size: 28px;
+      }
+
+      /* stack the search bar and filters button vertically */
+      .models-search-input {
+        border-right: 2px solid var(--mud-light-gray);
+        border-bottom: none;
+      }
+
+      .model-grid-img {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- skip link for keyboard/screen-reader users -->
+  <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+
+  <!-- ============================================================
+       HEADER — fixed top navigation bar (same as all pages)
+  ============================================================ -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
+      aria-label="Main site navigation">
+      <div class="container-xxl px-4">
+
+        <!-- brand logo -->
+        <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli — return to homepage">
+          MUDELLI
+        </a>
+
+        <!-- mobile hamburger button -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+          aria-label="Toggle main navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- collapsible navigation links -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <!-- aria-current="page" marks this as the active page -->
+              <a class="nav-link active" aria-current="page" href="models.html">Models</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="casting-calls.html">Casting Calls</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="become-a-model.html">Become A Model</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- login and register buttons -->
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <a href="login.html" class="btn-nav-auth" aria-label="Log in to your Mudelli account">LOGIN</a>
+            <a href="login.html#register" class="btn-nav-auth btn-nav-register"
+              aria-label="Create a new Mudelli account">REGISTER NOW!</a>
+          </div>
+
+        </div><!-- /navbar-collapse -->
+      </div><!-- /container -->
+    </nav>
+  </header>
+
+
+  <!-- ============================================================
+       MAIN PAGE CONTENT
+  ============================================================ -->
+  <main id="main-content">
+
+    <!-- ==========================================================
+         PAGE BANNER — cream background with heading and search bar
+    ========================================================== -->
+    <section class="models-banner" aria-labelledby="models-heading">
+      <div class="container">
+
+        <h1 id="models-heading" class="models-banner-title">All Models</h1>
+        <p class="models-banner-subtitle">
+          Browse our full roster of professional models available for bookings
+        </p>
+
+        <!-- search bar and filters button side by side -->
+        <div class="d-flex flex-column flex-sm-row justify-content-center mx-auto"
+          style="max-width: 680px;" role="search" aria-label="Search and filter models">
+          <!-- hidden label for screen readers -->
+          <label for="modelSearch" class="visually-hidden">Search models</label>
+          <input
+            id="modelSearch"
+            type="search"
+            class="models-search-input"
+            placeholder="Search by name, location, or category..."
+            aria-label="Search models by name, location, or category" />
+          <button class="btn-models-filter" type="button" aria-label="Open filter options">
+            <i class="bi bi-sliders" aria-hidden="true"></i>
+            Filters
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================
+         MODEL GRID — 14 model cards, 4 across on desktop
+         Hover over any card to see the model's measurements.
+    ========================================================== -->
+    <section class="all-models-section" aria-labelledby="models-grid-heading">
+      <div class="container">
+
+        <!-- visually hidden heading so the section has a label -->
+        <h2 id="models-grid-heading" class="visually-hidden">Model roster</h2>
+
+        <div class="row g-4">
+
+          <!-- Model 1 — Millie Evans -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Millie Evans">
+              <div class="model-img-wrap">
+                <img src="images/all-models1.jpg" alt="Portrait of Millie Evans"
+                  class="model-grid-img" loading="lazy" />
+                <!-- measurements overlay — visible on hover/focus -->
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>175 cm / 5'9"</dd></div>
+                    <div><dt>Bust</dt><dd>84 cm / 33"</dd></div>
+                    <div><dt>Waist</dt><dd>61 cm / 24"</dd></div>
+                    <div><dt>Hips</dt><dd>88 cm / 34.5"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 6 / EU 34</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 6 / EU 39</dd></div>
+                    <div><dt>Hair</dt><dd>Dark Brown</dd></div>
+                    <div><dt>Eyes</dt><dd>Dark Brown</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Millie Evans</p>
+            </article>
+          </div>
+
+          <!-- Model 2 — Elena Vella -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Elena Vella">
+              <div class="model-img-wrap">
+                <img src="images/all-models2.jpg" alt="Portrait of Elena Vella"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>176 cm / 5'9.5"</dd></div>
+                    <div><dt>Bust</dt><dd>85 cm / 33.5"</dd></div>
+                    <div><dt>Waist</dt><dd>64 cm / 25"</dd></div>
+                    <div><dt>Hips</dt><dd>91 cm / 36"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 8 / EU 36</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 6 / EU 39</dd></div>
+                    <div><dt>Hair</dt><dd>Chestnut Brown</dd></div>
+                    <div><dt>Eyes</dt><dd>Hazel Green</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Elena Vella</p>
+            </article>
+          </div>
+
+          <!-- Model 3 — Sofia Rossi -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Sofia Rossi">
+              <div class="model-img-wrap">
+                <img src="images/all-models3.jpg" alt="Portrait of Sofia Rossi"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>173 cm / 5'8"</dd></div>
+                    <div><dt>Bust</dt><dd>84 cm / 33"</dd></div>
+                    <div><dt>Waist</dt><dd>62 cm / 24.5"</dd></div>
+                    <div><dt>Hips</dt><dd>89 cm / 35"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 6 / EU 34</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 5 / EU 38</dd></div>
+                    <div><dt>Hair</dt><dd>Copper Brown</dd></div>
+                    <div><dt>Eyes</dt><dd>Dark Brown</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Sofia Rossi</p>
+            </article>
+          </div>
+
+          <!-- Model 4 — Isabella Grech -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Isabella Grech">
+              <div class="model-img-wrap">
+                <img src="images/all-models4.jpg" alt="Portrait of Isabella Grech"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>175 cm / 5'9"</dd></div>
+                    <div><dt>Bust</dt><dd>85 cm / 33.5"</dd></div>
+                    <div><dt>Waist</dt><dd>63 cm / 25"</dd></div>
+                    <div><dt>Hips</dt><dd>90 cm / 35.5"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 6 / EU 34</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 6 / EU 39</dd></div>
+                    <div><dt>Hair</dt><dd>Dark Brown</dd></div>
+                    <div><dt>Eyes</dt><dd>Light Blue</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Isabella Grech</p>
+            </article>
+          </div>
+
+          <!-- Model 5 — Aria Bonello -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Aria Bonello">
+              <div class="model-img-wrap">
+                <img src="images/all-models5.jpg" alt="Portrait of Aria Bonello"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>177 cm / 5'9.5"</dd></div>
+                    <div><dt>Bust</dt><dd>83 cm / 32.5"</dd></div>
+                    <div><dt>Waist</dt><dd>61 cm / 24"</dd></div>
+                    <div><dt>Hips</dt><dd>87 cm / 34"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 6 / EU 34</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 7 / EU 40</dd></div>
+                    <div><dt>Hair</dt><dd>Blonde</dd></div>
+                    <div><dt>Eyes</dt><dd>Blue</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Aria Bonello</p>
+            </article>
+          </div>
+
+          <!-- Model 6 — Jade Zammit -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Jade Zammit">
+              <div class="model-img-wrap">
+                <img src="images/all-models6.jpg" alt="Portrait of Jade Zammit"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>174 cm / 5'8.5"</dd></div>
+                    <div><dt>Bust</dt><dd>86 cm / 34"</dd></div>
+                    <div><dt>Waist</dt><dd>65 cm / 25.5"</dd></div>
+                    <div><dt>Hips</dt><dd>92 cm / 36"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 8 / EU 36</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 6 / EU 39</dd></div>
+                    <div><dt>Hair</dt><dd>Dark Brown</dd></div>
+                    <div><dt>Eyes</dt><dd>Brown</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Jade Zammit</p>
+            </article>
+          </div>
+
+          <!-- Model 7 — Lucia Farrugia -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Lucia Farrugia">
+              <div class="model-img-wrap">
+                <img src="images/all-models7.jpg" alt="Portrait of Lucia Farrugia"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>172 cm / 5'7.5"</dd></div>
+                    <div><dt>Bust</dt><dd>84 cm / 33"</dd></div>
+                    <div><dt>Waist</dt><dd>62 cm / 24.5"</dd></div>
+                    <div><dt>Hips</dt><dd>88 cm / 34.5"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 6 / EU 34</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 5 / EU 38</dd></div>
+                    <div><dt>Hair</dt><dd>Black</dd></div>
+                    <div><dt>Eyes</dt><dd>Dark Brown</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Lucia Farrugia</p>
+            </article>
+          </div>
+
+          <!-- Model 8 — Emma Borg -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Emma Borg">
+              <div class="model-img-wrap">
+                <img src="images/all-models8.jpg" alt="Portrait of Emma Borg"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>178 cm / 5'10"</dd></div>
+                    <div><dt>Bust</dt><dd>84 cm / 33"</dd></div>
+                    <div><dt>Waist</dt><dd>61 cm / 24"</dd></div>
+                    <div><dt>Hips</dt><dd>87 cm / 34"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 6 / EU 34</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 7 / EU 40</dd></div>
+                    <div><dt>Hair</dt><dd>Blonde</dd></div>
+                    <div><dt>Eyes</dt><dd>Green</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Emma Borg</p>
+            </article>
+          </div>
+
+          <!-- Model 9 — Clara Mifsud -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Clara Mifsud">
+              <div class="model-img-wrap">
+                <img src="images/all-models9.jpg" alt="Portrait of Clara Mifsud"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>173 cm / 5'8"</dd></div>
+                    <div><dt>Bust</dt><dd>85 cm / 33.5"</dd></div>
+                    <div><dt>Waist</dt><dd>63 cm / 25"</dd></div>
+                    <div><dt>Hips</dt><dd>90 cm / 35.5"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 6 / EU 34</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 6 / EU 39</dd></div>
+                    <div><dt>Hair</dt><dd>Auburn</dd></div>
+                    <div><dt>Eyes</dt><dd>Brown</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Clara Mifsud</p>
+            </article>
+          </div>
+
+          <!-- Model 10 — Nadia Cassar -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Nadia Cassar">
+              <div class="model-img-wrap">
+                <img src="images/all-models10.jpg" alt="Portrait of Nadia Cassar"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>175 cm / 5'9"</dd></div>
+                    <div><dt>Bust</dt><dd>84 cm / 33"</dd></div>
+                    <div><dt>Waist</dt><dd>62 cm / 24.5"</dd></div>
+                    <div><dt>Hips</dt><dd>88 cm / 34.5"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 6 / EU 34</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 6 / EU 39</dd></div>
+                    <div><dt>Hair</dt><dd>Dark Brown</dd></div>
+                    <div><dt>Eyes</dt><dd>Dark Brown</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Nadia Cassar</p>
+            </article>
+          </div>
+
+          <!-- Model 11 — Vera Attard -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Vera Attard">
+              <div class="model-img-wrap">
+                <img src="images/all-models11.jpg" alt="Portrait of Vera Attard"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>176 cm / 5'9.5"</dd></div>
+                    <div><dt>Bust</dt><dd>85 cm / 33.5"</dd></div>
+                    <div><dt>Waist</dt><dd>64 cm / 25"</dd></div>
+                    <div><dt>Hips</dt><dd>91 cm / 36"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 8 / EU 36</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 6 / EU 39</dd></div>
+                    <div><dt>Hair</dt><dd>Light Brown</dd></div>
+                    <div><dt>Eyes</dt><dd>Hazel</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Vera Attard</p>
+            </article>
+          </div>
+
+          <!-- Model 12 — Mia Galea -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Mia Galea">
+              <div class="model-img-wrap">
+                <img src="images/all-models12.jpg" alt="Portrait of Mia Galea"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>174 cm / 5'8.5"</dd></div>
+                    <div><dt>Bust</dt><dd>83 cm / 32.5"</dd></div>
+                    <div><dt>Waist</dt><dd>61 cm / 24"</dd></div>
+                    <div><dt>Hips</dt><dd>87 cm / 34"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 6 / EU 34</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 5 / EU 38</dd></div>
+                    <div><dt>Hair</dt><dd>Black</dd></div>
+                    <div><dt>Eyes</dt><dd>Brown</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Mia Galea</p>
+            </article>
+          </div>
+
+          <!-- Model 13 — Tessa Psaila -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Tessa Psaila">
+              <div class="model-img-wrap">
+                <img src="images/all-models13.jpg" alt="Portrait of Tessa Psaila"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>177 cm / 5'9.5"</dd></div>
+                    <div><dt>Bust</dt><dd>86 cm / 34"</dd></div>
+                    <div><dt>Waist</dt><dd>65 cm / 25.5"</dd></div>
+                    <div><dt>Hips</dt><dd>92 cm / 36"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 8 / EU 36</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 7 / EU 40</dd></div>
+                    <div><dt>Hair</dt><dd>Blonde</dd></div>
+                    <div><dt>Eyes</dt><dd>Blue</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Tessa Psaila</p>
+            </article>
+          </div>
+
+          <!-- Model 14 — Leah Camilleri -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <article class="model-grid-card" tabindex="0" aria-label="Model: Leah Camilleri">
+              <div class="model-img-wrap">
+                <img src="images/all-models14.jpg" alt="Portrait of Leah Camilleri"
+                  class="model-grid-img" loading="lazy" />
+                <div class="model-grid-overlay" aria-hidden="true">
+                  <dl class="model-meas-list">
+                    <div><dt>Height</dt><dd>173 cm / 5'8"</dd></div>
+                    <div><dt>Bust</dt><dd>84 cm / 33"</dd></div>
+                    <div><dt>Waist</dt><dd>62 cm / 24.5"</dd></div>
+                    <div><dt>Hips</dt><dd>88 cm / 34.5"</dd></div>
+                    <div><dt>Dress</dt><dd>UK 6 / EU 34</dd></div>
+                    <div><dt>Shoes</dt><dd>UK 6 / EU 39</dd></div>
+                    <div><dt>Hair</dt><dd>Brown</dd></div>
+                    <div><dt>Eyes</dt><dd>Green</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <p class="model-grid-name">Leah Camilleri</p>
+            </article>
+          </div>
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </section>
+
+  </main><!-- /main#main-content -->
+
+
+  <!-- ============================================================
+       FOOTER — same dark navy footer as all other pages
+  ============================================================ -->
+  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+    <div class="container-xxl px-4">
+
+      <div class="row g-5 py-5">
+
+        <!-- Column 1 — Brand -->
+        <div class="col-lg-4 col-md-12">
+          <a href="index.html" class="footer-logo d-inline-block mb-3"
+            aria-label="Mudelli — return to homepage">MUDELLI</a>
+          <p class="footer-about">
+            Connecting talent with opportunity in Malta and internationally.
+          </p>
+        </div>
+
+        <!-- Column 2 — Quick Links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Quick Links</h3>
+          <nav aria-label="Footer quick links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="models.html">Browse Models</a></li>
+              <li><a href="casting-calls.html">Casting Calls</a></li>
+              <li><a href="become-a-model.html">Become a Model</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 3 — Support -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Support</h3>
+          <nav aria-label="Footer support links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety &amp; Security</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 4 — Follow Us (social icons) -->
+        <div class="col-lg-4 col-md-4">
+          <h3 class="footer-heading">Follow Us</h3>
+          <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+              <i class="bi bi-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+              <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+
+      <!-- dividing line between columns and copyright -->
+      <hr class="footer-divider" aria-hidden="true" />
+
+      <!-- copyright text and accessibility button -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
+        <p class="footer-copyright mb-0">&copy; 2026 Mudelli. All rights reserved.</p>
+        <button class="accessibility-btn" type="button" aria-label="Open accessibility options"
+          aria-haspopup="dialog">
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div><!-- /container -->
+  </footer>
+
+
+  <!-- Bootstrap 5 JS bundle (needed for the mobile navbar toggle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
+    crossorigin="anonymous"></script>
+
+  <!-- turns the navbar solid navy once the user scrolls down -->
+  <script>
+    window.addEventListener('scroll', function () {
+      var nav = document.getElementById('mainNav');
+      if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 80);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
