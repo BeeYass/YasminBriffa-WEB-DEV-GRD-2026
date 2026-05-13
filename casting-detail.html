@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- A short description of this page that shows up in search results -->
+  <meta name="description"
+    content="Summer Campaign casting call by Elite Fashion Malta — apply now for a paid outdoor photoshoot in Valletta, Malta." />
+
+  <title>Summer Campaign — Mudelli Casting</title>
+
+  <!-- Bootstrap 5 CSS for layout and utility classes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <!-- Bootstrap Icons for the calendar, location, and dollar icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts: Playfair Display for headings, Plus Jakarta Sans for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- The shared site stylesheet with colours and fonts used across all pages -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Styles that only apply to this casting detail page -->
+  <style>
+
+    /*
+     * PAGE WRAPPER
+     * Adds top padding so the content does not hide behind the fixed navbar
+     */
+    .cd-page {
+      padding-top: 72px;
+      background-color: var(--mud-cream);
+    }
+
+    /*
+     * BACK LINK
+     * The arrow link that takes the user back to the casting calls list
+     */
+    .cd-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--mud-navy);
+      text-decoration: none;
+      padding: 20px 0 8px;
+      transition: opacity 0.2s;
+    }
+
+    .cd-back:hover,
+    .cd-back:focus {
+      opacity: 0.7;
+      color: var(--mud-navy);
+    }
+
+    /*
+     * HERO SECTION
+     * The main area showing the casting title, meta info, and photo
+     */
+    .cd-hero {
+      background-color: var(--mud-cream);
+      padding-bottom: 48px;
+    }
+
+    /* The big casting title at the top — e.g. "SUMMER CAMPAIGN" */
+    .cd-title {
+      font-family: var(--font-display);
+      font-size: 80px;
+      font-weight: 600;
+      color: #1E2D4D;
+      line-height: 1.05;
+      margin-bottom: 32px;
+    }
+
+    /* The row of quick-info tags — date, location, and payment type */
+    .cd-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    /* Each individual piece of meta info next to its icon */
+    .cd-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--mud-navy);
+    }
+
+    .cd-meta-item i {
+      font-size: 18px;
+      color: var(--mud-navy);
+      flex-shrink: 0;
+    }
+
+    /* Navy strip showing this casting is verified — gold text and tick */
+    .cd-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--mud-navy);
+      color: var(--mud-gold);
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+    }
+
+    /* Small gold circle with a white tick inside it */
+    .cd-verified-dot {
+      width: 22px;
+      height: 22px;
+      background-color: var(--mud-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--mud-white);
+      flex-shrink: 0;
+    }
+
+    /* Application deadline shown as plain text, no background box */
+    .cd-deadline-strip {
+      margin-bottom: 28px;
+    }
+
+    .cd-deadline-label {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      margin: 0 0 2px;
+    }
+
+    .cd-deadline-date {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: #555;
+      margin: 0;
+    }
+
+    /* The gold "Apply Now!" call-to-action button */
+    .btn-apply {
+      display: inline-block;
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0;
+      padding: 14px 36px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-apply:hover,
+    .btn-apply:focus {
+      opacity: 0.88;
+      color: var(--mud-navy);
+    }
+
+    /* The main casting photo on the right side of the hero */
+    .cd-hero-img {
+      width: 100%;
+      height: 640px;
+      object-fit: contain;
+      object-position: center center;
+      display: block;
+      background-color: var(--mud-cream);
+    }
+
+    /*
+     * CONTENT SECTION
+     * White background area with four text blocks giving more detail
+     * about the casting: company info, requirements, what to expect, how to apply
+     */
+    .cd-content {
+      background-color: var(--mud-white);
+      padding: 56px 0;
+    }
+
+    /* Gold heading used at the start of each content block */
+    .cd-section-heading {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--mud-gold);
+      margin-bottom: 16px;
+      margin-top: 40px;
+    }
+
+    .cd-section-heading:first-child {
+      margin-top: 0;
+    }
+
+    /* Regular paragraph text inside each content block */
+    .cd-body-text {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: #111;
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    /* Bulleted list used for requirements and steps */
+    .cd-list {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: #111;
+      line-height: 1.75;
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+
+    /* Thin horizontal rule between each content block */
+    .cd-divider {
+      border: none;
+      border-top: 1px solid var(--mud-light-gray);
+      margin: 36px 0;
+    }
+
+    /*
+     * SIMILAR CASTINGS SECTION
+     * Cream background row at the bottom showing two other castings
+     * the model might also want to apply for
+     */
+    .cd-similar {
+      background-color: var(--mud-cream);
+      padding: 56px 0;
+    }
+
+    /* "Similar Castings you may like:" heading */
+    .cd-similar-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 32px;
+    }
+
+    /* Each similar casting card — white box with a photo on top */
+    .cd-card {
+      background-color: var(--mud-white);
+      overflow: hidden;
+    }
+
+    /* The photo at the top of a similar casting card */
+    .cd-card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* The text area below the photo */
+    .cd-card-body {
+      padding: 20px;
+    }
+
+    /* The casting title inside a similar casting card */
+    .cd-card-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      margin-bottom: 4px;
+    }
+
+    /* The brand or agency name inside a similar casting card */
+    .cd-card-brand {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    /* Gold "View Details" button inside each similar casting card */
+    .btn-card-detail {
+      display: inline-block;
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0;
+      padding: 10px 24px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-card-detail:hover,
+    .btn-card-detail:focus {
+      opacity: 0.88;
+      color: var(--mud-navy);
+    }
+
+    /*
+     * RESPONSIVE — adjustments for tablets and phones
+     */
+    @media (max-width: 991px) {
+      .cd-title { font-size: 52px; }
+      .cd-hero-img { height: 420px; margin-top: 32px; }
+    }
+
+    @media (max-width: 575px) {
+      .cd-title { font-size: 36px; }
+      .cd-hero-img { height: 320px; }
+      .btn-apply { width: 100%; text-align: center; }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Lets keyboard users jump straight to the main content, skipping the navbar -->
+  <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+  <!-- The fixed navigation bar that appears at the top of every page -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
+      aria-label="Main site navigation">
+      <div class="container-xxl px-4">
+
+        <!-- The Mudelli logo — clicking it goes back to the homepage -->
+        <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli — return to homepage">
+          MUDELLI
+        </a>
+
+        <!-- Hamburger button that shows the menu on small screens -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+          aria-label="Toggle main navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- The navigation links — Casting Calls is marked active because we came from that page -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="models.html">Models</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link active" aria-current="page" href="casting-calls.html">Casting Calls</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="become-a-model.html">Become A Model</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Login and register buttons on the right side of the navbar -->
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <a href="login.html" class="btn-nav-auth" aria-label="Log in to your Mudelli account">LOGIN</a>
+            <a href="login.html#register" class="btn-nav-auth btn-nav-register"
+              aria-label="Create a new Mudelli account">REGISTER NOW!</a>
+          </div>
+
+        </div>
+        <!--
+            end of navbar collapse
+        -->
+      </div>
+      <!--
+          end of navbar container
+      -->
+    </nav>
+  </header>
+
+
+  <!-- The main content of this casting detail page -->
+  <div class="cd-page">
+    <main id="main-content">
+
+      <!--
+          HERO SECTION
+          Shows the casting title, key info, verified badge, deadline, Apply button,
+          and the main casting photo side by side
+      -->
+      <section class="cd-hero" aria-labelledby="cd-title">
+        <div class="container-xxl px-4">
+
+          <!-- Arrow link that takes the user back to the casting calls list -->
+          <a class="cd-back" href="casting-calls.html" aria-label="Go back to Casting Calls list">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>
+            Back to Casting Calls
+          </a>
+
+          <div class="row align-items-start g-5">
+
+            <!-- LEFT COLUMN — title, quick-info, verified badge, deadline, Apply button -->
+            <div class="col-lg-6" style="padding-top: 80px;">
+
+              <!-- The large casting title -->
+              <h1 class="cd-title" id="cd-title">SUMMER CAMPAIGN</h1>
+
+              <!--
+                  Quick-info row — shows the shooting dates, location, and payment type
+              -->
+              <div class="cd-meta" aria-label="Casting quick info">
+                <div class="cd-meta-item">
+                  <i class="bi bi-calendar3" aria-hidden="true"></i>
+                  <span>May 15–17, 2026</span>
+                </div>
+                <div class="cd-meta-item">
+                  <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                  <span>Valletta, Malta</span>
+                </div>
+                <div class="cd-meta-item">
+                  <span>&euro;500 &ndash; &euro;800 per day</span>
+                </div>
+              </div>
+
+              <!--
+                  Verified badge — shows this casting is from an approved brand on Mudelli
+              -->
+              <div class="cd-verified" role="status" aria-label="Verified casting">
+                <span class="cd-verified-dot" aria-hidden="true">
+                  <i class="bi bi-check" aria-hidden="true"></i>
+                </span>
+                Verified
+              </div>
+
+              <!--
+                  Application deadline shown as plain text below the verified badge
+              -->
+              <div class="cd-deadline-strip" aria-label="Application deadline">
+                <p class="cd-deadline-label">Application Deadline</p>
+                <p class="cd-deadline-date">May 10, 2026</p>
+              </div>
+
+              <!-- The main call-to-action — clicking Apply takes the model to the application form -->
+              <div class="mt-3">
+                <a href="become-a-model.html" class="btn-apply"
+                  aria-label="Apply now for the Summer Campaign casting">
+                  Apply Now!
+                </a>
+              </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN — the main casting photo -->
+            <div class="col-lg-6" style="padding-top: 80px;">
+              <img
+                src="images/summercampaign1.jpg"
+                alt="Summer Campaign — models on a sunny Mediterranean beach in Malta"
+                class="cd-hero-img" />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!--
+          CONTENT SECTION
+          Four text blocks giving more information about this casting:
+          about the company, requirements, what to expect, and how to apply
+      -->
+      <section class="cd-content" aria-label="Full casting details">
+        <div class="container-xxl px-4">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+
+              <!--
+                  About the Company — who is running this casting and what they do
+              -->
+              <h2 class="cd-section-heading">About the Company</h2>
+              <p class="cd-body-text">
+                Elite Fashion Malta is a leading fashion brand specialising in summer wear and beach fashion.
+                We have been creating trendsetting designs for over 15 years and are known for our vibrant,
+                youthful aesthetic that captures the Mediterranean lifestyle.
+              </p>
+
+              <hr class="cd-divider" aria-hidden="true" />
+
+              <!--
+                  Requirements — what the brand is looking for in applicants
+              -->
+              <h2 class="cd-section-heading">Requirements</h2>
+              <ul class="cd-list" aria-label="Casting requirements">
+                <li>Female models aged 18–28 with a fresh, natural look</li>
+                <li>Height: 170 cm – 180 cm</li>
+                <li>Must be available for all three shooting days</li>
+                <li>Previous modelling experience preferred but not required</li>
+                <li>Comfortable working in swimwear and beachwear</li>
+              </ul>
+
+              <hr class="cd-divider" aria-hidden="true" />
+
+              <!--
+                  What to Expect — gives models an idea of how the shoot days will run
+              -->
+              <h2 class="cd-section-heading">What to Expect</h2>
+              <ul class="cd-list" aria-label="What to expect on shoot days">
+                <li>Professional outdoor photoshoot at scenic beach locations</li>
+                <li>Full team including stylist, make-up artist, and photographer</li>
+                <li>8-hour shooting days with breaks and meals provided</li>
+              </ul>
+
+              <hr class="cd-divider" aria-hidden="true" />
+
+              <!--
+                  How to Apply — step-by-step instructions for submitting an application
+              -->
+              <h2 class="cd-section-heading">How to Apply</h2>
+              <ul class="cd-list" aria-label="Steps to apply for this casting">
+                <li>Click the "Apply Now!" button above</li>
+                <li>Submit your portfolio and recent photos</li>
+                <li>Selected candidates will be contacted within 48 hours</li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!--
+          SIMILAR CASTINGS SECTION
+          Shows two other castings the model might also want to apply for
+      -->
+      <section class="cd-similar" aria-labelledby="cd-similar-heading">
+        <div class="container-xxl px-4">
+
+          <h2 class="cd-similar-title" id="cd-similar-heading">Similar Castings you may like:</h2>
+
+          <div class="row g-4">
+
+            <!-- Similar casting card 1 — Fitness Shoot by ActiveLife Malta -->
+            <div class="col-md-6">
+              <article class="cd-card" aria-label="Similar casting: Fitness Shoot by ActiveLife Malta">
+                <img
+                  src="images/casting-list-images1.jpg"
+                  alt="Fitness Shoot — models at an outdoor fitness location"
+                  class="cd-card-img" />
+                <div class="cd-card-body">
+                  <p class="cd-card-title">Fitness Shoot</p>
+                  <p class="cd-card-brand">ActiveLife Malta</p>
+                  <a href="casting-detail.html" class="btn-card-detail"
+                    aria-label="View full details for the Fitness Shoot casting">
+                    View Details
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Similar casting card 2 — Luxury Brand Shoot by Prestige Fashion -->
+            <div class="col-md-6">
+              <article class="cd-card" aria-label="Similar casting: Luxury Brand Shoot by Prestige Fashion">
+                <img
+                  src="images/casting-list-images2.jpg"
+                  alt="Luxury Brand Shoot — elegant fashion models"
+                  class="cd-card-img" />
+                <div class="cd-card-body">
+                  <p class="cd-card-title">Luxury Brand Shoot</p>
+                  <p class="cd-card-brand">Prestige Fashion</p>
+                  <a href="casting-detail.html" class="btn-card-detail"
+                    aria-label="View full details for the Luxury Brand Shoot casting">
+                    View Details
+                  </a>
+                </div>
+              </article>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+    </main>
+  </div>
+  <!--
+      end of page wrapper
+  -->
+
+
+  <!-- The site footer with links and social media icons -->
+  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+    <div class="container-xxl px-4">
+
+      <div class="row g-5 py-5">
+
+        <!-- Column 1 — brand name and short tagline -->
+        <div class="col-lg-4 col-md-12">
+          <a href="index.html" class="footer-logo d-inline-block mb-3"
+            aria-label="Mudelli — return to homepage">MUDELLI</a>
+          <p class="footer-about">
+            Connecting talent with opportunity in Malta and internationally.
+          </p>
+        </div>
+
+        <!-- Column 2 — quick navigation links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Quick Links</h3>
+          <nav aria-label="Footer quick links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="models.html">Browse Models</a></li>
+              <li><a href="casting-calls.html">Casting Calls</a></li>
+              <li><a href="become-a-model.html">Become a Model</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 3 — help and policy links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Support</h3>
+          <nav aria-label="Footer support links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety &amp; Security</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 4 — social media icons -->
+        <div class="col-lg-4 col-md-4">
+          <h3 class="footer-heading">Follow Us</h3>
+          <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+              <i class="bi bi-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+              <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <!--
+          end of footer columns
+      -->
+
+      <!-- Thin line above the copyright bar -->
+      <hr class="footer-divider" aria-hidden="true" />
+
+      <!-- Copyright text and the accessibility options button -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
+        <p class="footer-copyright mb-0">© 2026 Mudelli. All rights reserved.</p>
+
+        <!-- This button opens accessibility settings -->
+        <button class="accessibility-btn" type="button" aria-label="Open accessibility options"
+          aria-haspopup="dialog">
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div>
+    <!--
+        end of footer container
+    -->
+  </footer>
+
+
+  <!-- Bootstrap JavaScript — needed for the mobile navbar toggle to work -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

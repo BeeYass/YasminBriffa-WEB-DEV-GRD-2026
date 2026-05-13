@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- A short description shown in search results -->
+  <meta name="description"
+    content="Post a casting opportunity on Mudelli — fill in the form to reach models across Malta and beyond." />
+
+  <title>Post a Casting — Mudelli</title>
+
+  <!-- Bootstrap 5 CSS for the grid layout and utility classes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <!-- Bootstrap Icons for the checkbox tick and submit icon -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts: Playfair Display for headings, Plus Jakarta Sans for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- The shared site stylesheet with the brand colours and fonts -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Styles that only apply to this post a casting page -->
+  <style>
+
+    /*
+     * PAGE INTRO SECTION
+     * The area at the top with the gold page title and the subtitle
+     */
+    .pc-intro {
+      background-color: var(--mud-cream);
+      padding-top: 120px;
+      padding-bottom: 48px;
+    }
+
+    /* The large gold heading at the top of the page */
+    .pc-page-title {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 500;
+      color: var(--mud-gold);
+      margin-bottom: 12px;
+    }
+
+    /* The line below the title that tells the user to fill in the form */
+    .pc-subtitle {
+      font-family: var(--font-body);
+      font-size: 24px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 8px;
+    }
+
+    /* Small note reminding users that castings are reviewed before going live */
+    .pc-note {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: #444;
+      margin: 0;
+    }
+
+    /*
+     * FORM SECTION
+     * The cream background area that wraps the whole form card
+     */
+    .pc-form-section {
+      background-color: var(--mud-cream);
+      padding-bottom: 72px;
+    }
+
+    /* White card that contains the form fields */
+    .pc-form-card {
+      background-color: var(--mud-white);
+      padding: 48px;
+    }
+
+    /*
+     * FIELDSET GROUPS
+     * Each group of related fields (Casting Details, Contact Information)
+     * is wrapped in its own fieldset
+     */
+    .pc-fieldset {
+      border: none;
+      padding: 0;
+      margin: 0 0 48px;
+    }
+
+    .pc-fieldset:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* Gold-underlined section heading inside the form */
+    .pc-legend {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--mud-gold);
+      margin-bottom: 28px;
+      width: 100%;
+      display: block;
+    }
+
+    /* Label above each form field */
+    .pc-label {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Small gold asterisk shown on required fields */
+    .pc-required {
+      color: var(--mud-gold);
+      margin-left: 2px;
+    }
+
+    /* Optional label badge shown next to optional fields */
+    .pc-optional {
+      font-size: 13px;
+      font-weight: 400;
+      color: #888;
+      margin-left: 6px;
+    }
+
+    /* Single-line text inputs */
+    .pc-input {
+      width: 100%;
+      height: 44px;
+      background-color: #F4F4F4;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 8px 12px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      transition: border-color 0.2s;
+    }
+
+    /* Taller textarea for longer answers like description and requirements */
+    .pc-textarea {
+      width: 100%;
+      height: 120px;
+      background-color: #F4F4F4;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 10px 12px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+
+    /* Gold underline appears when any field is focused */
+    .pc-input:focus,
+    .pc-textarea:focus {
+      outline: none;
+      border-bottom-color: var(--mud-gold);
+      box-shadow: var(--focus-ring);
+    }
+
+    .pc-input::placeholder,
+    .pc-textarea::placeholder {
+      color: #A6A3A3;
+      font-weight: 400;
+    }
+
+    /* Spacing below each label + field pair */
+    .pc-field {
+      margin-bottom: 20px;
+    }
+
+    /*
+     * TERMS CHECKBOX ROW
+     * The confirmation checkbox the user must tick before submitting
+     */
+    .pc-terms-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 28px;
+      margin-top: 36px;
+    }
+
+    /* The checkbox itself — gold accent colour */
+    .pc-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--mud-gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    /* The terms text next to the checkbox */
+    .pc-terms-text {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: #111;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    /*
+     * SUBMIT BUTTON
+     * Gold button at the bottom — navy text to match the site style
+     */
+    .btn-submit-casting {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0;
+      padding: 16px 48px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-submit-casting:hover,
+    .btn-submit-casting:focus {
+      opacity: 0.88;
+      color: var(--mud-navy);
+    }
+
+    /*
+     * RESPONSIVE — adjustments for tablets and phones
+     */
+    @media (max-width: 991px) {
+      .pc-form-card { padding: 32px 24px; }
+      .pc-page-title { font-size: 36px; }
+      .pc-subtitle { font-size: 20px; }
+    }
+
+    @media (max-width: 575px) {
+      .pc-page-title { font-size: 28px; }
+      .pc-intro { padding-top: 100px; }
+      .btn-submit-casting { width: 100%; justify-content: center; font-size: 20px; }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Lets keyboard users jump straight to the form, skipping the navbar -->
+  <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+  <!-- The fixed navigation bar shared across every page -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
+      aria-label="Main site navigation">
+      <div class="container-xxl px-4">
+
+        <!-- The Mudelli logo — clicking it goes back to the homepage -->
+        <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli — return to homepage">
+          MUDELLI
+        </a>
+
+        <!-- Hamburger button that shows the menu on small screens -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+          aria-label="Toggle main navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- The navigation links — Casting Calls is marked active because this page is part of that section -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="models.html">Models</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link active" aria-current="page" href="casting-calls.html">Casting Calls</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="become-a-model.html">Become A Model</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Login and register buttons on the right side of the navbar -->
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <a href="login.html" class="btn-nav-auth" aria-label="Log in to your Mudelli account">LOGIN</a>
+            <a href="login.html#register" class="btn-nav-auth btn-nav-register"
+              aria-label="Create a new Mudelli account">REGISTER NOW!</a>
+          </div>
+
+        </div>
+        <!--
+            end of navbar collapse
+        -->
+      </div>
+      <!--
+          end of navbar container
+      -->
+    </nav>
+  </header>
+
+
+  <main id="main-content">
+
+    <!--
+        PAGE INTRO
+        The gold page title and the instruction line that tells the user what to do
+    -->
+    <section class="pc-intro" aria-labelledby="pc-page-title">
+      <div class="container-xxl px-4">
+        <h1 class="pc-page-title" id="pc-page-title">Post a Casting Opportunity</h1>
+        <p class="pc-subtitle">Kindly fill in the form below</p>
+        <p class="pc-note">* All castings are reviewed by admin before being published.</p>
+      </div>
+    </section>
+
+
+    <!--
+        FORM SECTION
+        The main form where the user fills in all the casting details
+        and their contact information before submitting
+    -->
+    <section class="pc-form-section" aria-label="Post a casting form">
+      <div class="container-xxl px-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+
+            <div class="pc-form-card">
+              <form action="#" method="post" novalidate aria-label="Post a casting opportunity">
+
+
+                <!--
+                    CASTING DETAILS SECTION
+                    Everything about the casting itself — title, company, dates, pay, etc.
+                -->
+                <fieldset class="pc-fieldset">
+                  <legend class="pc-legend">Casting Details</legend>
+
+                  <div class="row g-3">
+
+                    <!-- The name or title of the casting call -->
+                    <div class="col-md-6">
+                      <div class="pc-field">
+                        <label class="pc-label" for="pc-casting-title">
+                          Casting Title <span class="pc-required" aria-hidden="true">*</span>
+                        </label>
+                        <input class="pc-input" type="text" id="pc-casting-title" name="casting_title"
+                          placeholder="Casting title" required autocomplete="off" />
+                      </div>
+                    </div>
+
+                    <!-- The name of the brand or agency running the casting -->
+                    <div class="col-md-6">
+                      <div class="pc-field">
+                        <label class="pc-label" for="pc-company-name">
+                          Company Name <span class="pc-required" aria-hidden="true">*</span>
+                        </label>
+                        <input class="pc-input" type="text" id="pc-company-name" name="company_name"
+                          placeholder="Company name" required autocomplete="organization" />
+                      </div>
+                    </div>
+
+                    <!-- Where the casting or shoot will take place -->
+                    <div class="col-md-6">
+                      <div class="pc-field">
+                        <label class="pc-label" for="pc-location">
+                          Location / Country <span class="pc-required" aria-hidden="true">*</span>
+                        </label>
+                        <input class="pc-input" type="text" id="pc-location" name="location"
+                          placeholder="Location/Country" required autocomplete="off" />
+                      </div>
+                    </div>
+
+                    <!-- The dates the casting or shoot will run -->
+                    <div class="col-md-6">
+                      <div class="pc-field">
+                        <label class="pc-label" for="pc-dates">
+                          Dates <span class="pc-required" aria-hidden="true">*</span>
+                        </label>
+                        <input class="pc-input" type="text" id="pc-dates" name="dates"
+                          placeholder="e.g. May 15–17, 2026" required autocomplete="off" />
+                      </div>
+                    </div>
+
+                    <!-- How much the models will be paid -->
+                    <div class="col-md-6">
+                      <div class="pc-field">
+                        <label class="pc-label" for="pc-payment">
+                          Payment <span class="pc-required" aria-hidden="true">*</span>
+                        </label>
+                        <input class="pc-input" type="text" id="pc-payment" name="payment"
+                          placeholder="e.g. €500 per day / Unpaid / TBC" required autocomplete="off" />
+                      </div>
+                    </div>
+
+                    <!-- A full description of what the casting is about -->
+                    <div class="col-12">
+                      <div class="pc-field">
+                        <label class="pc-label" for="pc-description">
+                          Description <span class="pc-required" aria-hidden="true">*</span>
+                        </label>
+                        <textarea class="pc-input pc-textarea" id="pc-description" name="description"
+                          placeholder="Type description" required></textarea>
+                      </div>
+                    </div>
+
+                    <!-- What the brand is looking for in the models who apply -->
+                    <div class="col-12">
+                      <div class="pc-field">
+                        <label class="pc-label" for="pc-requirements">
+                          Requirements <span class="pc-required" aria-hidden="true">*</span>
+                        </label>
+                        <textarea class="pc-input pc-textarea" id="pc-requirements" name="requirements"
+                          placeholder="Type requirements" required></textarea>
+                      </div>
+                    </div>
+
+                  </div>
+                </fieldset>
+
+
+                <!--
+                    CONTACT INFORMATION SECTION
+                    How models and the Mudelli team can reach the person posting the casting
+                -->
+                <fieldset class="pc-fieldset">
+                  <legend class="pc-legend">Contact Information</legend>
+
+                  <div class="row g-3">
+
+                    <!-- The main email address for this casting -->
+                    <div class="col-md-6">
+                      <div class="pc-field">
+                        <label class="pc-label" for="pc-email">
+                          Contact Email <span class="pc-required" aria-hidden="true">*</span>
+                        </label>
+                        <input class="pc-input" type="email" id="pc-email" name="contact_email"
+                          placeholder="Contact email" required autocomplete="email" />
+                      </div>
+                    </div>
+
+                    <!-- A phone number the team can call — not required -->
+                    <div class="col-md-6">
+                      <div class="pc-field">
+                        <label class="pc-label" for="pc-phone">
+                          Phone Number <span class="pc-optional">(optional)</span>
+                        </label>
+                        <input class="pc-input" type="tel" id="pc-phone" name="phone"
+                          placeholder="+356 XXXX XXXX" autocomplete="tel" />
+                      </div>
+                    </div>
+
+                    <!-- A link to the brand's website — not required -->
+                    <div class="col-md-6">
+                      <div class="pc-field">
+                        <label class="pc-label" for="pc-website">
+                          Website <span class="pc-optional">(optional)</span>
+                        </label>
+                        <input class="pc-input" type="url" id="pc-website" name="website"
+                          placeholder="www....." autocomplete="url" />
+                      </div>
+                    </div>
+
+                  </div>
+                </fieldset>
+
+
+                <!--
+                    TERMS CHECKBOX
+                    The user must tick this box to confirm their info is accurate
+                    before they can submit the form
+                -->
+                <div class="pc-terms-row">
+                  <input class="pc-checkbox" type="checkbox" id="pc-terms" name="terms" required
+                    aria-required="true" />
+                  <label class="pc-terms-text" for="pc-terms">
+                    I confirm that all information provided is accurate and I agree to the platform's
+                    terms and conditions.
+                  </label>
+                </div>
+
+                <!-- The button that sends the form — gold background, navy text -->
+                <div class="text-center">
+                  <button type="submit" class="btn-submit-casting"
+                    aria-label="Submit your casting opportunity for review">
+                    <i class="bi bi-send" aria-hidden="true"></i>
+                    Submit Casting
+                  </button>
+                </div>
+
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- The site footer with links and social media icons -->
+  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+    <div class="container-xxl px-4">
+
+      <div class="row g-5 py-5">
+
+        <!-- Column 1 — brand name and short tagline -->
+        <div class="col-lg-4 col-md-12">
+          <a href="index.html" class="footer-logo d-inline-block mb-3"
+            aria-label="Mudelli — return to homepage">MUDELLI</a>
+          <p class="footer-about">
+            Connecting talent with opportunity in Malta and internationally.
+          </p>
+        </div>
+
+        <!-- Column 2 — quick navigation links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Quick Links</h3>
+          <nav aria-label="Footer quick links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="models.html">Browse Models</a></li>
+              <li><a href="casting-calls.html">Casting Calls</a></li>
+              <li><a href="become-a-model.html">Become a Model</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 3 — help and policy links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Support</h3>
+          <nav aria-label="Footer support links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety &amp; Security</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 4 — social media icons -->
+        <div class="col-lg-4 col-md-4">
+          <h3 class="footer-heading">Follow Us</h3>
+          <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+              <i class="bi bi-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+              <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <!--
+          end of footer columns
+      -->
+
+      <!-- Thin line above the copyright bar -->
+      <hr class="footer-divider" aria-hidden="true" />
+
+      <!-- Copyright text and the accessibility options button -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
+        <p class="footer-copyright mb-0">© 2026 Mudelli. All rights reserved.</p>
+
+        <!-- This button opens accessibility settings -->
+        <button class="accessibility-btn" type="button" aria-label="Open accessibility options"
+          aria-haspopup="dialog">
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div>
+    <!--
+        end of footer container
+    -->
+  </footer>
+
+
+  <!-- Bootstrap JavaScript — needed for the mobile navbar toggle to work -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
