@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- This page is only for logged-in models to manage their profile -->
+  <meta name="description"
+    content="Mudelli model dashboard — manage your profile, portfolio, messages, and bookings." />
+
+  <title>My Dashboard — Mudelli</title>
+
+  <!-- Bootstrap 5 CSS for layout and utility classes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <!-- Bootstrap Icons for the navigation and action icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts: Playfair Display for headings, Plus Jakarta Sans for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- The main site stylesheet with shared colours and fonts -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Styles that only apply to this dashboard page -->
+  <style>
+
+    /* The whole page sits on a cream background */
+    .dashboard-page {
+      background-color: var(--mud-cream);
+      padding-top: 72px;
+      min-height: 100vh;
+    }
+
+    /*
+     * PROFILE HEADER BANNER
+     * The strip at the top showing the model's photo, name, and verified badge
+     */
+    .db-profile-header {
+      background-color: var(--mud-cream);
+      padding: 32px 0 28px;
+      border-bottom: 1px solid var(--mud-light-gray);
+    }
+
+    /* The model's actual profile photo — square crop */
+    .db-avatar-img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    /* "Welcome, Millie Evans" greeting text */
+    .db-welcome-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--mud-navy);
+      margin-bottom: 8px;
+    }
+
+    /* The "Account verified" badge row */
+    .db-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      margin-bottom: 16px;
+    }
+
+    /* Small gold circle with a tick inside it */
+    .db-verified-dot {
+      width: 18px;
+      height: 18px;
+      background-color: var(--mud-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--mud-white);
+      flex-shrink: 0;
+    }
+
+    /* Edit Profile button in the header — navy background, gold text */
+    .btn-edit-profile-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--mud-navy);
+      color: var(--mud-gold);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0;
+      padding: 10px 24px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-edit-profile-header:hover,
+    .btn-edit-profile-header:focus {
+      opacity: 0.88;
+      color: var(--mud-gold);
+    }
+
+    /*
+     * SIDEBAR NAVIGATION
+     * The left column of buttons that switch between dashboard sections
+     */
+    .db-sidebar {
+      position: sticky;
+      top: 80px;
+    }
+
+    /* Each sidebar menu button */
+    .db-nav-link {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--mud-navy);
+      background-color: var(--mud-cream);
+      border: none;
+      text-align: left;
+      text-decoration: none;
+      transition: background-color 0.15s;
+      margin-bottom: 3px;
+      cursor: pointer;
+    }
+
+    /* The currently selected sidebar button is highlighted gold */
+    .db-nav-link.active {
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+    }
+
+    /* Hovering shows a lighter gold tint */
+    .db-nav-link:hover {
+      background-color: #D9CDA6;
+      color: var(--mud-navy);
+    }
+
+    /* The log out button at the bottom of the sidebar */
+    .btn-logout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 600;
+      border: none;
+      border-radius: 0;
+      padding: 14px 20px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 8px;
+      text-decoration: none;
+    }
+
+    .btn-logout:hover,
+    .btn-logout:focus {
+      opacity: 0.88;
+      color: var(--mud-navy);
+    }
+
+    /*
+     * MAIN CONTENT CARD
+     * The white card in the centre where each section's content appears
+     */
+    .db-main-card {
+      background-color: var(--mud-white);
+      padding: 36px;
+      padding-bottom: 60px;
+    }
+
+    /* Section heading with a gold underline, used inside the content card */
+    .db-section-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--mud-gold);
+      margin-bottom: 24px;
+      margin-top: 36px;
+    }
+
+    .db-section-title:first-child {
+      margin-top: 0;
+    }
+
+    /* Labels above each form input */
+    .db-label {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Single-line text inputs */
+    .db-input {
+      width: 100%;
+      height: 40px;
+      background-color: #F4F4F4;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 8px 12px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      transition: border-color 0.2s;
+    }
+
+    /* Taller textarea for bios and longer text */
+    .db-textarea {
+      width: 100%;
+      height: 110px;
+      background-color: #F4F4F4;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 10px 12px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+
+    /* Gold underline appears when a field is focused */
+    .db-input:focus,
+    .db-textarea:focus {
+      outline: none;
+      border-bottom-color: var(--mud-gold);
+      box-shadow: var(--focus-ring);
+    }
+
+    .db-input::placeholder,
+    .db-textarea::placeholder {
+      color: #A6A3A3;
+      font-weight: 400;
+    }
+
+    /* Spacing below each label + input pair */
+    .db-field {
+      margin-bottom: 20px;
+    }
+
+    /* Save/submit button inside forms — navy with gold text */
+    .btn-save {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--mud-navy);
+      color: var(--mud-gold);
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0;
+      padding: 13px 32px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 24px;
+    }
+
+    .btn-save:hover,
+    .btn-save:focus {
+      opacity: 0.88;
+      color: var(--mud-gold);
+    }
+
+    /*
+     * PORTFOLIO SECTION
+     * A grid of photo placeholders the model can upload images to
+     */
+    .db-portfolio-card {
+      background-color: var(--mud-light-gray);
+      height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--mud-navy);
+      font-family: var(--font-body);
+      font-size: 13px;
+      cursor: pointer;
+      transition: background-color 0.15s;
+    }
+
+    .db-portfolio-card:hover {
+      background-color: #D9CDA6;
+    }
+
+    .db-portfolio-card i {
+      font-size: 28px;
+    }
+
+    /*
+     * MESSAGES SECTION
+     * Each message is shown as a card with an envelope icon, title, timestamp, and preview
+     */
+
+    /* Search bar at the top of the messages list */
+    .db-msg-search-wrap {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .db-msg-search-wrap i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 15px;
+      pointer-events: none;
+    }
+
+    .db-msg-search {
+      width: 100%;
+      height: 40px;
+      background-color: #F4F4F4;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 8px 12px 8px 36px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--mud-navy);
+      transition: border-color 0.2s;
+    }
+
+    .db-msg-search:focus {
+      outline: none;
+      border-bottom-color: var(--mud-gold);
+    }
+
+    .db-msg-search::placeholder {
+      color: #A6A3A3;
+    }
+
+    /* Each message card */
+    .db-message-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--mud-light-gray);
+      background-color: #fafafa;
+    }
+
+    /* Unread messages get a gold left border */
+    .db-message-item.unread {
+      border-left-color: var(--mud-gold);
+      background-color: var(--mud-white);
+    }
+
+    /* Circular envelope icon */
+    .db-msg-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      background-color: var(--mud-light-gray);
+      color: #888;
+    }
+
+    /* Gold icon for unread messages */
+    .db-message-item.unread .db-msg-icon {
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+    }
+
+    /* The area to the right of the icon */
+    .db-msg-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Title and timestamp on the same row */
+    .db-msg-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+
+    .db-msg-sender {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--mud-navy);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .db-msg-time {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: #999;
+      margin: 0;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .db-msg-preview {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: #555;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /*
+     * APPLICATIONS & BOOKINGS 
+     * Shows each casting the model has applied to and its current status
+     */
+    .db-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-body);
+      font-size: 14px;
+    }
+
+    .db-table th {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      background-color: var(--mud-cream);
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 2px solid var(--mud-gold);
+    }
+
+    .db-table td {
+      padding: 12px 14px;
+      color: var(--mud-navy);
+      border-bottom: 1px solid var(--mud-light-gray);
+    }
+
+    /* Colour-coded status badges */
+    .db-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .db-badge-applied   { background-color: var(--mud-light-gray); color: var(--mud-navy); }
+    .db-badge-accepted  { background-color: #d4edda; color: #155724; }
+    .db-badge-confirmed { background-color: var(--mud-gold); color: var(--mud-navy); }
+    .db-badge-pending   { background-color: #fff3cd; color: #856404; }
+
+    /*
+     * RIGHT PANEL — RECENT ACTIVITY and NOTIFICATIONS
+     * Shows what has happened recently on the model's account
+     */
+    .db-panel {
+      position: sticky;
+      top: 80px;
+    }
+
+    /* Coloured header bar at the top of each panel section */
+    .db-panel-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #D9CDA6;
+      padding: 14px 16px;
+    }
+
+    .db-panel-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--mud-navy);
+      margin: 0;
+    }
+
+    .db-panel-icon {
+      font-size: 20px;
+      color: var(--mud-navy);
+    }
+
+    /* Each individual activity or notification row */
+    .db-panel-item {
+      background-color: var(--mud-cream);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--mud-light-gray);
+    }
+
+    .db-item-title {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mud-navy);
+      margin-bottom: 2px;
+    }
+
+    .db-item-detail {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--mud-navy);
+      margin-bottom: 3px;
+    }
+
+    .db-item-time {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: #888;
+      margin: 0;
+    }
+
+    .db-panel-section {
+      margin-bottom: 20px;
+    }
+
+    /*
+     * RESPONSIVE — columns stack vertically on smaller screens
+     */
+    @media (max-width: 991px) {
+      .db-sidebar { position: static; margin-bottom: 24px; }
+      .db-panel   { position: static; margin-top: 24px; }
+      .db-main-card { padding: 24px 16px 60px; }
+      .db-avatar-img { width: 160px; height: 160px; }
+    }
+
+    @media (max-width: 575px) {
+      .db-welcome-name { font-size: 18px; }
+      .db-nav-link { font-size: 15px; padding: 12px 16px; }
+      .btn-save { width: 100%; justify-content: center; }
+    }
+
+    /*
+     * MANAGE ACCOUNT
+     * Box at the bottom of Account Settings for deactivating or deleting the account
+     */
+    .db-danger-zone {
+      border: 2px solid var(--mud-light-gray);
+      padding: 28px;
+      margin-top: 40px;
+      margin-bottom: 0;
+    }
+
+    /* "Manage Account" section heading */
+    .db-danger-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      margin-bottom: 6px;
+    }
+
+    /* Small description under the heading */
+    .db-danger-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    /* Each option row — label on the left, button on the right */
+    .db-danger-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+      border-top: 1px solid #f0c8c5;
+      flex-wrap: wrap;
+    }
+
+    /* The text explaining what the action does */
+    .db-danger-info-title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--mud-navy);
+      margin-bottom: 4px;
+    }
+
+    .db-danger-info-text {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: #666;
+      margin: 0;
+    }
+
+    /* Deactivate button — outlined style, less alarming */
+    .btn-deactivate {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--mud-white);
+      color: #c0392b;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      border: 2px solid #c0392b;
+      border-radius: 0;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-deactivate:hover,
+    .btn-deactivate:focus {
+      background-color: #c0392b;
+      color: var(--mud-white);
+    }
+
+    /* Delete button — solid red, most alarming */
+    .btn-delete-account {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #c0392b;
+      color: var(--mud-white);
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      border: 2px solid #c0392b;
+      border-radius: 0;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-delete-account:hover,
+    .btn-delete-account:focus {
+      opacity: 0.85;
+      color: var(--mud-white);
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- This link lets keyboard users skip the navbar and jump straight to the dashboard -->
+  <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+  <!-- The fixed navigation bar at the top of every page -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
+      aria-label="Main site navigation">
+      <div class="container-xxl px-4">
+
+        <!-- The Mudelli logo — clicking it goes back to the homepage -->
+        <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli — return to homepage">
+          MUDELLI
+        </a>
+
+        <!-- Hamburger button that shows the menu on small screens -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+          aria-label="Toggle main navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- The navigation links — none are marked active because the dashboard is not in the main nav -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="models.html">Models</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="casting-calls.html">Casting Calls</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="become-a-model.html">Become A Model</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Login and register buttons on the right of the navbar -->
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <a href="login.html" class="btn-nav-auth" aria-label="Log in to your Mudelli account">LOGIN</a>
+            <a href="login.html#register" class="btn-nav-auth btn-nav-register"
+              aria-label="Create a new Mudelli account">REGISTER NOW!</a>
+          </div>
+
+        </div>
+        <!--
+            end of navbar collapse
+        -->
+      </div>
+      <!--
+          end of navbar container
+        -->
+    </nav>
+  </header>
+
+
+  <!-- The main dashboard page — only shown to logged-in models -->
+  <div class="dashboard-page">
+    <main id="main-content">
+
+      <!--
+          PROFILE HEADER BANNER
+          Shows Millie's photo on the left, her name and verified badge
+          in the middle, and an Edit Profile button on the right
+      -->
+      <section class="db-profile-header" aria-label="Model profile header">
+        <div class="container-xxl px-4">
+          <div class="d-flex align-items-center justify-content-between gap-4 flex-wrap">
+
+            <!-- Millie's actual profile photo, cropped to a square -->
+            <img
+              src="images/model-millie7.jpg"
+              alt="Profile photo of Millie Evans"
+              class="db-avatar-img" />
+
+            <!-- Welcome message and verified badge — sits in the middle -->
+            <div class="flex-grow-1">
+              <p class="db-welcome-name">Welcome, Millie Evans</p>
+
+              <!--
+                  The verified badge means Mudelli has confirmed
+                  this is a real, approved model account
+              -->
+              <div class="db-verified" role="status" aria-label="Account verified">
+                <span class="db-verified-dot" aria-hidden="true">
+                  <i class="bi bi-check" aria-hidden="true"></i>
+                </span>
+                Account verified
+              </div>
+            </div>
+
+            <!--
+                Edit Profile button — pushed to the far right by justify-content-between.
+                Clicking it switches the main content to the Profile section.
+            -->
+            <button class="btn-edit-profile-header" id="header-edit-btn"
+              aria-label="Go to your profile to edit your details">
+              <i class="bi bi-pencil" aria-hidden="true"></i>
+              Edit Profile
+            </button>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!--
+          DASHBOARD BODY — three columns:
+          left sidebar for navigation, centre for content, right for activity
+      -->
+      <section class="pt-4 pb-5" aria-label="Dashboard body">
+        <div class="container-xxl px-4">
+          <div class="row g-4 align-items-start">
+
+
+            <!--
+                LEFT SIDEBAR
+                Buttons that switch between the different sections
+                of the dashboard. Clicking one highlights it in gold
+                and shows its content in the centre column.
+            -->
+            <aside class="col-lg-3" aria-label="Dashboard navigation">
+              <nav class="db-sidebar" aria-label="Dashboard sections">
+
+                <!-- Each button has a data-section value that matches a section ID below -->
+                <button class="db-nav-link active" data-section="profile"
+                  aria-current="true" aria-label="Go to Profile section">
+                  Profile
+                </button>
+                <button class="db-nav-link" data-section="portfolio"
+                  aria-label="Go to Portfolio section">
+                  Portfolio
+                </button>
+                <button class="db-nav-link" data-section="messages"
+                  aria-label="Go to Messages section">
+                  Messages
+                </button>
+                <button class="db-nav-link" data-section="applications"
+                  aria-label="Go to Applications and Bookings section">
+                  Applications &amp; Bookings
+                </button>
+                <button class="db-nav-link" data-section="settings"
+                  aria-label="Go to Account Settings section">
+                  Account Settings
+                </button>
+
+                <!-- Log Out takes the model back to the login page -->
+                <a href="login.html" class="btn-logout" aria-label="Log out of your Mudelli account">
+                  <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                  Log Out
+                </a>
+
+              </nav>
+            </aside>
+
+
+            <!--
+                CENTRE COLUMN — shows the content for whichever
+                sidebar section the model has clicked on.
+                Only one section is visible at a time.
+            -->
+            <div class="col-lg-6" id="dashboard-content">
+
+
+              <!-- ================================================
+                   PROFILE SECTION
+                   The model's personal details, measurements,
+                   and social media links — visible by default
+                   ================================================ -->
+              <div id="section-profile" class="db-section-content">
+                <div class="db-main-card">
+                  <form action="#" method="post" novalidate aria-label="Edit your profile">
+
+                    <!--
+                        PERSONAL DETAILS
+                        Basic information like name, email, address, and a short bio
+                    -->
+                    <h2 class="db-section-title">Personal Details</h2>
+
+                    <div class="row g-3">
+
+                      <div class="col-sm-6">
+                        <div class="db-field">
+                          <label class="db-label" for="db-first-name">First Name</label>
+                          <input class="db-input" type="text" id="db-first-name" name="first_name"
+                            placeholder="First name" autocomplete="given-name" />
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="db-field">
+                          <label class="db-label" for="db-last-name">Last Name</label>
+                          <input class="db-input" type="text" id="db-last-name" name="last_name"
+                            placeholder="Last name" autocomplete="family-name" />
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="db-field">
+                          <label class="db-label" for="db-email">Email Address</label>
+                          <input class="db-input" type="email" id="db-email" name="email"
+                            placeholder="Email address" autocomplete="email" />
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="db-field">
+                          <label class="db-label" for="db-address">Home Address</label>
+                          <input class="db-input" type="text" id="db-address" name="address"
+                            placeholder="Home address" autocomplete="street-address" />
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="db-field">
+                          <label class="db-label" for="db-bio">Personal Bio / Description</label>
+                          <!-- The model writes a short description about themselves here -->
+                          <textarea class="db-textarea" id="db-bio" name="bio"
+                            placeholder="Short bio ..."></textarea>
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="db-field">
+                          <label class="db-label" for="db-work-history">Work History and Past Collaborations</label>
+                          <!-- The model lists brands and shoots they have worked on before -->
+                          <textarea class="db-textarea" id="db-work-history" name="work_history"
+                            placeholder="Work history ..."></textarea>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!--
+                        PHYSICAL ATTRIBUTES
+                        Body measurements used by agencies to match models to roles
+                    -->
+                    <h2 class="db-section-title">Physical Attributes</h2>
+
+                    <div class="row g-3">
+
+                      <div class="col-sm-6">
+                        <div class="db-field">
+                          <label class="db-label" for="db-height">Height</label>
+                          <input class="db-input" type="text" id="db-height" name="height"
+                            placeholder="Height in cm" />
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="db-field">
+                          <label class="db-label" for="db-waist">Waist</label>
+                          <input class="db-input" type="text" id="db-waist" name="waist"
+                            placeholder="Waist in cm" />
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="db-field">
+                          <label class="db-label" for="db-bust">Bust</label>
+                          <input class="db-input" type="text" id="db-bust" name="bust"
+                            placeholder="Bust in cm" />
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="db-field">
+                          <label class="db-label" for="db-hips">Hips</label>
+                          <input class="db-input" type="text" id="db-hips" name="hips"
+                            placeholder="Hips in cm" />
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="db-field">
+                          <label class="db-label" for="db-shoe-size">Shoe Size</label>
+                          <input class="db-input" type="text" id="db-shoe-size" name="shoe_size"
+                            placeholder="Shoe size" />
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="db-field">
+                          <label class="db-label" for="db-clothing-size">Clothing Size</label>
+                          <input class="db-input" type="text" id="db-clothing-size" name="clothing_size"
+                            placeholder="Clothing size" />
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="db-field">
+                          <label class="db-label" for="db-hair">Hair Colour</label>
+                          <input class="db-input" type="text" id="db-hair" name="hair_colour"
+                            placeholder="Hair colour" />
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="db-field">
+                          <label class="db-label" for="db-eyes">Eye Colour</label>
+                          <input class="db-input" type="text" id="db-eyes" name="eye_colour"
+                            placeholder="Eye colour" />
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!--
+                        SOCIAL MEDIA
+                        Usernames so agencies can find the model's social pages
+                    -->
+                    <h2 class="db-section-title">Social Media</h2>
+
+                    <div class="db-field">
+                      <label class="db-label" for="db-instagram">
+                        <i class="bi bi-instagram" aria-hidden="true"></i>
+                        Instagram (username)
+                      </label>
+                      <input class="db-input" type="text" id="db-instagram" name="instagram"
+                        placeholder="@yourusername" />
+                    </div>
+
+                    <div class="db-field">
+                      <label class="db-label" for="db-facebook">
+                        <i class="bi bi-facebook" aria-hidden="true"></i>
+                        Facebook (username)
+                      </label>
+                      <input class="db-input" type="text" id="db-facebook" name="facebook"
+                        placeholder="facebook.com/username" />
+                    </div>
+
+                    <div class="db-field">
+                      <label class="db-label" for="db-tiktok">
+                        <i class="bi bi-tiktok" aria-hidden="true"></i>
+                        TikTok (username)
+                      </label>
+                      <input class="db-input" type="text" id="db-tiktok" name="tiktok"
+                        placeholder="@yourusername" />
+                    </div>
+
+                    <!-- This button saves all the changes the model has made -->
+                    <button type="submit" class="btn-save" aria-label="Save your profile changes">
+                      <i class="bi bi-check-lg" aria-hidden="true"></i>
+                      Save Changes
+                    </button>
+
+                  </form>
+                </div>
+              </div>
+              <!-- end of profile section -->
+
+
+              <!-- ================================================
+                   PORTFOLIO SECTION
+                   A photo grid where the model uploads their best shots.
+                   Hidden until the model clicks Portfolio in the sidebar.
+                   ================================================ -->
+              <div id="section-portfolio" class="db-section-content" style="display:none;">
+                <div class="db-main-card">
+
+                  <h2 class="db-section-title">My Portfolio</h2>
+                  <p style="font-family:var(--font-body);font-size:15px;color:var(--mud-navy);margin-bottom:24px;">
+                    Upload your best photos here. Agencies and brands will see these when they view
+                    your profile. You can add up to 20 photos.
+                  </p>
+
+                  <!--
+                      Six photo slots — the grey boxes are where photos will appear
+                      once the model uploads them
+                  -->
+                  <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-4">
+                      <div class="db-portfolio-card" role="button" tabindex="0"
+                        aria-label="Upload portfolio photo 1">
+                        <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                        <span>Add photo</span>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="db-portfolio-card" role="button" tabindex="0"
+                        aria-label="Upload portfolio photo 2">
+                        <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                        <span>Add photo</span>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="db-portfolio-card" role="button" tabindex="0"
+                        aria-label="Upload portfolio photo 3">
+                        <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                        <span>Add photo</span>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="db-portfolio-card" role="button" tabindex="0"
+                        aria-label="Upload portfolio photo 4">
+                        <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                        <span>Add photo</span>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="db-portfolio-card" role="button" tabindex="0"
+                        aria-label="Upload portfolio photo 5">
+                        <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                        <span>Add photo</span>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="db-portfolio-card" role="button" tabindex="0"
+                        aria-label="Upload portfolio photo 6">
+                        <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                        <span>Add photo</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Button to open the file picker and upload photos -->
+                  <button class="btn-save" type="button" aria-label="Upload photos to your portfolio">
+                    <i class="bi bi-upload" aria-hidden="true"></i>
+                    Upload Photos
+                  </button>
+
+                </div>
+              </div>
+              <!-- end of portfolio section -->
+
+
+              <!-- ================================================
+                   MESSAGES SECTION
+                   Conversations with agencies and brands.
+                   Hidden until the model clicks Messages in the sidebar.
+                   ================================================ -->
+              <div id="section-messages" class="db-section-content" style="display:none;">
+                <div class="db-main-card">
+
+                  <h2 class="db-section-title">Messages</h2>
+
+                  <!-- Search bar so the model can find a specific message -->
+                  <div class="db-msg-search-wrap">
+                    <i class="bi bi-search" aria-hidden="true"></i>
+                    <input class="db-msg-search" type="search" placeholder="Search messages…"
+                      aria-label="Search messages" />
+                  </div>
+
+                  <!--
+                      Gold left border and gold envelope = unread message.
+                      Grey left border and grey envelope = already read.
+                  -->
+
+                  <!-- Unread — Follow-up -->
+                  <div class="db-message-item unread" role="article" aria-label="Unread message: Follow-up">
+                    <div class="db-msg-icon" aria-hidden="true">
+                      <i class="bi bi-envelope-fill"></i>
+                    </div>
+                    <div class="db-msg-body">
+                      <div class="db-msg-header">
+                        <p class="db-msg-sender">Follow-up</p>
+                        <p class="db-msg-time">2 hours ago</p>
+                      </div>
+                      <p class="db-msg-preview">Just following up on your application for the summer campaign shoot...</p>
+                    </div>
+                  </div>
+
+                  <!-- Unread — Booking Confirmation -->
+                  <div class="db-message-item unread" role="article" aria-label="Unread message: Booking Confirmation">
+                    <div class="db-msg-icon" aria-hidden="true">
+                      <i class="bi bi-envelope-fill"></i>
+                    </div>
+                    <div class="db-msg-body">
+                      <div class="db-msg-header">
+                        <p class="db-msg-sender">Booking Confirmation</p>
+                        <p class="db-msg-time">5 hours ago</p>
+                      </div>
+                      <p class="db-msg-preview">Your booking for Malta Fashion Week has been confirmed. Please arrive...</p>
+                    </div>
+                  </div>
+
+                  <!-- Read — Portfolio Inquiry -->
+                  <div class="db-message-item" role="article" aria-label="Message: Portfolio Inquiry">
+                    <div class="db-msg-icon" aria-hidden="true">
+                      <i class="bi bi-envelope"></i>
+                    </div>
+                    <div class="db-msg-body">
+                      <div class="db-msg-header">
+                        <p class="db-msg-sender">Portfolio Inquiry</p>
+                        <p class="db-msg-time">1 day ago</p>
+                      </div>
+                      <p class="db-msg-preview">We came across your portfolio and would love to collaborate on an upcoming...</p>
+                    </div>
+                  </div>
+
+                  <!-- Read — Profile Update Reminder -->
+                  <div class="db-message-item" role="article" aria-label="Message: Profile Update Reminder">
+                    <div class="db-msg-icon" aria-hidden="true">
+                      <i class="bi bi-envelope"></i>
+                    </div>
+                    <div class="db-msg-body">
+                      <div class="db-msg-header">
+                        <p class="db-msg-sender">Profile Update Reminder</p>
+                        <p class="db-msg-time">2 days ago</p>
+                      </div>
+                      <p class="db-msg-preview">Your profile is missing some key details. Complete it to improve your chances...</p>
+                    </div>
+                  </div>
+
+                  <!-- Read — Verification Message -->
+                  <div class="db-message-item" role="article" aria-label="Message: Verification Message">
+                    <div class="db-msg-icon" aria-hidden="true">
+                      <i class="bi bi-envelope"></i>
+                    </div>
+                    <div class="db-msg-body">
+                      <div class="db-msg-header">
+                        <p class="db-msg-sender">Verification Message</p>
+                        <p class="db-msg-time">3 days ago</p>
+                      </div>
+                      <p class="db-msg-preview">Congratulations — your Mudelli account has been verified. Your profile is now...</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- end of messages section -->
+
+
+              <!-- ================================================
+                   APPLICATIONS & BOOKINGS SECTION
+                   A table showing every casting the model has applied
+                   to and whether it was accepted or confirmed.
+                   Hidden until clicked in the sidebar.
+                   ================================================ -->
+              <div id="section-applications" class="db-section-content" style="display:none;">
+                <div class="db-main-card">
+
+                  <h2 class="db-section-title">Applications &amp; Bookings</h2>
+                  <p style="font-family:var(--font-body);font-size:15px;color:var(--mud-navy);margin-bottom:20px;">
+                    Track every casting you have applied for and see whether it was accepted or confirmed.
+                  </p>
+
+                  <!-- Table listing each casting with its status and date -->
+                  <div style="overflow-x:auto;">
+                    <table class="db-table" aria-label="Applications and bookings">
+                      <thead>
+                        <tr>
+                          <th scope="col">Casting</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Editorial Magazine Shoot</td>
+                          <td><span class="db-badge db-badge-applied">Applied</span></td>
+                          <td>3h ago</td>
+                        </tr>
+                        <tr>
+                          <td>Summer Fashion Campaign</td>
+                          <td><span class="db-badge db-badge-accepted">Accepted</span></td>
+                          <td>5h ago</td>
+                        </tr>
+                        <tr>
+                          <td>Malta Fashion Week</td>
+                          <td><span class="db-badge db-badge-confirmed">Confirmed</span></td>
+                          <td>2d ago</td>
+                        </tr>
+                        <tr>
+                          <td>Skincare Brand Shoot</td>
+                          <td><span class="db-badge db-badge-pending">Pending</span></td>
+                          <td>4d ago</td>
+                        </tr>
+                        <tr>
+                          <td>Runway Show — Milan</td>
+                          <td><span class="db-badge db-badge-applied">Applied</span></td>
+                          <td>1w ago</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+              </div>
+              <!-- end of applications section -->
+
+
+              <!-- ================================================
+                   ACCOUNT SETTINGS SECTION
+                   Where the model can change their password and
+                   manage notification preferences.
+                   Hidden until clicked in the sidebar.
+                   ================================================ -->
+              <div id="section-settings" class="db-section-content" style="display:none;">
+                <div class="db-main-card">
+
+                  <!--
+                      ACCOUNT INFORMATION — the model can update their email and phone number here
+                  -->
+                  <h2 class="db-section-title">Account Information</h2>
+
+                  <!-- Email address row — field + its own update button -->
+                  <div class="db-field">
+                    <label class="db-label" for="db-acct-email">Email Address</label>
+                    <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;">
+                      <input class="db-input" style="flex:1;min-width:180px;" type="email"
+                        id="db-acct-email" name="acct_email"
+                        placeholder="Email address" autocomplete="email" />
+                      <button type="button" class="btn-save" style="margin-top:0;"
+                        aria-label="Update your email address">
+                        Update
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Phone number row — field + its own update button -->
+                  <div class="db-field">
+                    <label class="db-label" for="db-acct-phone">Phone Number</label>
+                    <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;">
+                      <input class="db-input" style="flex:1;min-width:180px;" type="tel"
+                        id="db-acct-phone" name="acct_phone"
+                        placeholder="Phone number" autocomplete="tel" />
+                      <button type="button" class="btn-save" style="margin-top:0;"
+                        aria-label="Update your phone number">
+                        Update
+                      </button>
+                    </div>
+                  </div>
+
+                  <!--
+                      PASSWORD — the model can update their login password here
+                  -->
+                  <h2 class="db-section-title">Change Password</h2>
+
+                  <div class="db-field">
+                    <label class="db-label" for="db-current-pw">Current Password</label>
+                    <input class="db-input" type="password" id="db-current-pw" name="current_password"
+                      placeholder="Enter current password" autocomplete="current-password" />
+                  </div>
+
+                  <div class="db-field">
+                    <label class="db-label" for="db-new-pw">New Password</label>
+                    <input class="db-input" type="password" id="db-new-pw" name="new_password"
+                      placeholder="Enter new password" autocomplete="new-password" />
+                  </div>
+
+                  <div class="db-field">
+                    <label class="db-label" for="db-confirm-pw">Confirm New Password</label>
+                    <input class="db-input" type="password" id="db-confirm-pw" name="confirm_password"
+                      placeholder="Confirm new password" autocomplete="new-password" />
+                  </div>
+
+                  <button type="button" class="btn-save" aria-label="Update your password">
+                    <i class="bi bi-lock" aria-hidden="true"></i>
+                    Update Password
+                  </button>
+
+                  <!--
+                      EMAIL NOTIFICATIONS — the model can choose which emails they receive
+                  -->
+                  <h2 class="db-section-title" style="margin-top:40px;">Email Notifications</h2>
+
+                  <div style="font-family:var(--font-body);font-size:15px;">
+
+                    <label style="display:flex;align-items:center;gap:10px;margin-bottom:14px;cursor:pointer;">
+                      <input type="checkbox" checked style="accent-color:var(--mud-gold);width:17px;height:17px;" />
+                      New casting opportunities matching my profile
+                    </label>
+
+                    <label style="display:flex;align-items:center;gap:10px;margin-bottom:14px;cursor:pointer;">
+                      <input type="checkbox" checked style="accent-color:var(--mud-gold);width:17px;height:17px;" />
+                      Application status updates (accepted, confirmed, etc.)
+                    </label>
+
+                    <label style="display:flex;align-items:center;gap:10px;margin-bottom:14px;cursor:pointer;">
+                      <input type="checkbox" style="accent-color:var(--mud-gold);width:17px;height:17px;" />
+                      New messages from agencies and brands
+                    </label>
+
+                    <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                      <input type="checkbox" style="accent-color:var(--mud-gold);width:17px;height:17px;" />
+                      Weekly newsletter from Mudelli
+                    </label>
+
+                  </div>
+
+                  <button type="button" class="btn-save" aria-label="Save notification preferences">
+                    <i class="bi bi-check-lg" aria-hidden="true"></i>
+                    Save Preferences
+                  </button>
+
+                  <!--
+                      DANGER ZONE
+                      These actions are permanent and cannot easily be undone,
+                      so they are separated from the rest of the settings
+                  -->
+                  <div class="db-danger-zone" role="region" aria-label="Manage account — deactivation and deletion options">
+
+                    <p class="db-danger-title">Manage Account</p>
+                    <p class="db-danger-desc">These actions affect your account permanently. Please read carefully before continuing.</p>
+
+                    <!-- Option 1: Deactivate the account temporarily -->
+                    <div class="db-danger-row">
+                      <div>
+                        <p class="db-danger-info-title">Deactivate Account</p>
+                        <p class="db-danger-info-text">
+                          Your profile will be hidden from agencies and brands.
+                          You can reactivate at any time by logging back in.
+                        </p>
+                      </div>
+                      <button type="button" class="btn-deactivate"
+                        aria-label="Deactivate your account — your profile will be hidden until you log back in">
+                        <i class="bi bi-pause-circle" aria-hidden="true"></i>
+                        Deactivate
+                      </button>
+                    </div>
+
+                    <!-- Option 2: Delete the account permanently -->
+                    <div class="db-danger-row">
+                      <div>
+                        <p class="db-danger-info-title">Delete Account</p>
+                        <p class="db-danger-info-text">
+                          This will permanently delete your account, profile, portfolio,
+                          and all application history. This cannot be undone.
+                        </p>
+                      </div>
+                      <button type="button" class="btn-delete-account"
+                        aria-label="Delete your account permanently — this cannot be undone">
+                        <i class="bi bi-trash3" aria-hidden="true"></i>
+                        Delete Account
+                      </button>
+                    </div>
+
+                  </div>
+                  <!-- end of manage account section -->
+
+                </div>
+              </div>
+              <!-- end of settings section -->
+
+
+            </div>
+            <!-- end of centre column -->
+
+
+            <!--
+                RIGHT PANEL — RECENT ACTIVITY and NOTIFICATIONS
+                Always visible on the right, showing what has happened
+                recently on the model's account
+            -->
+            <aside class="col-lg-3" aria-label="Activity and notifications">
+              <div class="db-panel">
+
+                <!-- RECENT ACTIVITY — things the model has done recently -->
+                <div class="db-panel-section">
+
+                  <div class="db-panel-header">
+                    <i class="bi bi-clock-history db-panel-icon" aria-hidden="true"></i>
+                    <h2 class="db-panel-title">Recent Activity</h2>
+                  </div>
+
+                  <!-- Applied to a casting -->
+                  <div class="db-panel-item">
+                    <p class="db-item-title">Applied to casting</p>
+                    <p class="db-item-detail">Editorial Magazine Shoot</p>
+                    <p class="db-item-time">3h ago</p>
+                  </div>
+
+                  <!-- Added photos to the portfolio -->
+                  <div class="db-panel-item">
+                    <p class="db-item-title">Updated portfolio</p>
+                    <p class="db-item-detail">4 new photos added</p>
+                    <p class="db-item-time">1d ago</p>
+                  </div>
+
+                  <!-- An agency looked at the profile -->
+                  <div class="db-panel-item">
+                    <p class="db-item-title">Profile viewed</p>
+                    <p class="db-item-detail">Vogue Malta</p>
+                    <p class="db-item-time">2d ago</p>
+                  </div>
+
+                  <!-- Confirmed attendance at an event -->
+                  <div class="db-panel-item">
+                    <p class="db-item-title">Confirmed attendance</p>
+                    <p class="db-item-detail">Malta Fashion Week</p>
+                    <p class="db-item-time">3d ago</p>
+                  </div>
+
+                </div>
+
+                <!-- NOTIFICATIONS — alerts from Mudelli and other users -->
+                <div class="db-panel-section">
+
+                  <div class="db-panel-header">
+                    <i class="bi bi-bell db-panel-icon" aria-hidden="true"></i>
+                    <h2 class="db-panel-title">Notifications</h2>
+                  </div>
+
+                  <!-- A new casting was posted that the model might want to apply for -->
+                  <div class="db-panel-item">
+                    <p class="db-item-title">New Casting</p>
+                    <p class="db-item-detail">Elite Fashion Malta posted a new casting</p>
+                    <p class="db-item-time">2h ago</p>
+                  </div>
+
+                  <!-- An application was accepted -->
+                  <div class="db-panel-item">
+                    <p class="db-item-title">Application Accepted</p>
+                    <p class="db-item-detail">Summer Fashion Campaign</p>
+                    <p class="db-item-time">5h ago</p>
+                  </div>
+
+                  <!-- A new message arrived -->
+                  <div class="db-panel-item">
+                    <p class="db-item-title">New Message</p>
+                    <p class="db-item-detail">Brand Studio sent you a message</p>
+                    <p class="db-item-time">1d ago</p>
+                  </div>
+
+                  <!-- A booking was confirmed -->
+                  <div class="db-panel-item">
+                    <p class="db-item-title">Booking Confirmed</p>
+                    <p class="db-item-detail">Malta Fashion Week confirmed</p>
+                    <p class="db-item-time">2d ago</p>
+                  </div>
+
+                  <!-- Multiple brands viewed the profile -->
+                  <div class="db-panel-item">
+                    <p class="db-item-title">Profile Views</p>
+                    <p class="db-item-detail">15 brands viewed your profile</p>
+                    <p class="db-item-time">3d ago</p>
+                  </div>
+
+                </div>
+
+              </div>
+            </aside>
+
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <!--
+      end of dashboard page wrapper
+  -->
+
+
+  <!-- The site footer with links and social media icons -->
+  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+    <div class="container-xxl px-4">
+
+      <div class="row g-5 py-5">
+
+        <!-- Column 1 — brand name and short description -->
+        <div class="col-lg-4 col-md-12">
+          <a href="index.html" class="footer-logo d-inline-block mb-3"
+            aria-label="Mudelli — return to homepage">MUDELLI</a>
+          <p class="footer-about">
+            Connecting talent with opportunity in Malta and internationally.
+          </p>
+        </div>
+
+        <!-- Column 2 — quick navigation links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Quick Links</h3>
+          <nav aria-label="Footer quick links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="models.html">Browse Models</a></li>
+              <li><a href="casting-calls.html">Casting Calls</a></li>
+              <li><a href="become-a-model.html">Become a Model</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 3 — help and policy links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Support</h3>
+          <nav aria-label="Footer support links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety &amp; Security</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 4 — social media icons -->
+        <div class="col-lg-4 col-md-4">
+          <h3 class="footer-heading">Follow Us</h3>
+          <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+              <i class="bi bi-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+              <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <!--
+          end of footer columns
+      -->
+
+      <!-- Thin line above the copyright bar -->
+      <hr class="footer-divider" aria-hidden="true" />
+
+      <!-- Copyright notice and accessibility button -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
+        <p class="footer-copyright mb-0">© 2026 Mudelli. All rights reserved.</p>
+
+        <!-- This button opens accessibility settings -->
+        <button class="accessibility-btn" type="button" aria-label="Open accessibility options"
+          aria-haspopup="dialog">
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div>
+    <!--
+        end of footer container
+    -->
+  </footer>
+
+
+  <!-- Bootstrap JavaScript — needed for the mobile navbar toggle to work -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
+    crossorigin="anonymous"></script>
+
+  <!--
+      DASHBOARD TAB SWITCHING
+      This script runs when the page loads. It watches for clicks on the
+      sidebar buttons and switches which content section is visible.
+  -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // Collect all the sidebar navigation buttons
+      var navButtons = document.querySelectorAll('.db-nav-link[data-section]');
+
+      // Collect all the switchable content sections
+      var sections = document.querySelectorAll('.db-section-content');
+
+      // The header "Edit Profile" button should activate the Profile section
+      var headerEditBtn = document.getElementById('header-edit-btn');
+
+      // This function switches to a given section by name
+      function switchSection(sectionName) {
+        // Remove the gold highlight from every sidebar button
+        navButtons.forEach(function (btn) {
+          btn.classList.remove('active');
+          btn.removeAttribute('aria-current');
+        });
+
+        // Hide every content section
+        sections.forEach(function (sec) {
+          sec.style.display = 'none';
+        });
+
+        // Highlight the button whose data-section matches the name we want
+        navButtons.forEach(function (btn) {
+          if (btn.getAttribute('data-section') === sectionName) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-current', 'true');
+          }
+        });
+
+        // Show the content section whose ID matches
+        var target = document.getElementById('section-' + sectionName);
+        if (target) {
+          target.style.display = 'block';
+        }
+      }
+
+      // Listen for clicks on each sidebar button and switch to its section
+      navButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          switchSection(button.getAttribute('data-section'));
+        });
+      });
+
+      // The header Edit Profile button switches to the profile section
+      if (headerEditBtn) {
+        headerEditBtn.addEventListener('click', function () {
+          switchSection('profile');
+        });
+      }
+
+    });
+  </script>
+
+</body>
+
+</html>
