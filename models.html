@@ -4,27 +4,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- page description for search engines -->
+  <!--
+      page description for search engines
+  -->
   <meta name="description"
     content="Browse all Mudelli models — search by name, location, or category and discover professional models available for fashion, commercial, and editorial bookings." />
 
   <title>Models — Mudelli</title>
 
-  <!-- Bootstrap 5.3 CSS -->
+  <!--
+      Bootstrap 5.3 CSS
+  -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 
-  <!-- Bootstrap Icons 1.11 -->
+  <!--
+      Bootstrap Icons 1.11
+  -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
 
-  <!-- Google Fonts: Playfair Display and Plus Jakarta Sans -->
+  <!--
+      Google Fonts: Playfair Display and Plus Jakarta Sans
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
     rel="stylesheet" />
 
-  <!-- shared styles from the main stylesheet -->
+  <!--
+      shared styles from the main stylesheet
+  -->
   <link rel="stylesheet" href="css/style.css" />
 
   <style>
@@ -249,31 +259,39 @@
 
 <body>
 
-  <!-- skip link for keyboard/screen-reader users -->
+  <!--
+      skip link for keyboard/screen-reader users
+  -->
   <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
 
 
-  <!-- ============================================================
-       HEADER — fixed top navigation bar (same as all pages)
-  ============================================================ -->
+  <!--
+      HEADER — fixed top navigation bar (same as all pages)
+  -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
       aria-label="Main site navigation">
       <div class="container-xxl px-4">
 
-        <!-- brand logo -->
+        <!--
+            brand logo
+        -->
         <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli — return to homepage">
           MUDELLI
         </a>
 
-        <!-- mobile hamburger button -->
+        <!--
+            mobile hamburger button
+        -->
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
           aria-label="Toggle main navigation menu">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- collapsible navigation links -->
+        <!--
+            collapsible navigation links
+        -->
         <div class="collapse navbar-collapse" id="navbarContent">
 
           <ul class="navbar-nav mx-auto gap-lg-4" role="list">
@@ -281,7 +299,9 @@
               <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item" role="listitem">
-              <!-- aria-current="page" marks this as the active page -->
+              <!--
+                  aria-current="page" marks this as the active page
+              -->
               <a class="nav-link active" aria-current="page" href="models.html">Models</a>
             </li>
             <li class="nav-item" role="listitem">
@@ -295,27 +315,35 @@
             </li>
           </ul>
 
-          <!-- login and register buttons -->
+          <!--
+              login and register buttons
+          -->
           <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
             <a href="login.html" class="btn-nav-auth" aria-label="Log in to your Mudelli account">LOGIN</a>
             <a href="login.html#register" class="btn-nav-auth btn-nav-register"
               aria-label="Create a new Mudelli account">REGISTER NOW!</a>
           </div>
 
-        </div><!-- /navbar-collapse -->
-      </div><!-- /container -->
+        </div>
+        <!--
+            end of navbar collapse
+        -->
+      </div>
+      <!--
+          end of container
+      -->
     </nav>
   </header>
 
 
-  <!-- ============================================================
-       MAIN PAGE CONTENT
-  ============================================================ -->
+  <!--
+      MAIN PAGE CONTENT
+  -->
   <main id="main-content">
 
-    <!-- ==========================================================
-         PAGE BANNER — cream background with heading and search bar
-    ========================================================== -->
+    <!--
+        PAGE BANNER — cream background with heading and search bar
+    -->
     <section class="models-banner" aria-labelledby="models-heading">
       <div class="container">
 
@@ -324,10 +352,14 @@
           Browse our full roster of professional models available for bookings
         </p>
 
-        <!-- search bar and filters button side by side -->
+        <!--
+            search bar and filters button side by side
+        -->
         <div class="d-flex flex-column flex-sm-row justify-content-center mx-auto"
           style="max-width: 680px;" role="search" aria-label="Search and filter models">
-          <!-- hidden label for screen readers -->
+          <!--
+              hidden label for screen readers
+          -->
           <label for="modelSearch" class="visually-hidden">Search models</label>
           <input
             id="modelSearch"
@@ -345,25 +377,31 @@
     </section>
 
 
-    <!-- ==========================================================
-         MODEL GRID — 14 model cards, 4 across on desktop
-         Hover over any card to see the model's measurements.
-    ========================================================== -->
+    <!--
+        MODEL GRID — 14 model cards, 4 across on desktop
+        Hover over any card to see the model's measurements.
+    -->
     <section class="all-models-section" aria-labelledby="models-grid-heading">
       <div class="container">
 
-        <!-- visually hidden heading so the section has a label -->
+        <!--
+            visually hidden heading so the section has a label
+        -->
         <h2 id="models-grid-heading" class="visually-hidden">Model roster</h2>
 
         <div class="row g-4">
 
-          <!-- Model 1 — Millie Evans -->
+          <!--
+              Model 1 — Millie Evans
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Millie Evans">
               <div class="model-img-wrap">
                 <img src="images/all-models1.jpg" alt="Portrait of Millie Evans"
                   class="model-grid-img" loading="lazy" />
-                <!-- measurements overlay — visible on hover/focus -->
+                <!--
+                    measurements overlay — visible on hover/focus
+                -->
                 <div class="model-grid-overlay" aria-hidden="true">
                   <dl class="model-meas-list">
                     <div><dt>Height</dt><dd>175 cm / 5'9"</dd></div>
@@ -381,7 +419,9 @@
             </article>
           </div>
 
-          <!-- Model 2 — Elena Vella -->
+          <!--
+              Model 2 — Elena Vella
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Elena Vella">
               <div class="model-img-wrap">
@@ -404,7 +444,9 @@
             </article>
           </div>
 
-          <!-- Model 3 — Sofia Rossi -->
+          <!--
+              Model 3 — Sofia Rossi
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Sofia Rossi">
               <div class="model-img-wrap">
@@ -427,7 +469,9 @@
             </article>
           </div>
 
-          <!-- Model 4 — Isabella Grech -->
+          <!--
+              Model 4 — Isabella Grech
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Isabella Grech">
               <div class="model-img-wrap">
@@ -450,7 +494,9 @@
             </article>
           </div>
 
-          <!-- Model 5 — Aria Bonello -->
+          <!--
+              Model 5 — Aria Bonello
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Aria Bonello">
               <div class="model-img-wrap">
@@ -473,7 +519,9 @@
             </article>
           </div>
 
-          <!-- Model 6 — Jade Zammit -->
+          <!--
+              Model 6 — Jade Zammit
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Jade Zammit">
               <div class="model-img-wrap">
@@ -496,7 +544,9 @@
             </article>
           </div>
 
-          <!-- Model 7 — Lucia Farrugia -->
+          <!--
+              Model 7 — Lucia Farrugia
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Lucia Farrugia">
               <div class="model-img-wrap">
@@ -519,7 +569,9 @@
             </article>
           </div>
 
-          <!-- Model 8 — Emma Borg -->
+          <!--
+              Model 8 — Emma Borg
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Emma Borg">
               <div class="model-img-wrap">
@@ -542,7 +594,9 @@
             </article>
           </div>
 
-          <!-- Model 9 — Clara Mifsud -->
+          <!--
+              Model 9 — Clara Mifsud
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Clara Mifsud">
               <div class="model-img-wrap">
@@ -565,7 +619,9 @@
             </article>
           </div>
 
-          <!-- Model 10 — Nadia Cassar -->
+          <!--
+              Model 10 — Nadia Cassar
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Nadia Cassar">
               <div class="model-img-wrap">
@@ -588,7 +644,9 @@
             </article>
           </div>
 
-          <!-- Model 11 — Vera Attard -->
+          <!--
+              Model 11 — Vera Attard
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Vera Attard">
               <div class="model-img-wrap">
@@ -611,7 +669,9 @@
             </article>
           </div>
 
-          <!-- Model 12 — Mia Galea -->
+          <!--
+              Model 12 — Mia Galea
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Mia Galea">
               <div class="model-img-wrap">
@@ -634,7 +694,9 @@
             </article>
           </div>
 
-          <!-- Model 13 — Tessa Psaila -->
+          <!--
+              Model 13 — Tessa Psaila
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Tessa Psaila">
               <div class="model-img-wrap">
@@ -657,7 +719,9 @@
             </article>
           </div>
 
-          <!-- Model 14 — Leah Camilleri -->
+          <!--
+              Model 14 — Leah Camilleri
+          -->
           <div class="col-lg-3 col-md-6 col-sm-6">
             <article class="model-grid-card" tabindex="0" aria-label="Model: Leah Camilleri">
               <div class="model-img-wrap">
@@ -680,22 +744,33 @@
             </article>
           </div>
 
-        </div><!-- /row -->
-      </div><!-- /container -->
+        </div>
+        <!--
+            end of row
+        -->
+      </div>
+      <!--
+          end of container
+      -->
     </section>
 
-  </main><!-- /main#main-content -->
+  </main>
+  <!--
+      end of mainmain content
+  -->
 
 
-  <!-- ============================================================
-       FOOTER — same dark navy footer as all other pages
-  ============================================================ -->
+  <!--
+      FOOTER — same dark navy footer as all other pages
+  -->
   <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
     <div class="container-xxl px-4">
 
       <div class="row g-5 py-5">
 
-        <!-- Column 1 — Brand -->
+        <!--
+            Column 1 — Brand
+        -->
         <div class="col-lg-4 col-md-12">
           <a href="index.html" class="footer-logo d-inline-block mb-3"
             aria-label="Mudelli — return to homepage">MUDELLI</a>
@@ -704,7 +779,9 @@
           </p>
         </div>
 
-        <!-- Column 2 — Quick Links -->
+        <!--
+            Column 2 — Quick Links
+        -->
         <div class="col-lg-2 col-md-4 col-6">
           <h3 class="footer-heading">Quick Links</h3>
           <nav aria-label="Footer quick links navigation">
@@ -717,7 +794,9 @@
           </nav>
         </div>
 
-        <!-- Column 3 — Support -->
+        <!--
+            Column 3 — Support
+        -->
         <div class="col-lg-2 col-md-4 col-6">
           <h3 class="footer-heading">Support</h3>
           <nav aria-label="Footer support links navigation">
@@ -730,7 +809,9 @@
           </nav>
         </div>
 
-        <!-- Column 4 — Follow Us (social icons) -->
+        <!--
+            Column 4 — Follow Us (social icons)
+        -->
         <div class="col-lg-4 col-md-4">
           <h3 class="footer-heading">Follow Us</h3>
           <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
@@ -746,12 +827,19 @@
           </div>
         </div>
 
-      </div><!-- /row -->
+      </div>
+      <!--
+          end of row
+      -->
 
-      <!-- dividing line between columns and copyright -->
+      <!--
+          dividing line between columns and copyright
+      -->
       <hr class="footer-divider" aria-hidden="true" />
 
-      <!-- copyright text and accessibility button -->
+      <!--
+          copyright text and accessibility button
+      -->
       <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
         <p class="footer-copyright mb-0">&copy; 2026 Mudelli. All rights reserved.</p>
         <button class="accessibility-btn" type="button" aria-label="Open accessibility options"
@@ -760,16 +848,23 @@
         </button>
       </div>
 
-    </div><!-- /container -->
+    </div>
+    <!--
+        end of container
+    -->
   </footer>
 
 
-  <!-- Bootstrap 5 JS bundle (needed for the mobile navbar toggle) -->
+  <!--
+      Bootstrap 5 JS bundle (needed for the mobile navbar toggle)
+  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
     crossorigin="anonymous"></script>
 
-  <!-- turns the navbar solid navy once the user scrolls down -->
+  <!--
+      turns the navbar solid navy once the user scrolls down
+  -->
   <script>
     window.addEventListener('scroll', function () {
       var nav = document.getElementById('mainNav');

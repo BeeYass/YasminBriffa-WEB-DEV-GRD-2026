@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--
+      SEO meta description for search engines
+      Tells search engines what this page is about
+  -->
+  <meta name="description"
+    content="Discover Mudelli's New Faces — fresh talent making their mark in fashion, commercial, and editorial modelling. Book a model today." />
+
+  <title>New Faces — Mudelli</title>
+
+  <!--
+      Bootstrap 5.3 CSS
+      Gives us the grid system, utility classes, and components
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <!--
+      Bootstrap Icons 1.11
+      Icon library used for the social icons and accessibility button
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!--
+      Google Fonts
+      Loads Playfair Display and Plus Jakarta Sans used across the whole site
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!--
+      Custom stylesheet
+      Contains all the Mudelli-specific colours, fonts, and component styles
+  -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ================================================================
+       PAGE BANNER — cream background with the "New Faces" heading
+    ================================================================ */
+    .nf-banner {
+      padding-top: 80px;
+      padding-bottom: 56px;
+      background-color: var(--mud-cream);
+      text-align: center;
+    }
+
+    /* the main "New Faces" page heading */
+    .nf-banner-title {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    /* the subtitle below the heading */
+    .nf-banner-subtitle {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--mud-navy);
+      margin: 0;
+    }
+
+
+    /* ================================================================
+       MODEL CARD GRID — 3 columns of model cards with hover effects
+    ================================================================ */
+    .nf-section {
+      padding: 56px 0 72px;
+      background-color: var(--mud-white);
+    }
+
+    /* wrapper for each model card: photo + overlay + button */
+    .nf-card {
+      background: transparent;
+      outline: none;
+    }
+
+    /* keyboard focus ring */
+    .nf-card:focus-visible {
+      box-shadow: var(--focus-ring);
+    }
+
+    /* clips the photo zoom and the sliding overlay */
+    .nf-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* the model portrait photo */
+    .nf-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    /* zoom the photo slightly on hover */
+    .nf-card:hover .nf-img,
+    .nf-card:focus-within .nf-img {
+      transform: scale(1.04);
+    }
+
+    /* white overlay that slides up from the bottom on hover
+       showing the model's name, age, and height */
+    .nf-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.96);
+      padding: 20px 24px;
+      transform: translateY(100%);
+      transition: transform 0.35s ease;
+    }
+
+    /* slide the overlay into view on hover or keyboard focus */
+    .nf-card:hover .nf-overlay,
+    .nf-card:focus-within .nf-overlay {
+      transform: translateY(0);
+    }
+
+    /* model name inside the overlay */
+    .nf-overlay-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--mud-gold);
+      margin-bottom: 4px;
+    }
+
+    /* age and height line inside the overlay */
+    .nf-overlay-meta {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--mud-mid-blue);
+      margin: 0;
+    }
+
+    /* BOOK MODEL button — sits directly below the photo */
+    .btn-book-model {
+      display: block;
+      width: 100%;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--mud-mid-blue);
+      background-color: var(--mud-gold);
+      border: none;
+      border-radius: 0;
+      padding: 14px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .btn-book-model:hover,
+    .btn-book-model:focus {
+      background-color: var(--mud-mid-blue);
+      color: var(--mud-gold);
+    }
+
+
+    /* ================================================================
+       RESPONSIVE — smaller screens
+    ================================================================ */
+
+    /* tablet */
+    @media (max-width: 991.98px) {
+      .nf-banner {
+        padding-top: 100px;
+        padding-bottom: 40px;
+      }
+
+      .nf-banner-title {
+        font-size: 36px;
+      }
+
+      .nf-img {
+        height: 360px;
+      }
+    }
+
+    /* mobile */
+    @media (max-width: 767.98px) {
+      .nf-banner-title {
+        font-size: 28px;
+      }
+
+      .nf-img {
+        height: 300px;
+      }
+
+      /* always show the overlay on mobile since hover doesn't work on touch screens */
+      .nf-overlay {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--
+      Skip link for keyboard and screen-reader users
+      Hidden until focused — lets them jump straight past the navbar to the main content
+  -->
+  <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+
+  <!--
+      Fixed top navigation bar
+      Same navbar used on every page of the site
+  -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
+      aria-label="Main site navigation">
+      <div class="container-xxl px-4">
+
+        <!--
+            Mudelli brand logo
+            Clicking it takes the user back to the homepage
+        -->
+        <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli — return to homepage">
+          MUDELLI
+        </a>
+
+        <!--
+            Mobile hamburger button
+            Shown on smaller screens to open and close the nav menu
+        -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+          aria-label="Toggle main navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--
+            Collapsible navigation links
+            Collapses into the hamburger menu on mobile
+        -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+          <!--
+              Primary nav links
+              Centred between the logo and the auth buttons
+          -->
+          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="models.html">Models</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="casting-calls.html">Casting Calls</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="become-a-model.html">Become A Model</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!--
+              Login and Register buttons
+              Shown to the right of the nav links
+          -->
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <a href="login.html" class="btn-nav-auth" aria-label="Log in to your Mudelli account">LOGIN</a>
+            <a href="login.html#register" class="btn-nav-auth btn-nav-register"
+              aria-label="Create a new Mudelli account">REGISTER NOW!</a>
+          </div>
+
+        </div>
+        <!-- end of navbar collapse -->
+      </div>
+      <!-- end of container -->
+    </nav>
+  </header>
+
+
+  <!--
+      Main page content
+      Everything the user sees on the page lives inside this element
+  -->
+  <main id="main-content">
+
+    <!--
+        Page banner
+        Cream background with the "New Faces" heading and a short subtitle
+    -->
+    <section class="nf-banner" aria-labelledby="nf-heading">
+      <div class="container">
+        <h1 id="nf-heading" class="nf-banner-title">New Faces</h1>
+        <p class="nf-banner-subtitle">Fresh talent making their mark — hover over a card to learn more</p>
+      </div>
+    </section>
+
+
+    <!--
+        New Faces model grid
+        Nine model cards arranged in a 3-column grid
+        Hovering over a card slides up a white panel showing the model's name, age, and height
+    -->
+    <section class="nf-section" aria-labelledby="nf-grid-heading">
+      <div class="container">
+
+        <!--
+            Visually hidden section heading
+            Gives the grid an accessible label for screen readers without showing it on screen
+        -->
+        <h2 id="nf-grid-heading" class="visually-hidden">New faces model roster</h2>
+
+        <div class="row g-4">
+
+          <!--
+              Model card 1 — Alessia Mae Vella
+              Age 24, Height 172cm
+          -->
+          <div class="col-lg-4 col-md-6">
+            <article class="nf-card" tabindex="0" aria-label="Model: Alessia Mae Vella, Age 24, Height 172cm">
+              <div class="nf-img-wrap">
+                <img src="images/new-face-page1.jpg" alt="Portrait of Alessia Mae Vella"
+                  class="nf-img" loading="lazy" />
+                <!--
+                    Hover overlay
+                    Slides up over the bottom of the photo to show the model's details
+                -->
+                <div class="nf-overlay" aria-hidden="true">
+                  <p class="nf-overlay-name">Alessia Mae Vella</p>
+                  <p class="nf-overlay-meta">Age: 24 &nbsp;&middot;&nbsp; Height: 172cm</p>
+                </div>
+              </div>
+              <a href="casting-calls.html" class="btn-book-model"
+                aria-label="Book Alessia Mae Vella as a model">BOOK MODEL</a>
+            </article>
+          </div>
+
+          <!--
+              Model card 2 — Maria Camilleri
+              Age 27, Height 174cm
+          -->
+          <div class="col-lg-4 col-md-6">
+            <article class="nf-card" tabindex="0" aria-label="Model: Maria Camilleri, Age 27, Height 174cm">
+              <div class="nf-img-wrap">
+                <img src="images/new-face-page2.jpg" alt="Portrait of Maria Camilleri"
+                  class="nf-img" loading="lazy" />
+                <div class="nf-overlay" aria-hidden="true">
+                  <p class="nf-overlay-name">Maria Camilleri</p>
+                  <p class="nf-overlay-meta">Age: 27 &nbsp;&middot;&nbsp; Height: 174cm</p>
+                </div>
+              </div>
+              <a href="casting-calls.html" class="btn-book-model"
+                aria-label="Book Maria Camilleri as a model">BOOK MODEL</a>
+            </article>
+          </div>
+
+          <!--
+              Model card 3 — Nina Laurent
+              Age 25, Height 180cm
+          -->
+          <div class="col-lg-4 col-md-6">
+            <article class="nf-card" tabindex="0" aria-label="Model: Nina Laurent, Age 25, Height 180cm">
+              <div class="nf-img-wrap">
+                <img src="images/new-face-page3.jpg" alt="Portrait of Nina Laurent"
+                  class="nf-img" loading="lazy" />
+                <div class="nf-overlay" aria-hidden="true">
+                  <p class="nf-overlay-name">Nina Laurent</p>
+                  <p class="nf-overlay-meta">Age: 25 &nbsp;&middot;&nbsp; Height: 180cm</p>
+                </div>
+              </div>
+              <a href="casting-calls.html" class="btn-book-model"
+                aria-label="Book Nina Laurent as a model">BOOK MODEL</a>
+            </article>
+          </div>
+
+          <!--
+              Model card 4 — Hannah Piscopo
+              Age 27, Height 175cm
+          -->
+          <div class="col-lg-4 col-md-6">
+            <article class="nf-card" tabindex="0" aria-label="Model: Hannah Piscopo, Age 27, Height 175cm">
+              <div class="nf-img-wrap">
+                <img src="images/new-face-page4.jpg" alt="Portrait of Hannah Piscopo"
+                  class="nf-img" loading="lazy" />
+                <div class="nf-overlay" aria-hidden="true">
+                  <p class="nf-overlay-name">Hannah Piscopo</p>
+                  <p class="nf-overlay-meta">Age: 27 &nbsp;&middot;&nbsp; Height: 175cm</p>
+                </div>
+              </div>
+              <a href="casting-calls.html" class="btn-book-model"
+                aria-label="Book Hannah Piscopo as a model">BOOK MODEL</a>
+            </article>
+          </div>
+
+          <!--
+              Model card 5 — Amelia Gauci
+              Age 26, Height 172cm
+          -->
+          <div class="col-lg-4 col-md-6">
+            <article class="nf-card" tabindex="0" aria-label="Model: Amelia Gauci, Age 26, Height 172cm">
+              <div class="nf-img-wrap">
+                <img src="images/new-face-page5.jpg" alt="Portrait of Amelia Gauci"
+                  class="nf-img" loading="lazy" />
+                <div class="nf-overlay" aria-hidden="true">
+                  <p class="nf-overlay-name">Amelia Gauci</p>
+                  <p class="nf-overlay-meta">Age: 26 &nbsp;&middot;&nbsp; Height: 172cm</p>
+                </div>
+              </div>
+              <a href="casting-calls.html" class="btn-book-model"
+                aria-label="Book Amelia Gauci as a model">BOOK MODEL</a>
+            </article>
+          </div>
+
+          <!--
+              Model card 6 — Alexia Bex
+              Age 30, Height 172cm
+          -->
+          <div class="col-lg-4 col-md-6">
+            <article class="nf-card" tabindex="0" aria-label="Model: Alexia Bex, Age 30, Height 172cm">
+              <div class="nf-img-wrap">
+                <img src="images/new-face-page6.jpg" alt="Portrait of Alexia Bex"
+                  class="nf-img" loading="lazy" />
+                <div class="nf-overlay" aria-hidden="true">
+                  <p class="nf-overlay-name">Alexia Bex</p>
+                  <p class="nf-overlay-meta">Age: 30 &nbsp;&middot;&nbsp; Height: 172cm</p>
+                </div>
+              </div>
+              <a href="casting-calls.html" class="btn-book-model"
+                aria-label="Book Alexia Bex as a model">BOOK MODEL</a>
+            </article>
+          </div>
+
+          <!--
+              Model card 7 — Lina Gatt
+              Age 28, Height 188cm
+          -->
+          <div class="col-lg-4 col-md-6">
+            <article class="nf-card" tabindex="0" aria-label="Model: Lina Gatt, Age 28, Height 188cm">
+              <div class="nf-img-wrap">
+                <img src="images/new-face-page7.jpg" alt="Portrait of Lina Gatt"
+                  class="nf-img" loading="lazy" />
+                <div class="nf-overlay" aria-hidden="true">
+                  <p class="nf-overlay-name">Lina Gatt</p>
+                  <p class="nf-overlay-meta">Age: 28 &nbsp;&middot;&nbsp; Height: 188cm</p>
+                </div>
+              </div>
+              <a href="casting-calls.html" class="btn-book-model"
+                aria-label="Book Lina Gatt as a model">BOOK MODEL</a>
+            </article>
+          </div>
+
+          <!--
+              Model card 8 — Maya Micallef
+              Age 26, Height 165cm
+          -->
+          <div class="col-lg-4 col-md-6">
+            <article class="nf-card" tabindex="0" aria-label="Model: Maya Micallef, Age 26, Height 165cm">
+              <div class="nf-img-wrap">
+                <img src="images/new-face-page8.jpg" alt="Portrait of Maya Micallef"
+                  class="nf-img" loading="lazy" />
+                <div class="nf-overlay" aria-hidden="true">
+                  <p class="nf-overlay-name">Maya Micallef</p>
+                  <p class="nf-overlay-meta">Age: 26 &nbsp;&middot;&nbsp; Height: 165cm</p>
+                </div>
+              </div>
+              <a href="casting-calls.html" class="btn-book-model"
+                aria-label="Book Maya Micallef as a model">BOOK MODEL</a>
+            </article>
+          </div>
+
+          <!--
+              Model card 9 — Aurelie Voss
+              Age 28, Height 190cm
+          -->
+          <div class="col-lg-4 col-md-6">
+            <article class="nf-card" tabindex="0" aria-label="Model: Aurelie Voss, Age 28, Height 190cm">
+              <div class="nf-img-wrap">
+                <img src="images/new-face-page9.jpg" alt="Portrait of Aurelie Voss"
+                  class="nf-img" loading="lazy" />
+                <div class="nf-overlay" aria-hidden="true">
+                  <p class="nf-overlay-name">Aurelie Voss</p>
+                  <p class="nf-overlay-meta">Age: 28 &nbsp;&middot;&nbsp; Height: 190cm</p>
+                </div>
+              </div>
+              <a href="casting-calls.html" class="btn-book-model"
+                aria-label="Book Aurelie Voss as a model">BOOK MODEL</a>
+            </article>
+          </div>
+
+        </div>
+        <!-- end of model grid row -->
+      </div>
+      <!-- end of container -->
+    </section>
+
+  </main>
+  <!-- end of main content -->
+
+
+  <!--
+      Site footer
+      Dark navy background with four columns: brand, quick links, support, and social icons
+  -->
+  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+    <div class="container-xxl px-4">
+
+      <div class="row g-5 py-5">
+
+        <!--
+            Footer column 1 — Brand
+            Shows the Mudelli logo and a short tagline
+        -->
+        <div class="col-lg-4 col-md-12">
+          <a href="index.html" class="footer-logo d-inline-block mb-3"
+            aria-label="Mudelli — return to homepage">MUDELLI</a>
+          <p class="footer-about">
+            Connecting talent with opportunity in Malta and internationally.
+          </p>
+        </div>
+
+        <!--
+            Footer column 2 — Quick Links
+            Navigation links to the main pages of the site
+        -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Quick Links</h3>
+          <nav aria-label="Footer quick links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="models.html">Browse Models</a></li>
+              <li><a href="casting-calls.html">Casting Calls</a></li>
+              <li><a href="become-a-model.html">Become a Model</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!--
+            Footer column 3 — Support
+            Links to help pages, privacy policy, and terms
+        -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Support</h3>
+          <nav aria-label="Footer support links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety &amp; Security</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!--
+            Footer column 4 — Follow Us
+            Circular social media icon links
+        -->
+        <div class="col-lg-4 col-md-4">
+          <h3 class="footer-heading">Follow Us</h3>
+          <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+              <i class="bi bi-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+              <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <!-- end of footer columns row -->
+
+      <!--
+          Footer divider line
+          Separates the link columns from the copyright bar below
+      -->
+      <hr class="footer-divider" aria-hidden="true" />
+
+      <!--
+          Copyright bar
+          Shows the copyright text and the accessibility button
+      -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
+        <p class="footer-copyright mb-0">&copy; 2026 Mudelli. All rights reserved.</p>
+        <button class="accessibility-btn" type="button" aria-label="Open accessibility options"
+          aria-haspopup="dialog">
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div>
+    <!-- end of footer container -->
+  </footer>
+
+
+  <!--
+      Bootstrap 5 JavaScript bundle
+      Required for the mobile navbar toggle to work
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
+    crossorigin="anonymous"></script>
+
+  <!--
+      Navbar scroll effect
+      Turns the navbar from transparent to solid navy once the user scrolls down
+  -->
+  <script>
+    window.addEventListener('scroll', function () {
+      var nav = document.getElementById('mainNav');
+      if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 80);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
