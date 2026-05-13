@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--
+      SEO description for the Become a Model page
+  -->
+  <meta name="description"
+    content="Apply to become a Mudelli model. Upload your photos and personal details to be considered for fashion, editorial, and commercial opportunities in Malta and beyond." />
+
+  <title>Become A Model — Mudelli</title>
+
+  <!--
+      Bootstrap 5.3 CSS framework
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <!--
+      Bootstrap Icons used for the upload icon and social links
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!--
+      Google Fonts: Playfair Display for headings, Plus Jakarta Sans for body text
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!--
+      Shared site styles
+  -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!--
+      Page-specific styles for the Become a Model page only
+  -->
+  <style>
+
+    /*
+     * HERO SECTION — the large banner image at the top of the page
+     * with the gold "Become A Model" heading overlaid on top
+     */
+    .bam-hero {
+      min-height: 520px;
+      background-image: url('images/main-become-model.jpg');
+      background-size: cover;
+      background-position: center top;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    /* dark overlay so the gold text is easy to read against the photo */
+    .bam-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.52);
+    }
+
+    /* keeps the text above the dark overlay */
+    .bam-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding-top: 100px;
+    }
+
+    .bam-hero-title {
+      font-family: var(--font-display);
+      font-size: 80px;
+      font-weight: 700;
+      color: var(--mud-gold);
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    /*
+     * INTRO SECTION — short description of what modelling with Mudelli
+     * involves, placed next to a photo of a model
+     */
+    .bam-intro {
+      padding: 64px 0;
+      background-color: var(--mud-white);
+    }
+
+    .bam-intro-text {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--mud-navy);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* highlighted note box for the "no walk-ins" reminder */
+    .bam-intro-note {
+      background-color: #F4F4F4;
+      border-left: 4px solid var(--mud-gold);
+      padding: 14px 18px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--mud-navy);
+      font-weight: 600;
+    }
+
+    /*
+     * FORM SECTION — the full application form sits on a cream background
+     * with a white card wrapping all the form fields
+     */
+    .bam-form-section {
+      background-color: var(--mud-cream);
+      padding: 64px 0;
+    }
+
+    /* white card that wraps the whole form */
+    .bam-form-card {
+      background-color: var(--mud-white);
+      padding: 48px;
+    }
+
+    /*
+     * FIELDSET GROUPS — each section of the form (Personal Details,
+     * Physical Attributes, etc.) is wrapped in a fieldset
+     */
+    .bam-fieldset {
+      border: none;
+      padding: 0;
+      margin: 0 0 48px;
+    }
+
+    .bam-fieldset:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* gold-underlined heading for each form section */
+    .bam-legend {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--mud-gold);
+      margin-bottom: 28px;
+      width: 100%;
+      display: block;
+    }
+
+    /*
+     * FORM LABELS AND INPUTS
+     */
+    .bam-label {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* required field indicator */
+    .bam-required {
+      color: var(--mud-gold);
+      margin-left: 2px;
+    }
+
+    /* all text inputs and selects share the same light-gray style */
+    .bam-input,
+    .bam-select {
+      width: 100%;
+      height: 44px;
+      background-color: #F4F4F4;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 8px 12px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .bam-input:focus,
+    .bam-select:focus {
+      outline: none;
+      border-bottom-color: var(--mud-gold);
+      box-shadow: var(--focus-ring);
+    }
+
+    .bam-input::placeholder {
+      color: #A6A3A3;
+      font-weight: 400;
+    }
+
+    /* taller textarea for the "tell us about yourself" field */
+    .bam-textarea {
+      height: 110px;
+      resize: vertical;
+    }
+
+    /* spacing between each label+input pair */
+    .bam-field {
+      margin-bottom: 20px;
+    }
+
+    /*
+     * RADIO AND CHECKBOX OPTIONS — styled as full-width clickable rows
+     * with a light gray background so they look like buttons
+     */
+    .bam-option-label {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--mud-navy);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 16px;
+      background-color: #F4F4F4;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: background-color 0.15s;
+    }
+
+    .bam-option-label:hover {
+      background-color: var(--mud-light-gray);
+    }
+
+    .bam-option-label input[type="radio"],
+    .bam-option-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: var(--mud-gold);
+    }
+
+    /* sub-question label inside an availability group */
+    .bam-sub-label {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      margin: 20px 0 10px;
+    }
+
+    /*
+     * BODYSHOTS IMAGE — guide image showing what Portrait, Side Profile,
+     * and Full Body photos look like, placed above the upload buttons
+     */
+    .bam-bodyshots-img {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* label text shown above each upload button */
+    .bam-photo-label {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--mud-navy);
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    /*
+     * UPLOAD BUTTON — gold button with an upload icon that opens the
+     * file picker when clicked
+     */
+    .bam-upload-wrap {
+      margin-bottom: 16px;
+    }
+
+    /* the hidden real file input — the styled label acts as the button */
+    .bam-file-input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    /* styled label that looks and behaves like the gold upload button */
+    .btn-upload {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0;
+      padding: 12px 28px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-upload:hover,
+    .btn-upload:focus-within {
+      opacity: 0.88;
+    }
+
+    /*
+     * ACKNOWLEDGEMENT CHECKBOX ROW
+     */
+    .bam-ack-label {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--mud-navy);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      line-height: 1.5;
+    }
+
+    .bam-ack-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: var(--mud-gold);
+    }
+
+    .bam-ack-label a {
+      color: var(--mud-gold);
+      text-decoration: underline;
+    }
+
+    /*
+     * SUBMIT BUTTON — large gold button at the bottom of the form
+     */
+    .btn-submit-application {
+      display: inline-block;
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0;
+      padding: 18px 56px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 36px;
+    }
+
+    .btn-submit-application:hover,
+    .btn-submit-application:focus {
+      opacity: 0.88;
+      color: var(--mud-navy);
+    }
+
+    .btn-submit-application:focus {
+      box-shadow: var(--focus-ring);
+      outline: none;
+    }
+
+    /*
+     * RESPONSIVE — adjustments for tablet and mobile screens
+     */
+    @media (max-width: 991px) {
+      .bam-hero-title {
+        font-size: 52px;
+      }
+
+      .bam-form-card {
+        padding: 28px 20px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .bam-hero-title {
+        font-size: 36px;
+      }
+
+      .bam-photo-label {
+        font-size: 14px;
+      }
+
+      .btn-submit-application {
+        width: 100%;
+        text-align: center;
+        padding: 16px;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!--
+      SKIP NAVIGATION — lets keyboard and screen-reader users jump
+      straight to the main form without going through the nav menu
+  -->
+  <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+  <!--
+      HEADER — fixed top navigation bar shared across all pages
+  -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
+      aria-label="Main site navigation">
+      <div class="container-xxl px-4">
+
+        <!--
+            Brand logo — clicking it returns to the homepage
+        -->
+        <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli — return to homepage">
+          MUDELLI
+        </a>
+
+        <!--
+            Mobile hamburger button — shows or hides the nav links on small screens
+        -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+          aria-label="Toggle main navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--
+            Collapsible navigation links — Become A Model is marked active
+        -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="models.html">Models</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="casting-calls.html">Casting Calls</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <!--
+                  aria-current="page" tells screen readers this is the current page
+              -->
+              <a class="nav-link active" aria-current="page" href="become-a-model.html">Become A Model</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!--
+              Login and Register buttons on the right side of the navbar
+          -->
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <a href="login.html" class="btn-nav-auth" aria-label="Log in to your Mudelli account">LOGIN</a>
+            <a href="login.html#register" class="btn-nav-auth btn-nav-register"
+              aria-label="Create a new Mudelli account">REGISTER NOW!</a>
+          </div>
+
+        </div>
+        <!--
+            end of navbar collapse
+        -->
+      </div>
+      <!--
+          end of container
+      -->
+    </nav>
+  </header>
+
+
+  <!--
+      MAIN PAGE CONTENT
+  -->
+  <main id="main-content">
+
+    <!--
+        HERO SECTION — full-width background photo with the page
+        title "Become A Model" in gold overlaid on top
+    -->
+    <section class="bam-hero" aria-labelledby="bam-hero-heading">
+      <div class="container-xxl px-4 bam-hero-inner">
+        <h1 class="bam-hero-title" id="bam-hero-heading">Become A Model</h1>
+      </div>
+    </section>
+
+
+    <!--
+        INTRO SECTION — short explanation of what to expect and how to apply,
+        centred below the hero image
+    -->
+    <section class="bam-intro" aria-labelledby="bam-intro-heading">
+      <div class="container-xxl px-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="visually-hidden" id="bam-intro-heading">About applying to Mudelli</h2>
+
+            <p class="bam-intro-text">
+              Discover your potential and take your first step into modelling. We're always on the
+              lookout for fresh faces with confidence, personality, and passion. If that sounds like
+              you, we'd love to see you.
+            </p>
+
+            <p class="bam-intro-text">
+              Apply now by uploading a few natural photos and your details. No need for professional
+              shots — just clear, recent photos taken within the last three months that show your
+              current look.
+            </p>
+
+            <p class="bam-intro-text">
+              From your first test shoots to real opportunities, we're here to guide you and help you
+              grow. All you need is a positive attitude and reliability — we'll take care of the rest.
+            </p>
+
+            <!--
+                Important notice reminding applicants there are no walk-in visits
+            -->
+            <div class="bam-intro-note" role="note">
+              Please Note: We do not accept walk-ins. We only accept online applications.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!--
+        APPLICATION FORM SECTION — the full sign-up form where
+        applicants fill in their details and upload their photos
+    -->
+    <section class="bam-form-section" aria-labelledby="form-heading">
+      <div class="container-xxl px-4">
+
+        <div class="bam-form-card">
+
+          <h2 class="bam-legend mb-4" id="form-heading" style="border-bottom: 2px solid var(--mud-gold); padding-bottom: 14px;">
+            Apply Now
+          </h2>
+
+          <form action="#" method="post" novalidate aria-label="Model application form">
+
+
+            <!--
+                PERSONAL DETAILS — the applicant's name, contact info,
+                and address. Fields marked with * are required.
+            -->
+            <fieldset class="bam-fieldset">
+              <legend class="bam-legend">Personal Details</legend>
+
+              <div class="row g-3">
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="first-name">
+                      First Name <span class="bam-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="bam-input" type="text" id="first-name" name="first_name"
+                      placeholder="First name" autocomplete="given-name"
+                      required aria-required="true" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="last-name">
+                      Last Name <span class="bam-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="bam-input" type="text" id="last-name" name="last_name"
+                      placeholder="Last name" autocomplete="family-name"
+                      required aria-required="true" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="phone">
+                      Phone Number <span class="bam-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="bam-input" type="tel" id="phone" name="phone"
+                      placeholder="356 XXXX XXXX" autocomplete="tel"
+                      required aria-required="true" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="email">
+                      Email Address <span class="bam-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="bam-input" type="email" id="email" name="email"
+                      placeholder="Email address" autocomplete="email"
+                      required aria-required="true" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="dob">
+                      Date of Birth <span class="bam-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="bam-input" type="date" id="dob" name="dob"
+                      autocomplete="bday"
+                      required aria-required="true" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="gender">
+                      Gender <span class="bam-required" aria-hidden="true">*</span>
+                    </label>
+                    <select class="bam-input bam-select" id="gender" name="gender"
+                      required aria-required="true">
+                      <option value="" disabled selected>Select gender</option>
+                      <option value="female">Female</option>
+                      <option value="male">Male</option>
+                      <option value="non-binary">Non-binary</option>
+                      <option value="prefer-not">Prefer not to say</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="city">
+                      City <span class="bam-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="bam-input" type="text" id="city" name="city"
+                      placeholder="City" autocomplete="address-level2"
+                      required aria-required="true" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="postcode">
+                      Postcode <span class="bam-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="bam-input" type="text" id="postcode" name="postcode"
+                      placeholder="Postcode" autocomplete="postal-code"
+                      required aria-required="true" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="country">
+                      Country <span class="bam-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="bam-input" type="text" id="country" name="country"
+                      placeholder="Country" autocomplete="country-name"
+                      required aria-required="true" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="nationality">
+                      Nationality <span class="bam-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="bam-input" type="text" id="nationality" name="nationality"
+                      placeholder="Nationality"
+                      required aria-required="true" />
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+
+
+            <!--
+                PHYSICAL ATTRIBUTES — measurements and appearance details
+                used by agencies and clients to find the right fit for a role
+            -->
+            <fieldset class="bam-fieldset">
+              <legend class="bam-legend">Physical Attributes</legend>
+
+              <div class="row g-3">
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="height">Height</label>
+                    <input class="bam-input" type="text" id="height" name="height"
+                      placeholder="Enter measurement in cm" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="bust">Bust</label>
+                    <input class="bam-input" type="text" id="bust" name="bust"
+                      placeholder="Enter measurement in cm" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="waist">Waist</label>
+                    <input class="bam-input" type="text" id="waist" name="waist"
+                      placeholder="Enter measurement in cm" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="hips">Hips</label>
+                    <input class="bam-input" type="text" id="hips" name="hips"
+                      placeholder="Enter measurement in cm" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="clothing-size">Clothing Size</label>
+                    <input class="bam-input" type="text" id="clothing-size" name="clothing_size"
+                      placeholder="Enter clothing size" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="shoe-size">Shoe Size</label>
+                    <input class="bam-input" type="text" id="shoe-size" name="shoe_size"
+                      placeholder="Enter shoe size" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="hair-colour">Hair Colour</label>
+                    <input class="bam-input" type="text" id="hair-colour" name="hair_colour"
+                      placeholder="Enter hair colour" />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bam-field">
+                    <label class="bam-label" for="eye-colour">Eye Colour</label>
+                    <input class="bam-input" type="text" id="eye-colour" name="eye_colour"
+                      placeholder="Enter eye colour" />
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="bam-field">
+                    <label class="bam-label" for="about-yourself">
+                      Mention anything you'd like us to know
+                    </label>
+                    <textarea class="bam-input bam-textarea" id="about-yourself" name="about_yourself"
+                      placeholder="Tell us a little about yourself"></textarea>
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+
+
+            <!--
+                EXPERIENCE LEVEL — helps us match the applicant to the
+                right opportunities based on how much they've modelled before
+            -->
+            <fieldset class="bam-fieldset">
+              <legend class="bam-legend">Experience Level</legend>
+
+              <label class="bam-option-label">
+                <input type="radio" name="experience" value="beginner" />
+                Beginner &nbsp;<span style="font-weight: 400; color: #666;">(New to Modeling)</span>
+              </label>
+
+              <label class="bam-option-label">
+                <input type="radio" name="experience" value="intermediate" />
+                Intermediate &nbsp;<span style="font-weight: 400; color: #666;">(Some experience)</span>
+              </label>
+
+              <label class="bam-option-label">
+                <input type="radio" name="experience" value="professional" />
+                Professional &nbsp;<span style="font-weight: 400; color: #666;">(Extensive experience)</span>
+              </label>
+
+            </fieldset>
+
+
+            <!--
+                AVAILABILITY — lets us know how much time the applicant
+                can commit and whether they can travel for bookings
+            -->
+            <fieldset class="bam-fieldset">
+              <legend class="bam-legend">Availability <small style="font-size: 15px; font-weight: 400;">(Important for bookings)</small></legend>
+
+              <label class="bam-option-label">
+                <input type="radio" name="availability" value="full-time" />
+                Full Time
+              </label>
+
+              <label class="bam-option-label">
+                <input type="radio" name="availability" value="part-time" />
+                Part Time
+              </label>
+
+              <!--
+                  Separate sub-question about whether the model can travel
+              -->
+              <p class="bam-sub-label">Willing to travel?</p>
+
+              <label class="bam-option-label">
+                <input type="radio" name="travel" value="yes" />
+                Yes
+              </label>
+
+              <label class="bam-option-label">
+                <input type="radio" name="travel" value="no" />
+                No
+              </label>
+
+            </fieldset>
+
+
+            <!--
+                SOCIAL MEDIA — optional usernames so agencies and clients
+                can get a feel for the applicant's online presence
+            -->
+            <fieldset class="bam-fieldset">
+              <legend class="bam-legend">Social Media</legend>
+
+              <div class="row g-3">
+
+                <div class="col-12">
+                  <div class="bam-field">
+                    <label class="bam-label" for="instagram">
+                      <i class="bi bi-instagram" aria-hidden="true"></i>
+                      Instagram (username)
+                    </label>
+                    <input class="bam-input" type="text" id="instagram" name="instagram"
+                      placeholder="@yourusername" autocomplete="off" />
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="bam-field">
+                    <label class="bam-label" for="facebook">
+                      <i class="bi bi-facebook" aria-hidden="true"></i>
+                      Facebook (username)
+                    </label>
+                    <input class="bam-input" type="text" id="facebook" name="facebook"
+                      placeholder="facebook.com/username" autocomplete="off" />
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="bam-field">
+                    <label class="bam-label" for="tiktok">
+                      <i class="bi bi-tiktok" aria-hidden="true"></i>
+                      TikTok (username)
+                    </label>
+                    <input class="bam-input" type="text" id="tiktok" name="tiktok"
+                      placeholder="@yourusername" autocomplete="off" />
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+
+
+            <!--
+                PHOTO UPLOADS — applicants need to send three types of photo:
+                a portrait, a side profile, and a full body shot.
+                The guide image shows what each type should look like.
+            -->
+            <fieldset class="bam-fieldset">
+              <legend class="bam-legend">Photo Uploads</legend>
+
+              <!--
+                  Guide image showing the three photo types needed —
+                  Portrait on the left, Side Profile in the middle, Full Body on the right
+              -->
+              <img
+                src="images/bodyshots.jpg"
+                alt="Guide showing three example shots: portrait facing forward, side profile, and full body"
+                class="bam-bodyshots-img"
+                loading="lazy" />
+
+              <!--
+                  Three columns — each has the photo type label directly above
+                  its own upload button so they stay perfectly aligned
+              -->
+              <div class="row g-4">
+
+                <div class="col-md-4 text-center">
+                  <p class="bam-photo-label">Portrait</p>
+                  <input class="bam-file-input" type="file" id="upload-portrait"
+                    name="photo_portrait" accept="image/*"
+                    aria-label="Upload your portrait photo" />
+                  <label class="btn-upload" for="upload-portrait">
+                    <i class="bi bi-upload" aria-hidden="true"></i>
+                    Upload Photo
+                  </label>
+                </div>
+
+                <div class="col-md-4 text-center">
+                  <p class="bam-photo-label">Side Profile</p>
+                  <input class="bam-file-input" type="file" id="upload-profile"
+                    name="photo_profile" accept="image/*"
+                    aria-label="Upload your side profile photo" />
+                  <label class="btn-upload" for="upload-profile">
+                    <i class="bi bi-upload" aria-hidden="true"></i>
+                    Upload Photo
+                  </label>
+                </div>
+
+                <div class="col-md-4 text-center">
+                  <p class="bam-photo-label">Full Body</p>
+                  <input class="bam-file-input" type="file" id="upload-body"
+                    name="photo_body" accept="image/*"
+                    aria-label="Upload your full body photo" />
+                  <label class="btn-upload" for="upload-body">
+                    <i class="bi bi-upload" aria-hidden="true"></i>
+                    Upload Photo
+                  </label>
+                </div>
+
+              </div>
+            </fieldset>
+
+
+            <!--
+                ACKNOWLEDGEMENT — applicant confirms they have read
+                and accepted the Privacy Policy before submitting
+            -->
+            <fieldset class="bam-fieldset">
+              <legend class="bam-legend">Acknowledgement</legend>
+
+              <label class="bam-ack-label">
+                <input type="checkbox" name="privacy_accepted" required aria-required="true" />
+                I acknowledge that I have read, and do hereby accept the
+                <a href="#">Privacy Policy</a>.
+              </label>
+
+            </fieldset>
+
+
+            <!--
+                SUBMIT BUTTON — sends the completed application to Mudelli
+            -->
+            <div class="text-center">
+              <button type="submit" class="btn-submit-application">
+                Submit Application
+              </button>
+            </div>
+
+
+          </form>
+        </div>
+        <!--
+            end of form card
+        -->
+
+      </div>
+    </section>
+
+  </main>
+  <!--
+      end of main content
+  -->
+
+
+  <!--
+      FOOTER — dark navy bar with brand info, quick links, and social icons
+      Same footer used on every page of the site
+  -->
+  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+    <div class="container-xxl px-4">
+
+      <div class="row g-5 py-5">
+
+        <!--
+            Column 1 — Brand name and short description
+        -->
+        <div class="col-lg-4 col-md-12">
+          <a href="index.html" class="footer-logo d-inline-block mb-3"
+            aria-label="Mudelli — return to homepage">MUDELLI</a>
+          <p class="footer-about">
+            Connecting talent with opportunity in Malta and internationally.
+          </p>
+        </div>
+
+        <!--
+            Column 2 — Quick navigation links
+        -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Quick Links</h3>
+          <!--
+              Separate aria-label so screen readers don't confuse this
+              with the main navigation at the top of the page
+          -->
+          <nav aria-label="Footer quick links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="models.html">Browse Models</a></li>
+              <li><a href="casting-calls.html">Casting Calls</a></li>
+              <li><a href="become-a-model.html">Become a Model</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!--
+            Column 3 — Support and policy links
+        -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Support</h3>
+          <nav aria-label="Footer support links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety &amp; Security</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!--
+            Column 4 — Social media icons
+        -->
+        <div class="col-lg-4 col-md-4">
+          <h3 class="footer-heading">Follow Us</h3>
+          <!--
+              Each link has a descriptive aria-label for screen readers
+          -->
+          <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+              <i class="bi bi-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+              <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <!--
+          end of footer columns
+      -->
+
+      <!--
+          Thin line separating the links from the copyright bar
+      -->
+      <hr class="footer-divider" aria-hidden="true" />
+
+      <!--
+          Bottom row with copyright text and the accessibility settings button
+      -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
+        <p class="footer-copyright mb-0">© 2026 Mudelli. All rights reserved.</p>
+
+        <!--
+            Accessibility options button — opens a settings panel (placeholder)
+        -->
+        <button class="accessibility-btn" type="button" aria-label="Open accessibility options"
+          aria-haspopup="dialog">
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div>
+    <!--
+        end of footer container
+    -->
+  </footer>
+
+
+  <!--
+      Bootstrap JS bundle — needed for the mobile navbar toggle
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
