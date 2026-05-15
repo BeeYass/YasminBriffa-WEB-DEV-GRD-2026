@@ -350,6 +350,47 @@
                 margin-top: 16px;
             }
         }
+
+        /*
+            These rules fix the modal buttons and labels so they are not
+            affected by the global button and label styles in style.css.
+            Without these, the modal buttons would look too wide or wrong.
+        */
+        .modal .btn-close {
+            display: block;
+            width: auto;
+        }
+
+        .modal button[type="submit"],
+        .modal button[type="button"] {
+            display: inline-block;
+            width: auto;
+            background-color: #C9A84E;
+            color: #1E2D4D;
+            border: none;
+            border-radius: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 14px;
+            cursor: pointer;
+        }
+
+        .modal button[data-bs-dismiss="modal"] {
+            background-color: transparent !important;
+            color: #1E2D4D !important;
+            border: 2px solid #1E2D4D !important;
+        }
+
+        .modal label {
+            display: block;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1E2D4D;
+            margin-bottom: 6px;
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
@@ -590,18 +631,21 @@
 
                     <!--
                         ACTION BUTTONS: Book Model and Message sit side by side.
+                        Each button opens its own pop-up modal when clicked.
                     -->
                     <div class="row g-3 mt-3">
                         <div class="col-6">
-                            <a href="#" class="btn-sp-book" aria-label="Book Sofia Rossi for a shoot">
+                            <button class="btn-sp-book" data-bs-toggle="modal" data-bs-target="#bookModal"
+                                    aria-label="Book Sofia Rossi for a shoot">
                                 BOOK MODEL
-                            </a>
+                            </button>
                         </div>
                         <div class="col-6">
-                            <a href="#" class="btn-sp-message" aria-label="Send a message to Sofia Rossi">
+                            <button class="btn-sp-message" data-bs-toggle="modal" data-bs-target="#messageModal"
+                                    aria-label="Send a message to Sofia Rossi">
                                 <i class="bi bi-chat" aria-hidden="true"></i>
                                 Message
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -819,10 +863,8 @@
 </footer>
 
 
-<!-- Bootstrap 5.3.3 JavaScript bundle — needed for the mobile navbar toggle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
-    crossorigin="anonymous"></script>
+<!-- Bootstrap 5.3.3 JavaScript bundle — needed for the navbar toggle and modals -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!--
     Navbar scroll effect — adds a solid navy background to the navbar
@@ -834,6 +876,304 @@
         if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 80);
     }, { passive: true });
 </script>
+
+
+<!--
+    BOOK MODEL MODAL
+    This pop-up appears when the user clicks the "Book Model" button.
+    It collects all the details needed to send a booking request to Sofia Rossi.
+-->
+<div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content" style="border-radius:0; border:none;">
+
+      <!--
+          The dark navy header bar at the top of the modal.
+          The X button in the corner closes the modal.
+      -->
+      <div class="modal-header" style="background-color:#1E2D4D; border:none; padding:24px 32px;">
+        <h2 class="modal-title" id="bookModalLabel"
+          style="font-family:'Playfair Display',serif; font-size:22px; color:#C9A84E; margin:0;">
+          Book Sofia Rossi
+        </h2>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+          aria-label="Close booking form"></button>
+      </div>
+
+      <!--
+          The cream body of the modal that holds the booking form.
+          The form collects the booker's details and project information.
+      -->
+      <div class="modal-body" style="padding:32px; background-color:#F5F2EC;">
+        <form id="bookForm">
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Full Name *</label>
+              <input type="text" required placeholder="Your Full Name"
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+            <div class="col-md-6">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Company Name *</label>
+              <input type="text" required placeholder="Company Name"
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Phone Number (Optional)</label>
+              <input type="tel" placeholder="+356 XXXX XXXX"
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+            <div class="col-md-6">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Email Address *</label>
+              <input type="email" required placeholder="Email Address"
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Project Type *</label>
+              <select required
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;">
+                <option value="" disabled selected>Project Type</option>
+                <option>Fashion Editorial</option>
+                <option>Commercial</option>
+                <option>Runway</option>
+                <option>Beauty</option>
+                <option>Lifestyle</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Project Title *</label>
+              <input type="text" required placeholder="Project Title"
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Project Description *</label>
+            <textarea required rows="3" placeholder="Project Description"
+              style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;"></textarea>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Shoot Date *</label>
+              <input type="date" required
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+            <div class="col-md-6">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Shoot Duration *</label>
+              <input type="text" required placeholder="e.g. 4 hours / Full day"
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Location *</label>
+              <input type="text" required placeholder="Location"
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+            <div class="col-md-6">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Payment Terms *</label>
+              <select required
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;">
+                <option value="" disabled selected>Payment Terms</option>
+                <option>50% upfront / 50% on completion</option>
+                <option>Full payment upfront</option>
+                <option>Full payment on completion</option>
+                <option>To be discussed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Additional Information</label>
+            <textarea rows="3" placeholder="Add any additional information or requirements"
+              style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;"></textarea>
+          </div>
+
+          <div class="mb-2">
+            <input type="checkbox" id="bookTerms1" required style="accent-color:#C9A84E; margin-right:8px;" />
+            <label for="bookTerms1" style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; color:#1E2D4D;">
+              I understand this is a booking request and final terms will be confirmed with the model *
+            </label>
+          </div>
+
+          <div class="mb-4">
+            <input type="checkbox" id="bookTerms2" required style="accent-color:#C9A84E; margin-right:8px;" />
+            <label for="bookTerms2" style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; color:#1E2D4D;">
+              I agree to the platform's terms and conditions for bookings *
+            </label>
+          </div>
+
+          <div class="d-flex gap-3">
+            <button type="submit"
+              style="flex:1; background-color:#C9A84E; color:#1E2D4D; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; padding:14px; border:none; border-radius:0; cursor:pointer;">
+              Send Booking Request
+            </button>
+            <button type="button" data-bs-dismiss="modal"
+              style="flex:1; background-color:transparent; color:#1E2D4D; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; padding:14px; border:2px solid #1E2D4D; border-radius:0; cursor:pointer;">
+              Cancel
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
+    MESSAGE MODAL
+    This pop-up appears when the user clicks the "Message" button.
+    It lets the user send a short message directly to Sofia Rossi.
+-->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:0; border:none;">
+
+      <!--
+          Dark navy header with the modal title and close button.
+      -->
+      <div class="modal-header" style="background-color:#1E2D4D; border:none; padding:24px 32px;">
+        <h2 class="modal-title" id="messageModalLabel"
+          style="font-family:'Playfair Display',serif; font-size:22px; color:#C9A84E; margin:0;">
+          Message Sofia Rossi
+        </h2>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+          aria-label="Close message form"></button>
+      </div>
+
+      <!--
+          Cream body holding the message form fields.
+      -->
+      <div class="modal-body" style="padding:32px; background-color:#F5F2EC;">
+        <form id="messageForm">
+
+          <div class="mb-3">
+            <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Your Name *</label>
+            <input type="text" required placeholder="Your full name"
+              style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+          </div>
+
+          <div class="mb-3">
+            <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Email Address *</label>
+            <input type="email" required placeholder="your@email.com"
+              style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+          </div>
+
+          <div class="mb-3">
+            <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Subject *</label>
+            <input type="text" required placeholder="e.g. Collaboration Enquiry"
+              style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+          </div>
+
+          <div class="mb-4">
+            <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Message *</label>
+            <textarea required rows="5" placeholder="Write your message here..."
+              style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;"></textarea>
+          </div>
+
+          <div class="d-flex gap-3">
+            <button type="submit"
+              style="flex:1; background-color:#C9A84E; color:#1E2D4D; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; padding:14px; border:none; border-radius:0; cursor:pointer;">
+              Send Message
+            </button>
+            <button type="button" data-bs-dismiss="modal"
+              style="flex:1; background-color:transparent; color:#1E2D4D; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; padding:14px; border:2px solid #1E2D4D; border-radius:0; cursor:pointer;">
+              Cancel
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
+    THANK YOU MODAL
+    This pop-up is shown automatically after the user submits either the
+    booking form or the message form. It confirms the request was received.
+    JavaScript swaps in the right message text depending on which form was sent.
+-->
+<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:0; border:none; text-align:center;">
+      <div class="modal-body" style="padding:48px 32px; background-color:#F5F2EC;">
+
+        <!--
+            Gold circle with a tick inside — a visual confirmation that
+            the form was submitted successfully.
+        -->
+        <div style="width:80px; height:80px; background-color:#C9A84E; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 24px;">
+          <i class="bi bi-check-lg" style="font-size:36px; color:#1E2D4D;"></i>
+        </div>
+
+        <!-- The main "Request Sent!" heading -->
+        <h2 id="thankYouLabel"
+          style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:#1E2D4D; margin-bottom:12px;">
+          Request Sent!
+        </h2>
+
+        <!--
+            The follow-up message — JavaScript updates this text depending on
+            whether the user submitted a booking or a message.
+        -->
+        <p id="thankYouText"
+          style="font-family:'Plus Jakarta Sans',sans-serif; font-size:15px; color:#555; line-height:1.7; margin-bottom:32px;">
+          Thank you! We will be in touch shortly.
+        </p>
+
+        <!-- Close button to dismiss the thank you modal -->
+        <button type="button"
+          style="background-color:#C9A84E; color:#1E2D4D; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; padding:12px 36px; border:none; border-radius:0; cursor:pointer;"
+          data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
+    MODAL FORM SCRIPTS
+    When the booking or message form is submitted, this script:
+    1. Stops the page from reloading.
+    2. Closes the current modal.
+    3. Updates the thank you message with the correct text for that form.
+    4. Opens the thank you modal after a short delay so Bootstrap
+       has time to finish closing the previous one.
+-->
+<script>
+  document.getElementById('bookForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('thankYouText').textContent = 'Thank you for your booking request! Sofia Rossi will be in touch within 48 hours to confirm the details.';
+    bootstrap.Modal.getInstance(document.getElementById('bookModal')).hide();
+    setTimeout(function() {
+      new bootstrap.Modal(document.getElementById('thankYouModal')).show();
+    }, 400);
+  });
+
+  document.getElementById('messageForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('thankYouText').textContent = 'Your message has been sent to Sofia Rossi. She will get back to you soon!';
+    bootstrap.Modal.getInstance(document.getElementById('messageModal')).hide();
+    setTimeout(function() {
+      new bootstrap.Modal(document.getElementById('thankYouModal')).show();
+    }, 400);
+  });
+</script>
+
 
 </body>
 </html>
