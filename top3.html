@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mudelli Top 3 Models — our absolute favourite models on the platform." />
+  <title>Top 3 Models — Mudelli</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- My custom styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Extra styles just for the top 3 page */
+
+    /* Page header section */
+    .top3-hero {
+      background-color: var(--mud-navy);
+      padding: 140px 0 60px;
+      text-align: center;
+    }
+
+    .top3-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--mud-gold);
+      margin-bottom: 12px;
+    }
+
+    .top3-hero p {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Main section background */
+    .top3-section {
+      background-color: var(--mud-cream);
+      padding: 80px 0;
+    }
+
+    /* Each model card */
+    .top3-card {
+      background-color: #ffffff;
+      box-shadow: 0 4px 20px rgba(30, 45, 77, 0.08);
+      margin-bottom: 48px;
+      overflow: hidden;
+      transition: box-shadow 0.25s ease;
+    }
+
+    .top3-card:hover {
+      box-shadow: 0 12px 40px rgba(30, 45, 77, 0.15);
+    }
+
+    /* The rank number badge */
+    .rank-badge {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: var(--mud-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      z-index: 2;
+    }
+
+    /* Image wrapper so rank badge overlays it */
+    .top3-img-wrap {
+      position: relative;
+    }
+
+    /* The model photo */
+    .top3-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    /* The content area next to the image */
+    .top3-content {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* The level badge — Beginner, Intermediate, Professional */
+    .level-badge {
+      display: inline-block;
+      background-color: var(--mud-navy);
+      color: var(--mud-gold);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      margin-bottom: 16px;
+    }
+
+    /* Model name */
+    .top3-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      margin-bottom: 8px;
+    }
+
+    /* Gold divider line */
+    .top3-divider {
+      width: 60px;
+      height: 3px;
+      background-color: var(--mud-gold);
+      margin-bottom: 20px;
+    }
+
+    /* Why I chose this model */
+    .top3-reason {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      color: var(--mud-navy);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    /* Stats row — height, experience etc */
+    .top3-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .top3-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top3-stat-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--mud-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
+
+    .top3-stat-value {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--mud-navy);
+    }
+
+    /* View profile button */
+    .btn-top3 {
+      display: inline-block;
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 12px 32px;
+      border: none;
+      border-radius: 0;
+      text-decoration: none;
+      transition: background-color 0.2s, color 0.2s;
+      align-self: flex-start;
+    }
+
+    .btn-top3:hover,
+    .btn-top3:focus {
+      background-color: var(--mud-navy);
+      color: var(--mud-gold);
+    }
+
+    /* Reverse layout for even cards — image on right */
+    .top3-card.reverse .top3-img-wrap {
+      order: 2;
+    }
+
+    .top3-card.reverse .top3-content {
+      order: 1;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 767.98px) {
+      .top3-img {
+        height: 300px;
+      }
+
+      .top3-content {
+        padding: 32px 24px;
+      }
+
+      .top3-name {
+        font-size: 28px;
+      }
+
+      .top3-card.reverse .top3-img-wrap {
+        order: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+  <!-- Main navigation bar — same on every page -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
+      aria-label="Main site navigation">
+      <div class="container-xxl px-4">
+
+        <!-- Logo -->
+        <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli homepage">
+          MUDELLI
+        </a>
+
+        <!-- Mobile toggle -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav links -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="models.html">Models</a></li>
+            <li class="nav-item"><a class="nav-link" href="casting-calls.html">Casting Calls</a></li>
+            <li class="nav-item"><a class="nav-link" href="become-a-model.html">Become A Model</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <a href="login.html" class="btn-nav-auth">LOGIN</a>
+            <a href="login.html#register" class="btn-nav-auth btn-nav-register">REGISTER NOW!</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main id="main-content">
+
+    <!-- Page header banner -->
+    <section class="top3-hero" aria-label="Top 3 models page header">
+      <div class="container">
+        <h1>Our Top 3 Models</h1>
+        <p>My absolute favourite models on Mudelli — representing beginner, intermediate and professional levels.</p>
+      </div>
+    </section>
+
+    <!-- Top 3 models section -->
+    <section class="top3-section" aria-labelledby="top3-heading">
+      <div class="container">
+
+        <h2 id="top3-heading" class="visually-hidden">Top 3 model profiles</h2>
+
+        <!-- 
+          Model 1 — Millie Evans
+          Ranked number 1, represents beginner / aspiring models
+        -->
+        <article class="top3-card" aria-label="Number 1 — Millie Evans">
+          <div class="row g-0">
+
+            <!-- Photo with rank badge -->
+            <div class="col-md-5 top3-img-wrap">
+              <div class="rank-badge" aria-label="Ranked number 1">1</div>
+              <img
+                src="images/model-millie1.jpg"
+                alt="Millie Evans — top ranked model on Mudelli"
+                class="top3-img"
+                loading="eager" />
+            </div>
+
+            <!-- Model details -->
+            <div class="col-md-7 top3-content">
+              <span class="level-badge" aria-label="Level: Beginner">Beginner / Aspiring</span>
+              <h3 class="top3-name">Millie Evans</h3>
+              <div class="top3-divider" aria-hidden="true"></div>
+
+              <p class="top3-reason">
+                Millie is my number one pick because of her incredible natural talent and raw potential.
+                Despite being at the beginning of her modelling journey, she brings an authenticity
+                in front of the camera that is rare to find. Her ability to connect emotionally with
+                the lens makes every shot feel genuine and effortless. She represents everything
+                that Mudelli stands for — fresh faces with confidence, personality, and passion.
+              </p>
+
+              <div class="top3-stats" aria-label="Model details">
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Level</span>
+                  <span class="top3-stat-value">Beginner</span>
+                </div>
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Specialty</span>
+                  <span class="top3-stat-value">Editorial</span>
+                </div>
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Based In</span>
+                  <span class="top3-stat-value">Valletta, Malta</span>
+                </div>
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Height</span>
+                  <span class="top3-stat-value">172 cm</span>
+                </div>
+              </div>
+
+              <a href="model-profile.html" class="btn-top3" aria-label="View Millie Evans full profile">
+                View Profile
+              </a>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- 
+          Model 2 — Elena Vella
+          Ranked number 2, represents intermediate models
+        -->
+        <article class="top3-card reverse" aria-label="Number 2 — Elena Vella">
+          <div class="row g-0">
+
+            <!-- Photo with rank badge -->
+            <div class="col-md-5 top3-img-wrap">
+              <div class="rank-badge" aria-label="Ranked number 2">2</div>
+              <img
+                src="images/model-elena1.jpg"
+                alt="Elena Vella — second ranked model on Mudelli"
+                class="top3-img"
+                loading="lazy" />
+            </div>
+
+            <!-- Model details -->
+            <div class="col-md-7 top3-content">
+              <span class="level-badge" aria-label="Level: Intermediate">Intermediate</span>
+              <h3 class="top3-name">Elena Vella</h3>
+              <div class="top3-divider" aria-hidden="true"></div>
+
+              <p class="top3-reason">
+                Elena takes the second spot for her remarkable versatility and growing portfolio.
+                Having built solid experience across commercial and editorial work, she demonstrates
+                the dedication and professionalism that sets intermediate models apart. Elena's
+                ability to adapt her look and style to different briefs makes her an incredibly
+                valuable talent. Her consistency and reliability on set have earned her a strong
+                reputation within the Maltese modelling industry.
+              </p>
+
+              <div class="top3-stats" aria-label="Model details">
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Level</span>
+                  <span class="top3-stat-value">Intermediate</span>
+                </div>
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Specialty</span>
+                  <span class="top3-stat-value">Commercial</span>
+                </div>
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Based In</span>
+                  <span class="top3-stat-value">Sliema, Malta</span>
+                </div>
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Height</span>
+                  <span class="top3-stat-value">175 cm</span>
+                </div>
+              </div>
+
+              <a href="model-profile.html" class="btn-top3" aria-label="View Elena Vella full profile">
+                View Profile
+              </a>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- 
+          Model 3 — Sofia Rossi
+          Ranked number 3, represents professional models
+        -->
+        <article class="top3-card" aria-label="Number 3 — Sofia Rossi">
+          <div class="row g-0">
+
+            <!-- Photo with rank badge -->
+            <div class="col-md-5 top3-img-wrap">
+              <div class="rank-badge" aria-label="Ranked number 3">3</div>
+              <img
+                src="images/model-sofia1.jpg"
+                alt="Sofia Rossi — third ranked model on Mudelli"
+                class="top3-img"
+                loading="lazy" />
+            </div>
+
+            <!-- Model details -->
+            <div class="col-md-7 top3-content">
+              <span class="level-badge" aria-label="Level: Professional">Professional</span>
+              <h3 class="top3-name">Sofia Rossi</h3>
+              <div class="top3-divider" aria-hidden="true"></div>
+
+              <p class="top3-reason">
+                Sofia rounds off my top three as the ultimate professional. With years of experience
+                spanning runway, editorial, and international campaigns, she is the benchmark of
+                what a professional model looks like on Mudelli. Her portfolio speaks for itself —
+                every image is a masterclass in posing, expression and presence. Sofia's work ethic
+                and dedication to her craft inspire both aspiring models and industry professionals
+                alike. She is truly a role model on our platform.
+              </p>
+
+              <div class="top3-stats" aria-label="Model details">
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Level</span>
+                  <span class="top3-stat-value">Professional</span>
+                </div>
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Specialty</span>
+                  <span class="top3-stat-value">Runway &amp; Editorial</span>
+                </div>
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Based In</span>
+                  <span class="top3-stat-value">St. Julian's, Malta</span>
+                </div>
+                <div class="top3-stat">
+                  <span class="top3-stat-label">Height</span>
+                  <span class="top3-stat-value">178 cm</span>
+                </div>
+              </div>
+
+              <a href="model-profile.html" class="btn-top3" aria-label="View Sofia Rossi full profile">
+                View Profile
+              </a>
+            </div>
+
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer — same on every page -->
+  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+    <div class="container-xxl px-4">
+      <div class="row g-5 py-5">
+
+        <div class="col-lg-4 col-md-12">
+          <a href="index.html" class="footer-logo d-inline-block mb-3">MUDELLI</a>
+          <p class="footer-about">Connecting talent with opportunity in Malta and internationally.</p>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Quick Links</h3>
+          <nav aria-label="Footer quick links">
+            <ul class="footer-links list-unstyled">
+              <li><a href="models.html">Browse Models</a></li>
+              <li><a href="casting-calls.html">Casting Calls</a></li>
+              <li><a href="become-a-model.html">Become a Model</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Support</h3>
+          <nav aria-label="Footer support links">
+            <ul class="footer-links list-unstyled">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety &amp; Security</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="col-lg-4 col-md-4">
+          <h3 class="footer-heading">Follow Us</h3>
+          <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Instagram" role="listitem">
+              <i class="bi bi-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Facebook" role="listitem">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="X Twitter" role="listitem">
+              <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="footer-divider" aria-hidden="true" />
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
+        <p class="footer-copyright mb-0">© 2026 Mudelli. All rights reserved.</p>
+        <button class="accessibility-btn" type="button" aria-label="Open accessibility options">
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
+    crossorigin="anonymous"></script>
+
+  <!-- Navbar scroll effect -->
+  <script>
+    /* Makes the navbar turn navy when the user scrolls down */
+    window.addEventListener('scroll', function () {
+      var nav = document.getElementById('mainNav');
+      if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 80);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
