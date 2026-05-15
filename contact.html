@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- A short description that shows up in search results -->
+  <meta name="description"
+    content="Contact Mudelli — get in touch for inquiries, collaborations, or support." />
+
+  <title>Contact Us — Mudelli</title>
+
+  <!-- Bootstrap 5 CSS for the layout and utility classes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap Icons for the send button and contact info icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts: Playfair Display for headings, Plus Jakarta Sans for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- The shared site stylesheet with brand colours and fonts -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Styles that only apply to this contact page -->
+  <style>
+
+    /*
+     * HERO SECTION
+     * The top area with the large gold "CONTACT US" title and the subtitle
+     */
+    .ct-hero {
+      background-color: var(--mud-cream);
+      padding-top: 130px;
+      padding-bottom: 60px;
+    }
+
+    /* The big gold page title — "CONTACT US" */
+    .ct-hero-title {
+      font-family: var(--font-display);
+      font-size: 96px;
+      font-weight: 400;
+      color: var(--mud-gold);
+      line-height: 1;
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    /* The short description below the title */
+    .ct-hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: #111;
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /*
+     * MAIN CONTENT SECTION
+     * Split layout: photo on the left, form on the right
+     */
+    .ct-main {
+      background-color: #F4F4F4;
+      padding: 0 0 72px;
+    }
+
+    /* The contact-us.jpg photo on the left — fills the full height of the row */
+    .ct-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /*
+     * FORM CARD
+     * White card on the right side that holds the form
+     */
+    .ct-form-card {
+      background-color: var(--mud-white);
+      padding: 48px 40px;
+    }
+
+    /* "Send Message" heading at the top of the form card */
+    .ct-form-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--mud-gold);
+    }
+
+    /*
+     * FIELDSET GROUPS
+     * Each group of related fields wrapped in its own fieldset
+     */
+    .ct-fieldset {
+      border: none;
+      padding: 0;
+      margin: 0 0 32px;
+    }
+
+    .ct-fieldset:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* The section label at the top of each fieldset */
+    .ct-legend {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--mud-light-gray);
+      margin-bottom: 20px;
+      width: 100%;
+      display: block;
+    }
+
+    /* Labels above each form input */
+    .ct-label {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Small gold asterisk on required fields */
+    .ct-required {
+      color: var(--mud-gold);
+      margin-left: 2px;
+    }
+
+    /* Single-line text and email inputs */
+    .ct-input {
+      width: 100%;
+      height: 44px;
+      background-color: #F4F4F4;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 8px 12px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      transition: border-color 0.2s;
+    }
+
+    /* Taller textarea for the message field */
+    .ct-textarea {
+      width: 100%;
+      height: 130px;
+      background-color: #F4F4F4;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 10px 12px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+
+    /* Gold underline appears when a field is focused */
+    .ct-input:focus,
+    .ct-textarea:focus {
+      outline: none;
+      border-bottom-color: var(--mud-gold);
+      box-shadow: var(--focus-ring);
+    }
+
+    .ct-input::placeholder,
+    .ct-textarea::placeholder {
+      color: #A6A3A3;
+      font-weight: 400;
+    }
+
+    /* Space below each label + input pair */
+    .ct-field {
+      margin-bottom: 18px;
+    }
+
+    /* Gold radio/checkbox accent colour */
+    input[type="radio"],
+    input[type="checkbox"] {
+      accent-color: var(--mud-gold);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    /* Label text next to radio and checkbox inputs */
+    .ct-radio-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--mud-navy);
+      cursor: pointer;
+      margin-left: 6px;
+    }
+
+    /* Select dropdown — same gray style as the text inputs */
+    .ct-select {
+      width: 100%;
+      height: 44px;
+      background-color: #F4F4F4;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 8px 12px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mud-navy);
+      transition: border-color 0.2s;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .ct-select:focus {
+      outline: none;
+      border-bottom-color: var(--mud-gold);
+      box-shadow: var(--focus-ring);
+    }
+
+    /* Small hint text shown below a field (e.g. phone format) */
+    .ct-hint {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* "Send Message" submit button — gold background, navy text */
+    .btn-send {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0;
+      padding: 14px 40px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-send:hover,
+    .btn-send:focus {
+      opacity: 0.88;
+      color: var(--mud-navy);
+    }
+
+    /* "Cancel" reset button — outlined navy, sits next to Submit */
+    .btn-cancel {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: transparent;
+      color: var(--mud-navy);
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      border: 2px solid var(--mud-navy);
+      border-radius: 0;
+      padding: 12px 32px;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .btn-cancel:hover,
+    .btn-cancel:focus {
+      background-color: var(--mud-navy);
+      color: var(--mud-white);
+    }
+
+    /*
+     * CONTACT INFO STRIP
+     * A navy row below the form/photo with email, phone, address, and hours
+     */
+    .ct-info-strip {
+      background-color: var(--mud-navy);
+      padding: 48px 0;
+    }
+
+    /* Each individual contact info item — icon + text side by side */
+    .ct-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    /* Gold circle containing the icon */
+    .ct-info-icon {
+      width: 44px;
+      height: 44px;
+      background-color: var(--mud-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mud-navy);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* The small label above each contact detail */
+    .ct-info-label {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 3px;
+    }
+
+    /* The actual contact detail text or link */
+    .ct-info-value {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--mud-white);
+      text-decoration: none;
+      margin: 0;
+    }
+
+    a.ct-info-value:hover {
+      color: var(--mud-gold);
+    }
+
+    /*
+     * RESPONSIVE — adjustments for smaller screens
+     */
+    @media (max-width: 991px) {
+      .ct-hero-title { font-size: 64px; }
+      .ct-photo { min-height: 320px; height: 320px; }
+      .ct-form-card { padding: 36px 24px; }
+    }
+
+    @media (max-width: 575px) {
+      .ct-hero-title { font-size: 48px; }
+      .ct-hero { padding-top: 100px; padding-bottom: 40px; }
+      .btn-send { width: 100%; justify-content: center; }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Lets keyboard users jump straight to the form, skipping the navbar -->
+  <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+  <!-- The fixed navigation bar shared across every page -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
+      aria-label="Main site navigation">
+      <div class="container-xxl px-4">
+
+        <!-- The Mudelli logo — clicking it goes back to the homepage -->
+        <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli — return to homepage">
+          MUDELLI
+        </a>
+
+        <!-- Hamburger button that shows the menu on small screens -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+          aria-label="Toggle main navigation menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation links — Contact is marked active because we are on this page -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="models.html">Models</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="casting-calls.html">Casting Calls</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link" href="become-a-model.html">Become A Model</a>
+            </li>
+            <li class="nav-item" role="listitem">
+              <a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Login and register buttons on the right side of the navbar -->
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <a href="login.html" class="btn-nav-auth" aria-label="Log in to your Mudelli account">LOGIN</a>
+            <a href="login.html#register" class="btn-nav-auth btn-nav-register"
+              aria-label="Create a new Mudelli account">REGISTER NOW!</a>
+          </div>
+
+        </div>
+        <!--
+            end of navbar collapse
+        -->
+      </div>
+      <!--
+          end of navbar container
+      -->
+    </nav>
+  </header>
+
+
+  <main id="main-content">
+
+    <!--
+        HERO SECTION
+        The large gold "CONTACT US" title and a short description
+        of why someone might get in touch
+    -->
+    <section class="ct-hero" aria-labelledby="ct-page-title">
+      <div class="container-xxl px-4">
+        <h1 class="ct-hero-title" id="ct-page-title">CONTACT&nbsp;&nbsp;US</h1>
+        <p class="ct-hero-subtitle">
+          For any inquiries, collaborations, or just to say hello, we would love to hear from you!
+          Reach out and our team will get back to you as soon as possible.
+        </p>
+      </div>
+    </section>
+
+
+    <!--
+        MAIN SECTION
+        Left column: the contact-us.jpg photo
+        Right column: the contact form
+    -->
+    <section class="ct-main" aria-label="Contact form and photo">
+      <div class="container-xxl px-4">
+        <div class="row g-0 align-items-stretch">
+
+          <!-- LEFT COLUMN — the contact photo -->
+          <div class="col-lg-5 d-none d-lg-block">
+            <img
+              src="images/contact-us.jpg"
+              alt="A person working at a desk — contact the Mudelli team"
+              class="ct-photo" />
+          </div>
+
+          <!-- RIGHT COLUMN — the contact form -->
+          <div class="col-lg-7">
+            <div class="ct-form-card">
+
+              <!-- Form card heading -->
+              <h2 class="ct-form-title">Send Message</h2>
+
+              <!--
+                  The form uses mailto so clicking Send opens the user's
+                  email app with all the fields already filled in
+              -->
+              <form
+                action="mailto:contact@mudelli.com"
+                method="post"
+                enctype="text/plain"
+                novalidate
+                aria-label="Send a message to Mudelli">
+
+                <!--
+                    PERSONAL DETAILS FIELDSET
+                    Collects first name, last name, and age group
+                -->
+                <fieldset class="ct-fieldset">
+                  <legend class="ct-legend">Personal Details</legend>
+
+                  <!-- First name and last name sit side by side -->
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="ct-field">
+                        <label class="ct-label" for="ct-first-name">
+                          First Name <span class="ct-required" aria-hidden="true">*</span>
+                        </label>
+                        <input class="ct-input" type="text" id="ct-first-name" name="First Name"
+                          placeholder="e.g. Sofia" required aria-required="true"
+                          autocomplete="given-name" />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="ct-field">
+                        <label class="ct-label" for="ct-last-name">
+                          Last Name <span class="ct-required" aria-hidden="true">*</span>
+                        </label>
+                        <input class="ct-input" type="text" id="ct-last-name" name="Last Name"
+                          placeholder="e.g. Rossi" required aria-required="true"
+                          autocomplete="family-name" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Age group radio buttons — the user picks one range -->
+                  <div class="ct-field">
+                    <p class="ct-label mb-2">Age Group</p>
+                    <div class="d-flex flex-wrap gap-4" role="radiogroup" aria-label="Select your age group">
+                      <div class="d-flex align-items-center gap-2">
+                        <input type="radio" id="age-15" name="Age Group" value="15-18" />
+                        <label for="age-15" class="ct-radio-label">15 – 18</label>
+                      </div>
+                      <div class="d-flex align-items-center gap-2">
+                        <input type="radio" id="age-19" name="Age Group" value="19-25" />
+                        <label for="age-19" class="ct-radio-label">19 – 25</label>
+                      </div>
+                      <div class="d-flex align-items-center gap-2">
+                        <input type="radio" id="age-26" name="Age Group" value="26-35" />
+                        <label for="age-26" class="ct-radio-label">26 – 35</label>
+                      </div>
+                      <div class="d-flex align-items-center gap-2">
+                        <input type="radio" id="age-36" name="Age Group" value="36+" />
+                        <label for="age-36" class="ct-radio-label">36+</label>
+                      </div>
+                    </div>
+                  </div>
+
+                </fieldset>
+
+                <!--
+                    CONTACT INFORMATION FIELDSET
+                    Collects email, phone number, and marketing preference
+                -->
+                <fieldset class="ct-fieldset">
+                  <legend class="ct-legend">Contact Information</legend>
+
+                  <!-- The email address Mudelli will use to reply -->
+                  <div class="ct-field">
+                    <label class="ct-label" for="ct-email">
+                      Email Address <span class="ct-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="ct-input" type="email" id="ct-email" name="Email Address"
+                      placeholder="e.g. sofia@email.com" required aria-required="true"
+                      autocomplete="email" />
+                  </div>
+
+                  <!-- Phone number with a format hint below the field -->
+                  <div class="ct-field">
+                    <label class="ct-label" for="ct-phone">
+                      Phone Number <span class="ct-required" aria-hidden="true">*</span>
+                    </label>
+                    <input class="ct-input" type="tel" id="ct-phone" name="Phone Number"
+                      placeholder="e.g. 9922 4466" required aria-required="true"
+                      pattern="[0-9]{4} [0-9]{4}" aria-describedby="ct-phone-hint"
+                      autocomplete="tel" />
+                    <small id="ct-phone-hint" class="ct-hint">Format: 9922 4466</small>
+                  </div>
+
+                  <!-- Checkbox — the user opts in to receiving offers by email -->
+                  <div class="d-flex align-items-center gap-2">
+                    <input type="checkbox" id="ct-offers" name="Contact me about offers" value="yes" />
+                    <label for="ct-offers" class="ct-radio-label">
+                      Contact me about new offers and opportunities
+                    </label>
+                  </div>
+
+                </fieldset>
+
+                <!--
+                    MESSAGE DETAILS FIELDSET
+                    Collects which department to contact and the actual message
+                -->
+                <fieldset class="ct-fieldset">
+                  <legend class="ct-legend">Message Details</legend>
+
+                  <!-- Dropdown so the message is sent to the right team -->
+                  <div class="ct-field">
+                    <label class="ct-label" for="ct-department">
+                      Department <span class="ct-required" aria-hidden="true">*</span>
+                    </label>
+                    <select class="ct-select" id="ct-department" name="Department"
+                      required aria-required="true">
+                      <option value="" disabled selected>Please select a department</option>
+                      <option value="General Enquiry">General Enquiry</option>
+                      <option value="Model Applications">Model Applications</option>
+                      <option value="Casting & Bookings">Casting &amp; Bookings</option>
+                      <option value="Brand Partnerships">Brand Partnerships</option>
+                      <option value="Technical Support">Technical Support</option>
+                    </select>
+                  </div>
+
+                  <!-- The main message the user wants to send -->
+                  <div class="ct-field">
+                    <label class="ct-label" for="ct-message">
+                      Message <span class="ct-required" aria-hidden="true">*</span>
+                    </label>
+                    <textarea class="ct-textarea" id="ct-message" name="Message"
+                      placeholder="Write your message here..." required aria-required="true"></textarea>
+                  </div>
+
+                </fieldset>
+
+                <!--
+                    FORM BUTTONS
+                    Send opens the email app with the form filled in.
+                    Cancel clears all the fields so the user can start again.
+                -->
+                <div class="d-flex gap-3 flex-wrap mt-2">
+                  <button type="submit" class="btn-send" aria-label="Send your message to Mudelli">
+                    <i class="bi bi-send" aria-hidden="true"></i>
+                    Send Message
+                  </button>
+                  <button type="reset" class="btn-cancel" aria-label="Clear the form and start again">
+                    Cancel
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!--
+        CONTACT INFO STRIP
+        A navy bar below the form showing the team's email, phone,
+        address, and office hours so users have other ways to get in touch
+    -->
+    <aside class="ct-info-strip" aria-label="Contact information">
+      <div class="container-xxl px-4">
+        <div class="row g-4 justify-content-center">
+
+          <!-- Email address -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="ct-info-item">
+              <div class="ct-info-icon" aria-hidden="true">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div>
+                <p class="ct-info-label">Email us at</p>
+                <a class="ct-info-value" href="mailto:contact@mudelli.com">contact@mudelli.com</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone number -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="ct-info-item">
+              <div class="ct-info-icon" aria-hidden="true">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <p class="ct-info-label">Call us on</p>
+                <a class="ct-info-value" href="tel:+35679123456">+356 7912 3456</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Office address -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="ct-info-item">
+              <div class="ct-info-icon" aria-hidden="true">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div>
+                <p class="ct-info-label">Find us at</p>
+                <p class="ct-info-value">Valletta, Malta</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Office hours -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="ct-info-item">
+              <div class="ct-info-icon" aria-hidden="true">
+                <i class="bi bi-clock-fill"></i>
+              </div>
+              <div>
+                <p class="ct-info-label">Office hours</p>
+                <p class="ct-info-value">Mon &ndash; Fri, 9:00 &ndash; 17:00</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+
+  <!-- The site footer with links and social media icons -->
+  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+    <div class="container-xxl px-4">
+
+      <div class="row g-5 py-5">
+
+        <!-- Column 1 — brand name and short tagline -->
+        <div class="col-lg-4 col-md-12">
+          <a href="index.html" class="footer-logo d-inline-block mb-3"
+            aria-label="Mudelli — return to homepage">MUDELLI</a>
+          <p class="footer-about">
+            Connecting talent with opportunity in Malta and internationally.
+          </p>
+        </div>
+
+        <!-- Column 2 — quick navigation links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Quick Links</h3>
+          <nav aria-label="Footer quick links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="models.html">Browse Models</a></li>
+              <li><a href="casting-calls.html">Casting Calls</a></li>
+              <li><a href="become-a-model.html">Become a Model</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 3 — help and policy links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h3 class="footer-heading">Support</h3>
+          <nav aria-label="Footer support links navigation">
+            <ul class="footer-links list-unstyled">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety &amp; Security</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Column 4 — social media icons -->
+        <div class="col-lg-4 col-md-4">
+          <h3 class="footer-heading">Follow Us</h3>
+          <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+              <i class="bi bi-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+              <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <!--
+          end of footer columns
+      -->
+
+      <!-- Thin line above the copyright bar -->
+      <hr class="footer-divider" aria-hidden="true" />
+
+      <!-- Copyright text and accessibility options button -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
+        <p class="footer-copyright mb-0">© 2026 Mudelli. All rights reserved.</p>
+
+        <!-- This button opens accessibility settings -->
+        <button class="accessibility-btn" type="button" aria-label="Open accessibility options"
+          aria-haspopup="dialog">
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div>
+    <!--
+        end of footer container
+    -->
+  </footer>
+
+
+  <!-- Bootstrap JavaScript — needed for the mobile navbar toggle to work -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
