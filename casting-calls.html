@@ -337,6 +337,47 @@
       }
     }
 
+    /*
+        These rules stop the modal buttons and labels from being overridden
+        by any global button or label styles from style.css.
+        Without these, modal buttons may appear too wide or styled incorrectly.
+    */
+    .modal .btn-close {
+      display: block;
+      width: auto;
+    }
+
+    .modal button[type="submit"],
+    .modal button[type="button"] {
+      display: inline-block;
+      width: auto;
+      background-color: #C9A84E;
+      color: #1E2D4D;
+      border: none;
+      border-radius: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px;
+      cursor: pointer;
+    }
+
+    .modal button[data-bs-dismiss="modal"] {
+      background-color: transparent !important;
+      color: #1E2D4D !important;
+      border: 2px solid #1E2D4D !important;
+    }
+
+    .modal label {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1E2D4D;
+      margin-bottom: 6px;
+      margin-top: 0;
+    }
+
   </style>
 
 </head>
@@ -517,7 +558,7 @@
                     Two action buttons — apply directly or read more details first
                 -->
                 <div class="cc-card-actions">
-                  <a href="#" class="btn-apply" aria-label="Apply for the Editorial Shoot casting">Apply Now!</a>
+                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
                   <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Editorial Shoot casting">View Details</a>
                 </div>
 
@@ -557,7 +598,7 @@
                 </ul>
 
                 <div class="cc-card-actions">
-                  <a href="#" class="btn-apply" aria-label="Apply for the Commercial Ad casting">Apply Now!</a>
+                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal" aria-label="Apply for the Commercial Ad casting">Apply Now!</button>
                   <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Commercial Ad casting">View Details</a>
                 </div>
 
@@ -597,7 +638,7 @@
                 </ul>
 
                 <div class="cc-card-actions">
-                  <a href="#" class="btn-apply" aria-label="Apply for the Fitness Shoot casting">Apply Now!</a>
+                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal" aria-label="Apply for the Fitness Shoot casting">Apply Now!</button>
                   <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Fitness Shoot casting">View Details</a>
                 </div>
 
@@ -647,7 +688,7 @@
                 </ul>
 
                 <div class="cc-card-actions">
-                  <a href="#" class="btn-apply" aria-label="Apply for the Summer Campaign casting">Apply Now!</a>
+                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal" aria-label="Apply for the Summer Campaign casting">Apply Now!</button>
                   <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Summer Campaign casting">View Details</a>
                 </div>
 
@@ -697,7 +738,7 @@
                 </ul>
 
                 <div class="cc-card-actions">
-                  <a href="#" class="btn-apply" aria-label="Apply for the Runway Show casting">Apply Now!</a>
+                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal" aria-label="Apply for the Runway Show casting">Apply Now!</button>
                   <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Runway Show casting">View Details</a>
                 </div>
 
@@ -911,11 +952,170 @@
 
 
   <!--
-      Bootstrap JS bundle — needed for the navbar toggle and the carousel
+      Bootstrap JS bundle — needed for the navbar toggle, carousel, and modals
   -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!--
+      APPLY NOW MODAL
+      This pop-up appears when the user clicks any "Apply Now!" button on this page.
+      It collects the applicant's basic details and a short message.
+  -->
+  <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius:0; border:none;">
+
+        <!--
+            Dark navy header bar with the modal title and a close button.
+        -->
+        <div class="modal-header" style="background-color:#1E2D4D; border:none; padding:24px 32px;">
+          <h2 class="modal-title" id="applyModalLabel"
+            style="font-family:'Playfair Display',serif; font-size:22px; color:#C9A84E; margin:0;">
+            Apply Now
+          </h2>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+            aria-label="Close application form"></button>
+        </div>
+
+        <!--
+            Cream body area holding the application form fields.
+        -->
+        <div class="modal-body" style="padding:32px; background-color:#F5F2EC;">
+          <form id="applyForm">
+
+            <!--
+                Full Name field
+            -->
+            <div class="mb-3">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Full Name *</label>
+              <input type="text" required placeholder="Your full name"
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+
+            <!--
+                Email Address field
+            -->
+            <div class="mb-3">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Email Address *</label>
+              <input type="email" required placeholder="your@email.com"
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+
+            <!--
+                Phone Number field — optional so applicants without a phone can still apply
+            -->
+            <div class="mb-3">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Phone Number (Optional)</label>
+              <input type="tel" placeholder="+356 XXXX XXXX"
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;" />
+            </div>
+
+            <!--
+                Experience Level dropdown — lets the casting team quickly see
+                how much experience the applicant has
+            -->
+            <div class="mb-3">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Experience Level *</label>
+              <select required
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;">
+                <option value="" disabled selected>Select your experience level</option>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Professional</option>
+              </select>
+            </div>
+
+            <!--
+                Message field — a free text box for the applicant to introduce
+                themselves or mention anything relevant to this casting
+            -->
+            <div class="mb-4">
+              <label style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#1E2D4D; display:block; margin-bottom:6px;">Message *</label>
+              <textarea required rows="4" placeholder="Tell us a little about yourself and why you are interested in this casting..."
+                style="width:100%; padding:10px 14px; border:1px solid #E0E4EB; background:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; border-radius:0;"></textarea>
+            </div>
+
+            <!--
+                Submit and Cancel buttons sit side by side
+            -->
+            <div class="d-flex gap-3">
+              <button type="submit"
+                style="flex:1; background-color:#C9A84E; color:#1E2D4D; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; padding:14px; border:none; border-radius:0; cursor:pointer;">
+                Submit Application
+              </button>
+              <button type="button" data-bs-dismiss="modal"
+                style="flex:1; background-color:transparent; color:#1E2D4D; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; padding:14px; border:2px solid #1E2D4D; border-radius:0; cursor:pointer;">
+                Cancel
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--
+      THANK YOU MODAL
+      This pop-up is shown automatically after the application form is submitted.
+      It confirms that the application was received.
+  -->
+  <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius:0; border:none; text-align:center;">
+        <div class="modal-body" style="padding:48px 32px; background-color:#F5F2EC;">
+
+          <!--
+              Gold circle with a tick — a clear visual confirmation that
+              the form was submitted successfully.
+          -->
+          <div style="width:80px; height:80px; background-color:#C9A84E; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 24px;">
+            <i class="bi bi-check-lg" style="font-size:36px; color:#1E2D4D;"></i>
+          </div>
+
+          <!-- Main confirmation heading -->
+          <h2 id="thankYouLabel"
+            style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:#1E2D4D; margin-bottom:12px;">
+            Application Received!
+          </h2>
+
+          <!-- Short message telling the applicant what to expect next -->
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:15px; color:#555; line-height:1.7; margin-bottom:32px;">
+            Thank you for applying! We will be in touch within 48 hours.
+          </p>
+
+          <!-- Close button to dismiss the thank you message -->
+          <button type="button"
+            style="background-color:#C9A84E; color:#1E2D4D; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; padding:12px 36px; border:none; border-radius:0; cursor:pointer;"
+            data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--
+      MODAL FORM SCRIPT
+      When the application form is submitted this script:
+      1. Stops the page from reloading.
+      2. Closes the apply modal.
+      3. Opens the thank you modal after a short delay so Bootstrap
+         has time to finish closing the first modal before opening the second.
+  -->
+  <script>
+    document.getElementById('applyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      bootstrap.Modal.getInstance(document.getElementById('applyModal')).hide();
+      setTimeout(function() {
+        new bootstrap.Modal(document.getElementById('thankYouModal')).show();
+      }, 400);
+    });
+  </script>
+
 
 </body>
 
