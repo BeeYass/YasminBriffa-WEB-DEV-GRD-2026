@@ -5,48 +5,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!--
-      SEO description for the Become a Model page
-  -->
+  <!-- SEO description for the Become a Model page -->
   <meta name="description"
     content="Apply to become a Mudelli model. Upload your photos and personal details to be considered for fashion, editorial, and commercial opportunities in Malta and beyond." />
 
   <title>Become A Model — Mudelli</title>
 
-  <!--
-      Bootstrap 5.3 CSS framework
-  -->
+  <!-- Bootstrap 5.3 CSS framework -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 
-  <!--
-      Bootstrap Icons used for the upload icon and social links
-  -->
+  <!-- Bootstrap Icons used for the upload icon and social links -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
 
-  <!--
-      Google Fonts: Playfair Display for headings, Plus Jakarta Sans for body text
-  -->
+  <!-- Google Fonts: Playfair Display for headings, Plus Jakarta Sans for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
     rel="stylesheet" />
 
-  <!--
-      Shared site styles
-  -->
+  <!-- Shared site styles -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!--
-      Page-specific styles for the Become a Model page only
-  -->
+  <!-- Page-specific styles for the Become a Model page only -->
   <style>
 
-    /*
-     * HERO SECTION — the large banner image at the top of the page
-     * with the gold "Become A Model" heading overlaid on top
-     */
     .bam-hero {
       min-height: 520px;
       background-image: url('images/main-become-model.jpg');
@@ -57,7 +41,6 @@
       align-items: center;
     }
 
-    /* dark overlay so the gold text is easy to read against the photo */
     .bam-hero::after {
       content: '';
       position: absolute;
@@ -65,7 +48,6 @@
       background-color: rgba(0, 0, 0, 0.52);
     }
 
-    /* keeps the text above the dark overlay */
     .bam-hero-inner {
       position: relative;
       z-index: 1;
@@ -81,10 +63,6 @@
       text-align: center;
     }
 
-    /*
-     * INTRO SECTION — short description of what modelling with Mudelli
-     * involves, placed next to a photo of a model
-     */
     .bam-intro {
       padding: 64px 0;
       background-color: var(--mud-white);
@@ -98,7 +76,6 @@
       margin-bottom: 20px;
     }
 
-    /* highlighted note box for the "no walk-ins" reminder */
     .bam-intro-note {
       background-color: #F4F4F4;
       border-left: 4px solid var(--mud-gold);
@@ -109,25 +86,16 @@
       font-weight: 600;
     }
 
-    /*
-     * FORM SECTION — the full application form sits on a cream background
-     * with a white card wrapping all the form fields
-     */
     .bam-form-section {
       background-color: var(--mud-cream);
       padding: 64px 0;
     }
 
-    /* white card that wraps the whole form */
     .bam-form-card {
       background-color: var(--mud-white);
       padding: 48px;
     }
 
-    /*
-     * FIELDSET GROUPS — each section of the form (Personal Details,
-     * Physical Attributes, etc.) is wrapped in a fieldset
-     */
     .bam-fieldset {
       border: none;
       padding: 0;
@@ -138,7 +106,6 @@
       margin-bottom: 0;
     }
 
-    /* gold-underlined heading for each form section */
     .bam-legend {
       font-family: var(--font-display);
       font-size: 24px;
@@ -151,9 +118,6 @@
       display: block;
     }
 
-    /*
-     * FORM LABELS AND INPUTS
-     */
     .bam-label {
       font-family: var(--font-body);
       font-size: 16px;
@@ -163,13 +127,11 @@
       margin-bottom: 6px;
     }
 
-    /* required field indicator */
     .bam-required {
       color: var(--mud-gold);
       margin-left: 2px;
     }
 
-    /* all text inputs and selects share the same light-gray style */
     .bam-input,
     .bam-select {
       width: 100%;
@@ -198,21 +160,15 @@
       font-weight: 400;
     }
 
-    /* taller textarea for the "tell us about yourself" field */
     .bam-textarea {
       height: 110px;
       resize: vertical;
     }
 
-    /* spacing between each label+input pair */
     .bam-field {
       margin-bottom: 20px;
     }
 
-    /*
-     * RADIO AND CHECKBOX OPTIONS — styled as full-width clickable rows
-     * with a light gray background so they look like buttons
-     */
     .bam-option-label {
       font-family: var(--font-body);
       font-size: 16px;
@@ -239,7 +195,6 @@
       accent-color: var(--mud-gold);
     }
 
-    /* sub-question label inside an availability group */
     .bam-sub-label {
       font-family: var(--font-display);
       font-size: 16px;
@@ -248,10 +203,6 @@
       margin: 20px 0 10px;
     }
 
-    /*
-     * BODYSHOTS IMAGE — guide image showing what Portrait, Side Profile,
-     * and Full Body photos look like, placed above the upload buttons
-     */
     .bam-bodyshots-img {
       width: 100%;
       max-height: 380px;
@@ -261,7 +212,6 @@
       margin-bottom: 12px;
     }
 
-    /* label text shown above each upload button */
     .bam-photo-label {
       font-family: var(--font-body);
       font-size: 18px;
@@ -270,15 +220,10 @@
       margin-bottom: 10px;
     }
 
-    /*
-     * UPLOAD BUTTON — gold button with an upload icon that opens the
-     * file picker when clicked
-     */
     .bam-upload-wrap {
       margin-bottom: 16px;
     }
 
-    /* the hidden real file input — the styled label acts as the button */
     .bam-file-input {
       position: absolute;
       width: 1px;
@@ -287,7 +232,6 @@
       overflow: hidden;
     }
 
-    /* styled label that looks and behaves like the gold upload button */
     .btn-upload {
       display: inline-flex;
       align-items: center;
@@ -310,9 +254,6 @@
       opacity: 0.88;
     }
 
-    /*
-     * ACKNOWLEDGEMENT CHECKBOX ROW
-     */
     .bam-ack-label {
       font-family: var(--font-body);
       font-size: 15px;
@@ -337,9 +278,6 @@
       text-decoration: underline;
     }
 
-    /*
-     * SUBMIT BUTTON — large gold button at the bottom of the form
-     */
     .btn-submit-application {
       display: inline-block;
       background-color: var(--mud-gold);
@@ -366,9 +304,30 @@
       outline: none;
     }
 
-    /*
-     * RESPONSIVE — adjustments for tablet and mobile screens
-     */
+    .modal .btn-close { display: block; width: auto; }
+    .modal button[type="button"] {
+      display: inline-block;
+      width: auto;
+      background-color: #C9A84E;
+      color: #1E2D4D;
+      border: none;
+      border-radius: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px;
+      cursor: pointer;
+    }
+    .modal label {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1E2D4D;
+      margin-bottom: 6px;
+      margin-top: 0;
+    }
+
     @media (max-width: 991px) {
       .bam-hero-title {
         font-size: 52px;
@@ -401,39 +360,28 @@
 
 <body>
 
-  <!--
-      SKIP NAVIGATION — lets keyboard and screen-reader users jump
-      straight to the main form without going through the nav menu
-  -->
+  <!-- Skip link lets keyboard users jump straight to the main content without going through the nav -->
   <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
 
-  <!--
-      HEADER — fixed top navigation bar shared across all pages
-  -->
+  <!-- Fixed top navigation bar shared across all pages -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
       aria-label="Main site navigation">
       <div class="container-xxl px-4">
 
-        <!--
-            Brand logo — clicking it returns to the homepage
-        -->
+        <!-- Brand logo — clicking it returns to the homepage -->
         <a class="navbar-brand mudelli-logo" href="index.html" aria-label="Mudelli — return to homepage">
           MUDELLI
         </a>
 
-        <!--
-            Mobile hamburger button — shows or hides the nav links on small screens
-        -->
+        <!-- Mobile hamburger button — shows or hides the nav links on small screens -->
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
           aria-label="Toggle main navigation menu">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!--
-            Collapsible navigation links — Become A Model is marked active
-        -->
+        <!-- Collapsible navigation links — Become A Model is marked as the active page -->
         <div class="collapse navbar-collapse" id="navbarContent">
 
           <ul class="navbar-nav mx-auto gap-lg-4" role="list">
@@ -447,9 +395,7 @@
               <a class="nav-link" href="casting-calls.html">Casting Calls</a>
             </li>
             <li class="nav-item" role="listitem">
-              <!--
-                  aria-current="page" tells screen readers this is the current page
-              -->
+              <!-- aria-current="page" tells screen readers this is the current page -->
               <a class="nav-link active" aria-current="page" href="become-a-model.html">Become A Model</a>
             </li>
             <li class="nav-item" role="listitem">
@@ -457,9 +403,7 @@
             </li>
           </ul>
 
-          <!--
-              Login and Register buttons on the right side of the navbar
-          -->
+          <!-- Login and Register buttons on the right side of the navbar -->
           <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
             <a href="login.html" class="btn-nav-auth" aria-label="Log in to your Mudelli account">LOGIN</a>
             <a href="login.html#register" class="btn-nav-auth btn-nav-register"
@@ -467,26 +411,16 @@
           </div>
 
         </div>
-        <!--
-            end of navbar collapse
-        -->
+
       </div>
-      <!--
-          end of container
-      -->
     </nav>
   </header>
 
 
-  <!--
-      MAIN PAGE CONTENT
-  -->
+  <!-- Main page content -->
   <main id="main-content">
 
-    <!--
-        HERO SECTION — full-width background photo with the page
-        title "Become A Model" in gold overlaid on top
-    -->
+    <!-- Hero section — full-width background photo with the page title overlaid in gold -->
     <section class="bam-hero" aria-labelledby="bam-hero-heading">
       <div class="container-xxl px-4 bam-hero-inner">
         <h1 class="bam-hero-title" id="bam-hero-heading">Become A Model</h1>
@@ -494,10 +428,7 @@
     </section>
 
 
-    <!--
-        INTRO SECTION — short explanation of what to expect and how to apply,
-        centred below the hero image
-    -->
+    <!-- Intro section — short explanation of what to expect and how to apply -->
     <section class="bam-intro" aria-labelledby="bam-intro-heading">
       <div class="container-xxl px-4">
         <div class="row justify-content-center">
@@ -521,9 +452,7 @@
               grow. All you need is a positive attitude and reliability — we'll take care of the rest.
             </p>
 
-            <!--
-                Important notice reminding applicants there are no walk-in visits
-            -->
+            <!-- Important notice reminding applicants there are no walk-in visits -->
             <div class="bam-intro-note" role="note">
               Please Note: We do not accept walk-ins. We only accept online applications.
             </div>
@@ -533,10 +462,7 @@
     </section>
 
 
-    <!--
-        APPLICATION FORM SECTION — the full sign-up form where
-        applicants fill in their details and upload their photos
-    -->
+    <!-- Application form section — where applicants fill in their details and upload photos -->
     <section class="bam-form-section" aria-labelledby="form-heading">
       <div class="container-xxl px-4">
 
@@ -549,10 +475,7 @@
           <form action="#" method="post" novalidate aria-label="Model application form">
 
 
-            <!--
-                PERSONAL DETAILS — the applicant's name, contact info,
-                and address. Fields marked with * are required.
-            -->
+            <!-- Personal details — the applicant's name, contact info, and address -->
             <fieldset class="bam-fieldset">
               <legend class="bam-legend">Personal Details</legend>
 
@@ -677,10 +600,7 @@
             </fieldset>
 
 
-            <!--
-                PHYSICAL ATTRIBUTES — measurements and appearance details
-                used by agencies and clients to find the right fit for a role
-            -->
+            <!-- Physical attributes — measurements and appearance details -->
             <fieldset class="bam-fieldset">
               <legend class="bam-legend">Physical Attributes</legend>
 
@@ -764,10 +684,7 @@
             </fieldset>
 
 
-            <!--
-                EXPERIENCE LEVEL — helps us match the applicant to the
-                right opportunities based on how much they've modelled before
-            -->
+            <!-- Experience level — helps match the applicant to the right opportunities -->
             <fieldset class="bam-fieldset">
               <legend class="bam-legend">Experience Level</legend>
 
@@ -789,10 +706,7 @@
             </fieldset>
 
 
-            <!--
-                AVAILABILITY — lets us know how much time the applicant
-                can commit and whether they can travel for bookings
-            -->
+            <!-- Availability — lets us know how much time the applicant can commit to bookings -->
             <fieldset class="bam-fieldset">
               <legend class="bam-legend">Availability <small style="font-size: 15px; font-weight: 400;">(Important for bookings)</small></legend>
 
@@ -806,9 +720,7 @@
                 Part Time
               </label>
 
-              <!--
-                  Separate sub-question about whether the model can travel
-              -->
+              <!-- Sub-question asking whether the model is willing to travel -->
               <p class="bam-sub-label">Willing to travel?</p>
 
               <label class="bam-option-label">
@@ -824,10 +736,7 @@
             </fieldset>
 
 
-            <!--
-                SOCIAL MEDIA — optional usernames so agencies and clients
-                can get a feel for the applicant's online presence
-            -->
+            <!-- Social media — optional usernames so agencies can see the applicant's online presence -->
             <fieldset class="bam-fieldset">
               <legend class="bam-legend">Social Media</legend>
 
@@ -870,28 +779,18 @@
             </fieldset>
 
 
-            <!--
-                PHOTO UPLOADS — applicants need to send three types of photo:
-                a portrait, a side profile, and a full body shot.
-                The guide image shows what each type should look like.
-            -->
+            <!-- Photo uploads — three types of photo: portrait, side profile, and full body -->
             <fieldset class="bam-fieldset">
               <legend class="bam-legend">Photo Uploads</legend>
 
-              <!--
-                  Guide image showing the three photo types needed —
-                  Portrait on the left, Side Profile in the middle, Full Body on the right
-              -->
+              <!-- Guide image showing what each of the three photo types should look like -->
               <img
                 src="images/bodyshots.jpg"
                 alt="Guide showing three example shots: portrait facing forward, side profile, and full body"
                 class="bam-bodyshots-img"
                 loading="lazy" />
 
-              <!--
-                  Three columns — each has the photo type label directly above
-                  its own upload button so they stay perfectly aligned
-              -->
+              <!-- Three columns — each has the photo type label directly above its own upload button -->
               <div class="row g-4">
 
                 <div class="col-md-4 text-center">
@@ -931,10 +830,7 @@
             </fieldset>
 
 
-            <!--
-                ACKNOWLEDGEMENT — applicant confirms they have read
-                and accepted the Privacy Policy before submitting
-            -->
+            <!-- Acknowledgement — applicant confirms they accept the Privacy Policy before submitting -->
             <fieldset class="bam-fieldset">
               <legend class="bam-legend">Acknowledgement</legend>
 
@@ -947,11 +843,12 @@
             </fieldset>
 
 
-            <!--
-                SUBMIT BUTTON — sends the completed application to Mudelli
-            -->
+            <!-- Submit button — clicking this opens the thank you pop-up instead of refreshing the page -->
             <div class="text-center">
-              <button type="submit" class="btn-submit-application">
+              <button type="button" class="btn-submit-application"
+                data-bs-toggle="modal"
+                data-bs-target="#applicationThankYouModal"
+                aria-label="Submit your model application">
                 Submit Application
               </button>
             </div>
@@ -959,31 +856,20 @@
 
           </form>
         </div>
-        <!--
-            end of form card
-        -->
 
       </div>
     </section>
 
   </main>
-  <!--
-      end of main content
-  -->
 
 
-  <!--
-      FOOTER — dark navy bar with brand info, quick links, and social icons
-      Same footer used on every page of the site
-  -->
+  <!-- Site footer with links and social media icons -->
   <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
     <div class="container-xxl px-4">
 
       <div class="row g-5 py-5">
 
-        <!--
-            Column 1 — Brand name and short description
-        -->
+        <!-- Column 1 — brand name and short tagline -->
         <div class="col-lg-4 col-md-12">
           <a href="index.html" class="footer-logo d-inline-block mb-3"
             aria-label="Mudelli — return to homepage">MUDELLI</a>
@@ -992,15 +878,10 @@
           </p>
         </div>
 
-        <!--
-            Column 2 — Quick navigation links
-        -->
+        <!-- Column 2 — quick navigation links -->
         <div class="col-lg-2 col-md-4 col-6">
           <h3 class="footer-heading">Quick Links</h3>
-          <!--
-              Separate aria-label so screen readers don't confuse this
-              with the main navigation at the top of the page
-          -->
+          <!-- Separate aria-label so screen readers don't confuse this with the main navigation -->
           <nav aria-label="Footer quick links navigation">
             <ul class="footer-links list-unstyled">
               <li><a href="models.html">Browse Models</a></li>
@@ -1011,9 +892,7 @@
           </nav>
         </div>
 
-        <!--
-            Column 3 — Support and policy links
-        -->
+        <!-- Column 3 — support and policy links -->
         <div class="col-lg-2 col-md-4 col-6">
           <h3 class="footer-heading">Support</h3>
           <nav aria-label="Footer support links navigation">
@@ -1026,14 +905,10 @@
           </nav>
         </div>
 
-        <!--
-            Column 4 — Social media icons
-        -->
+        <!-- Column 4 — social media icons -->
         <div class="col-lg-4 col-md-4">
           <h3 class="footer-heading">Follow Us</h3>
-          <!--
-              Each link has a descriptive aria-label for screen readers
-          -->
+          <!-- Each link has a descriptive aria-label for screen readers -->
           <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
             <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
               <i class="bi bi-instagram" aria-hidden="true"></i>
@@ -1048,24 +923,15 @@
         </div>
 
       </div>
-      <!--
-          end of footer columns
-      -->
 
-      <!--
-          Thin line separating the links from the copyright bar
-      -->
+      <!-- Thin line separating the links from the copyright bar -->
       <hr class="footer-divider" aria-hidden="true" />
 
-      <!--
-          Bottom row with copyright text and the accessibility settings button
-      -->
+      <!-- Bottom row with copyright text and the accessibility settings button -->
       <div class="d-flex flex-wrap justify-content-between align-items-center py-3 gap-3">
         <p class="footer-copyright mb-0">© 2026 Mudelli. All rights reserved.</p>
 
-        <!--
-            Accessibility options button — opens a settings panel (placeholder)
-        -->
+        <!-- Accessibility options button — opens a settings panel -->
         <button class="accessibility-btn" type="button" aria-label="Open accessibility options"
           aria-haspopup="dialog">
           <i class="bi bi-universal-access" aria-hidden="true"></i>
@@ -1073,18 +939,47 @@
       </div>
 
     </div>
-    <!--
-        end of footer container
-    -->
   </footer>
 
 
-  <!--
-      Bootstrap JS bundle — needed for the mobile navbar toggle
-  -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
-    crossorigin="anonymous"></script>
+  <!-- Thank you pop-up that appears after the user clicks Submit Application -->
+  <div class="modal fade" id="applicationThankYouModal" tabindex="-1"
+    aria-labelledby="applicationThankYouLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius:0; border:none;">
+
+        <!-- Navy header with the gold title text -->
+        <div class="modal-header" style="background-color:#1E2D4D; border:none; padding:24px 32px;">
+          <h2 class="modal-title" id="applicationThankYouLabel"
+            style="font-family:'Playfair Display',serif; font-size:22px; color:#C9A84E; margin:0;">
+            Application Received!
+          </h2>
+          <button type="button" class="btn-close btn-close-white"
+            data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Cream body with the confirmation message and a gold close button -->
+        <div class="modal-body" style="padding:32px; background-color:#F5F2EC; text-align:center;">
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:15px; color:#555; line-height:1.7; margin-bottom:32px;">
+            Thank you for applying to become a model with Mudelli. Your application is currently
+            under review by our team. We will be in touch within 5 working days to let you know
+            the outcome. In the meantime, feel free to browse our casting calls.
+          </p>
+
+          <!-- Gold close button with square corners to match the Mudelli brand -->
+          <button type="button" data-bs-dismiss="modal"
+            style="background-color:#C9A84E; color:#1E2D4D; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; padding:12px 36px; border:none; border-radius:0; cursor:pointer;">
+            Close
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap JavaScript — needed for the modal and mobile navbar to work -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
