@@ -127,6 +127,7 @@
       padding: 20px 24px;
       transform: translateY(100%);
       transition: transform 0.35s ease;
+      pointer-events: none; /* stops the hidden overlay blocking clicks on the button below */
     }
 
     /* slide the overlay into view on hover or keyboard focus */
@@ -213,6 +214,156 @@
         transform: translateY(0);
       }
     }
+
+
+    /* ================================================================
+       BOOK MODEL MODAL
+    ================================================================ */
+
+    /* modal header — navy background with gold title */
+    .bm-modal .modal-header {
+      background-color: var(--mud-navy);
+      border-bottom: none;
+      padding: 24px 28px 16px;
+    }
+
+    /* "Book a Model" title text in the modal header */
+    .bm-modal-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--mud-gold);
+      margin: 0;
+    }
+
+    /* the model's name shown as a subtitle under the title */
+    .bm-modal-subtitle {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.75);
+      margin: 4px 0 0;
+    }
+
+    /* white X close button in the header */
+    .bm-modal .btn-close {
+      filter: invert(1);
+      opacity: 0.7;
+    }
+
+    .bm-modal .btn-close:hover {
+      opacity: 1;
+    }
+
+    /* modal body — white with generous padding */
+    .bm-modal .modal-body {
+      padding: 28px;
+      background-color: #ffffff;
+    }
+
+    /* each form field label */
+    .bm-modal .form-label {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mud-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    /* text inputs, select, and textarea inside the modal */
+    .bm-modal .form-control,
+    .bm-modal .form-select {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--mud-navy);
+      border: 2px solid var(--mud-light-gray);
+      border-radius: 0;
+      padding: 10px 14px;
+      background-color: #fff;
+    }
+
+    .bm-modal .form-control:focus,
+    .bm-modal .form-select:focus {
+      border-color: var(--mud-navy);
+      box-shadow: none;
+    }
+
+    /* modal footer — white background, no top border */
+    .bm-modal .modal-footer {
+      background-color: #ffffff;
+      border-top: 1px solid var(--mud-light-gray);
+      padding: 16px 28px 24px;
+      gap: 12px;
+    }
+
+    /* the gold "Send Request" submit button */
+    .btn-bm-submit {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      background-color: var(--mud-gold);
+      border: none;
+      border-radius: 0;
+      padding: 12px 32px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-bm-submit:hover,
+    .btn-bm-submit:focus {
+      opacity: 0.88;
+      color: var(--mud-navy);
+    }
+
+    /* the outlined cancel button */
+    .btn-bm-cancel {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--mud-navy);
+      background-color: transparent;
+      border: 2px solid var(--mud-light-gray);
+      border-radius: 0;
+      padding: 10px 24px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .btn-bm-cancel:hover,
+    .btn-bm-cancel:focus {
+      border-color: var(--mud-navy);
+      color: var(--mud-navy);
+    }
+
+    /* success message shown after the form is submitted */
+    .bm-success {
+      display: none;
+      text-align: center;
+      padding: 16px 0 8px;
+    }
+
+    .bm-success-icon {
+      font-size: 48px;
+      color: var(--mud-gold);
+      margin-bottom: 12px;
+    }
+
+    .bm-success-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      margin-bottom: 6px;
+    }
+
+    .bm-success-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
   </style>
 </head>
 
@@ -262,20 +413,20 @@
               Primary nav links
               Centred between the logo and the auth buttons
           -->
-          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
-            <li class="nav-item" role="listitem">
+          <ul class="navbar-nav mx-auto gap-lg-4">
+            <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="models.html">Models</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="casting-calls.html">Casting Calls</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="become-a-model.html">Become A Model</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
@@ -303,6 +454,7 @@
       Everything the user sees on the page lives inside this element
   -->
   <main id="main-content">
+    <h1 class="visually-hidden">New Faces — Mudelli</h1>
 
     <!--
         Page banner
@@ -350,8 +502,10 @@
                   <p class="nf-overlay-meta">Age: 24 &nbsp;&middot;&nbsp; Height: 172cm</p>
                 </div>
               </div>
-              <a href="casting-calls.html" class="btn-book-model"
-                aria-label="Book Alessia Mae Vella as a model">BOOK MODEL</a>
+              <button type="button" class="btn-book-model"
+                data-bs-toggle="modal" data-bs-target="#bookModelModal"
+                data-model-name="Alessia Mae Vella"
+                aria-label="Book Alessia Mae Vella as a model">BOOK MODEL</button>
             </article>
           </div>
 
@@ -369,8 +523,10 @@
                   <p class="nf-overlay-meta">Age: 27 &nbsp;&middot;&nbsp; Height: 174cm</p>
                 </div>
               </div>
-              <a href="casting-calls.html" class="btn-book-model"
-                aria-label="Book Maria Camilleri as a model">BOOK MODEL</a>
+              <button type="button" class="btn-book-model"
+                data-bs-toggle="modal" data-bs-target="#bookModelModal"
+                data-model-name="Maria Camilleri"
+                aria-label="Book Maria Camilleri as a model">BOOK MODEL</button>
             </article>
           </div>
 
@@ -388,8 +544,10 @@
                   <p class="nf-overlay-meta">Age: 25 &nbsp;&middot;&nbsp; Height: 180cm</p>
                 </div>
               </div>
-              <a href="casting-calls.html" class="btn-book-model"
-                aria-label="Book Nina Laurent as a model">BOOK MODEL</a>
+              <button type="button" class="btn-book-model"
+                data-bs-toggle="modal" data-bs-target="#bookModelModal"
+                data-model-name="Nina Laurent"
+                aria-label="Book Nina Laurent as a model">BOOK MODEL</button>
             </article>
           </div>
 
@@ -407,8 +565,10 @@
                   <p class="nf-overlay-meta">Age: 27 &nbsp;&middot;&nbsp; Height: 175cm</p>
                 </div>
               </div>
-              <a href="casting-calls.html" class="btn-book-model"
-                aria-label="Book Hannah Piscopo as a model">BOOK MODEL</a>
+              <button type="button" class="btn-book-model"
+                data-bs-toggle="modal" data-bs-target="#bookModelModal"
+                data-model-name="Hannah Piscopo"
+                aria-label="Book Hannah Piscopo as a model">BOOK MODEL</button>
             </article>
           </div>
 
@@ -426,8 +586,10 @@
                   <p class="nf-overlay-meta">Age: 26 &nbsp;&middot;&nbsp; Height: 172cm</p>
                 </div>
               </div>
-              <a href="casting-calls.html" class="btn-book-model"
-                aria-label="Book Amelia Gauci as a model">BOOK MODEL</a>
+              <button type="button" class="btn-book-model"
+                data-bs-toggle="modal" data-bs-target="#bookModelModal"
+                data-model-name="Amelia Gauci"
+                aria-label="Book Amelia Gauci as a model">BOOK MODEL</button>
             </article>
           </div>
 
@@ -445,8 +607,10 @@
                   <p class="nf-overlay-meta">Age: 30 &nbsp;&middot;&nbsp; Height: 172cm</p>
                 </div>
               </div>
-              <a href="casting-calls.html" class="btn-book-model"
-                aria-label="Book Alexia Bex as a model">BOOK MODEL</a>
+              <button type="button" class="btn-book-model"
+                data-bs-toggle="modal" data-bs-target="#bookModelModal"
+                data-model-name="Alexia Bex"
+                aria-label="Book Alexia Bex as a model">BOOK MODEL</button>
             </article>
           </div>
 
@@ -464,8 +628,10 @@
                   <p class="nf-overlay-meta">Age: 28 &nbsp;&middot;&nbsp; Height: 188cm</p>
                 </div>
               </div>
-              <a href="casting-calls.html" class="btn-book-model"
-                aria-label="Book Lina Gatt as a model">BOOK MODEL</a>
+              <button type="button" class="btn-book-model"
+                data-bs-toggle="modal" data-bs-target="#bookModelModal"
+                data-model-name="Lina Gatt"
+                aria-label="Book Lina Gatt as a model">BOOK MODEL</button>
             </article>
           </div>
 
@@ -483,8 +649,10 @@
                   <p class="nf-overlay-meta">Age: 26 &nbsp;&middot;&nbsp; Height: 165cm</p>
                 </div>
               </div>
-              <a href="casting-calls.html" class="btn-book-model"
-                aria-label="Book Maya Micallef as a model">BOOK MODEL</a>
+              <button type="button" class="btn-book-model"
+                data-bs-toggle="modal" data-bs-target="#bookModelModal"
+                data-model-name="Maya Micallef"
+                aria-label="Book Maya Micallef as a model">BOOK MODEL</button>
             </article>
           </div>
 
@@ -502,8 +670,10 @@
                   <p class="nf-overlay-meta">Age: 28 &nbsp;&middot;&nbsp; Height: 190cm</p>
                 </div>
               </div>
-              <a href="casting-calls.html" class="btn-book-model"
-                aria-label="Book Aurelie Voss as a model">BOOK MODEL</a>
+              <button type="button" class="btn-book-model"
+                data-bs-toggle="modal" data-bs-target="#bookModelModal"
+                data-model-name="Aurelie Voss"
+                aria-label="Book Aurelie Voss as a model">BOOK MODEL</button>
             </article>
           </div>
 
@@ -521,7 +691,7 @@
       Site footer
       Dark navy background with four columns: brand, quick links, support, and social icons
   -->
-  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+  <footer class="mudelli-footer" aria-label="Site footer">
     <div class="container-xxl px-4">
 
       <div class="row g-5 py-5">
@@ -576,14 +746,14 @@
         -->
         <div class="col-lg-4 col-md-4">
           <h3 class="footer-heading">Follow Us</h3>
-          <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+          <div class="social-icons d-flex gap-3" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram">
               <i class="bi bi-instagram" aria-hidden="true"></i>
             </a>
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook">
               <i class="bi bi-facebook" aria-hidden="true"></i>
             </a>
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)">
               <i class="bi bi-twitter-x" aria-hidden="true"></i>
             </a>
           </div>
@@ -616,6 +786,127 @@
 
 
   <!--
+      BOOK MODEL MODAL
+      Opens when the user clicks "BOOK MODEL" on any model card.
+      The model's name is passed in via a data attribute and shown in the header.
+  -->
+  <div class="modal fade bm-modal" id="bookModelModal" role="dialog" tabindex="-1"
+    aria-labelledby="bookModelModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="border-radius: 0; border: none;">
+
+        <!--
+            Modal header — navy bar with the title and a close button
+        -->
+        <div class="modal-header">
+          <div>
+            <h2 class="bm-modal-title" id="bookModelModalLabel">Book a Model</h2>
+            <!--
+                This paragraph is updated by JavaScript to show the name of the
+                model whose "BOOK MODEL" button was clicked
+            -->
+            <p class="bm-modal-subtitle" id="bookModelName">Booking request</p>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+            aria-label="Close booking form"></button>
+        </div>
+
+        <!--
+            Modal body — the booking form
+        -->
+        <div class="modal-body">
+
+          <!--
+              Booking form — all fields are required before the request can be sent
+          -->
+          <form id="bookModelForm" novalidate>
+            <div class="row g-3">
+
+              <!--
+                  Client's full name
+              -->
+              <div class="col-md-6">
+                <label for="bmName" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="bmName"
+                  placeholder="e.g. John Borg" required />
+              </div>
+
+              <!--
+                  Client's email address for the response
+              -->
+              <div class="col-md-6">
+                <label for="bmEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="bmEmail"
+                  placeholder="e.g. john@example.com" required />
+              </div>
+
+              <!--
+                  The date the client wants to book the model
+              -->
+              <div class="col-md-6">
+                <label for="bmDate" class="form-label">Preferred Date</label>
+                <input type="date" class="form-control" id="bmDate" required />
+              </div>
+
+              <!--
+                  The type of modelling project
+              -->
+              <div class="col-md-6">
+                <label for="bmType" class="form-label">Project Type</label>
+                <select class="form-select" id="bmType" required>
+                  <option value="" disabled selected>Select a type...</option>
+                  <option value="fashion">Fashion</option>
+                  <option value="commercial">Commercial</option>
+                  <option value="editorial">Editorial</option>
+                  <option value="runway">Runway</option>
+                  <option value="events">Events</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <!--
+                  Any extra information the client wants to share
+              -->
+              <div class="col-12">
+                <label for="bmMessage" class="form-label">Additional Details</label>
+                <textarea class="form-control" id="bmMessage" rows="4"
+                  placeholder="Tell us more about your project, location, or any special requirements..."></textarea>
+              </div>
+
+            </div>
+
+            <!--
+                This success message is hidden by default and shown once
+                the user submits the form
+            -->
+            <div class="bm-success" id="bmSuccess">
+              <div class="bm-success-icon">
+                <i class="bi bi-check-circle-fill"></i>
+              </div>
+              <p class="bm-success-title">Request Sent!</p>
+              <p class="bm-success-text">
+                Thank you. We'll be in touch shortly to confirm your booking.
+              </p>
+            </div>
+
+          </form>
+
+        </div>
+
+        <!--
+            Modal footer — cancel and submit buttons
+        -->
+        <div class="modal-footer" id="bookModelFooter">
+          <button type="button" class="btn-bm-cancel" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" form="bookModelForm" class="btn-bm-submit">Send Request</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!--
       Bootstrap 5 JavaScript bundle
       Required for the mobile navbar toggle to work
   -->
@@ -632,6 +923,51 @@
       var nav = document.getElementById('mainNav');
       if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 80);
     }, { passive: true });
+  </script>
+
+  <!--
+      Book Model modal logic:
+      1. When the modal opens, read the model name from the button that triggered it
+         and update the subtitle so the user can see who they are booking.
+      2. When the form is submitted, show the success message and hide the form fields.
+      3. When the modal closes, reset everything back to its empty starting state.
+  -->
+  <script>
+    var bookModalEl = document.getElementById('bookModelModal');
+    var bsModal = new bootstrap.Modal(bookModalEl);
+
+    /* open the modal and set the model name when any BOOK MODEL button is clicked */
+    document.querySelectorAll('.btn-book-model').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var modelName = btn.getAttribute('data-model-name') || '';
+        document.getElementById('bookModelName').textContent = 'Booking request for: ' + modelName;
+        bsModal.show();
+      });
+    });
+
+    bookModalEl.addEventListener('show.bs.modal', function (event) {
+      var triggerBtn = event.relatedTarget;
+      var modelName = triggerBtn ? triggerBtn.getAttribute('data-model-name') : '';
+      if (modelName) document.getElementById('bookModelName').textContent = 'Booking request for: ' + modelName;
+    });
+
+    document.getElementById('bookModelForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.getElementById('bookModelForm').querySelectorAll('.row').forEach(function (el) {
+        el.style.display = 'none';
+      });
+      document.getElementById('bmSuccess').style.display = 'block';
+      document.getElementById('bookModelFooter').style.display = 'none';
+    });
+
+    bookModalEl.addEventListener('hidden.bs.modal', function () {
+      document.getElementById('bookModelForm').reset();
+      document.getElementById('bookModelForm').querySelectorAll('.row').forEach(function (el) {
+        el.style.display = '';
+      });
+      document.getElementById('bmSuccess').style.display = 'none';
+      document.getElementById('bookModelFooter').style.display = '';
+    });
   </script>
 
 </body>
