@@ -31,14 +31,20 @@
   <!-- Page-specific styles for the Become a Model page only -->
   <style>
 
+    /* white navbar for this page only — overrides the transparent default in style.css */
+    .mudelli-nav {
+      background-color: #ffffff !important;
+    }
+
     .bam-hero {
-      min-height: 520px;
-      background-image: url('images/main-become-model.jpg');
-      background-size: cover;
-      background-position: center top;
       position: relative;
-      display: flex;
-      align-items: center;
+    }
+
+    /* the actual full-size hero photo — width 100%, height follows naturally */
+    .bam-hero-img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .bam-hero::after {
@@ -49,14 +55,17 @@
     }
 
     .bam-hero-inner {
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 1;
-      padding-top: 100px;
+      width: 100%;
     }
 
     .bam-hero-title {
       font-family: var(--font-display);
-      font-size: 80px;
+      font-size: 128px;
       font-weight: 700;
       color: var(--mud-gold);
       line-height: 1.1;
@@ -363,9 +372,9 @@
   <!-- Skip link lets keyboard users jump straight to the main content without going through the nav -->
   <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
 
-  <!-- Fixed top navigation bar shared across all pages -->
+  <!-- Navigation bar — static on this page so it scrolls with the content -->
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav fixed-top" id="mainNav"
+    <nav class="navbar navbar-expand-lg navbar-dark mudelli-nav" id="mainNav"
       aria-label="Main site navigation">
       <div class="container-xxl px-4">
 
@@ -420,8 +429,10 @@
   <!-- Main page content -->
   <main id="main-content">
 
-    <!-- Hero section — full-width background photo with the page title overlaid in gold -->
+    <!-- Hero section — full-size photo with the page title overlaid in gold -->
     <section class="bam-hero" aria-labelledby="bam-hero-heading">
+      <!-- The full image — no cropping, height adjusts to the natural image size -->
+      <img src="images/main-become-model.jpg" alt="" class="bam-hero-img" aria-hidden="true" />
       <div class="container-xxl px-4 bam-hero-inner">
         <h1 class="bam-hero-title" id="bam-hero-heading">Become A Model</h1>
       </div>
