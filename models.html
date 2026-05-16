@@ -41,6 +41,27 @@
     /* white navbar for this page */
     .mudelli-nav { background-color: #ffffff !important; }
 
+    /* Models dropdown menu */
+    .mudelli-nav .dropdown-menu {
+      background-color: #ffffff;
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      min-width: 160px;
+      padding: 8px 0;
+    }
+    .mudelli-nav .dropdown-item {
+      font-family: var(--font-display);
+      font-size: 18px;
+      color: var(--mud-navy);
+      padding: 10px 20px;
+    }
+    .mudelli-nav .dropdown-item:hover,
+    .mudelli-nav .dropdown-item:focus {
+      background-color: var(--mud-navy);
+      color: var(--mud-gold);
+    }
+
     /* ================================================================
        PAGE BANNER — cream background with the "All Models" heading
        and the search bar
@@ -388,11 +409,16 @@
             <li class="nav-item" role="listitem">
               <a class="nav-link" href="index.html">Home</a>
             </li>
-            <li class="nav-item" role="listitem">
-              <!--
-                  aria-current="page" marks this as the active page
-              -->
-              <a class="nav-link active" aria-current="page" href="models.html">Models</a>
+            <li class="nav-item dropdown" role="listitem">
+              <a class="nav-link dropdown-toggle active" aria-current="page" href="models.html"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Models
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="models.html">All Models</a></li>
+                <li><a class="dropdown-item" href="top3.html">Top 3</a></li>
+                <li><a class="dropdown-item" href="new-faces.html">New Faces</a></li>
+              </ul>
             </li>
             <li class="nav-item" role="listitem">
               <a class="nav-link" href="casting-calls.html">Casting Calls</a>
