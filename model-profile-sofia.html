@@ -418,24 +418,24 @@
             <!-- Collapsible navigation links and auth buttons -->
             <div class="collapse navbar-collapse" id="navbarContent">
 
-                <ul class="navbar-nav mx-auto gap-lg-4" role="list">
-                    <li class="nav-item" role="listitem">
+                <ul class="navbar-nav mx-auto gap-lg-4">
+                    <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item" role="listitem">
+                    <li class="nav-item">
                         <!--
                             aria-current="page" marks Models as the active section
                             because this profile page lives within Models.
                         -->
                         <a class="nav-link active" aria-current="page" href="models.html">Models</a>
                     </li>
-                    <li class="nav-item" role="listitem">
+                    <li class="nav-item">
                         <a class="nav-link" href="casting-calls.html">Casting Calls</a>
                     </li>
-                    <li class="nav-item" role="listitem">
+                    <li class="nav-item">
                         <a class="nav-link" href="become-a-model.html">Become A Model</a>
                     </li>
-                    <li class="nav-item" role="listitem">
+                    <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
@@ -604,13 +604,13 @@
                                 shared social-icon style from style.css.
                             -->
                             <div class="d-flex gap-2 mt-4" role="list" aria-label="Sofia Rossi on social media">
-                                <a href="#" class="social-icon" aria-label="Sofia Rossi on Instagram" role="listitem">
+                                <a href="#" class="social-icon" aria-label="Sofia Rossi on Instagram">
                                     <i class="bi bi-instagram" aria-hidden="true"></i>
                                 </a>
-                                <a href="#" class="social-icon" aria-label="Sofia Rossi on Facebook" role="listitem">
+                                <a href="#" class="social-icon" aria-label="Sofia Rossi on Facebook">
                                     <i class="bi bi-facebook" aria-hidden="true"></i>
                                 </a>
-                                <a href="#" class="social-icon" aria-label="Sofia Rossi on TikTok" role="listitem">
+                                <a href="#" class="social-icon" aria-label="Sofia Rossi on TikTok">
                                     <i class="bi bi-tiktok" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -773,7 +773,7 @@
 <!--
     FOOTER — the same footer used on every page of the site.
 -->
-<footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+<footer class="mudelli-footer" aria-label="Site footer">
     <div class="container-xxl px-4">
 
         <div class="row g-5 py-5">
@@ -825,13 +825,13 @@
             <div class="col-lg-4 col-md-4">
                 <h3 class="footer-heading">Follow Us</h3>
                 <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
-                    <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+                    <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram">
                         <i class="bi bi-instagram" aria-hidden="true"></i>
                     </a>
-                    <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+                    <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook">
                         <i class="bi bi-facebook" aria-hidden="true"></i>
                     </a>
-                    <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+                    <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)">
                         <i class="bi bi-twitter-x" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -875,7 +875,7 @@
     This pop-up appears when the user clicks the "Book Model" button.
     It collects all the details needed to send a booking request to Sofia Rossi.
 -->
-<div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+<div class="modal fade" id="bookModal" role="dialog" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content" style="border-radius:0; border:none;">
 
@@ -1027,7 +1027,7 @@
     This pop-up appears when the user clicks the "Message" button.
     It lets the user send a short message directly to Sofia Rossi.
 -->
-<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+<div class="modal fade" id="messageModal" role="dialog" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="border-radius:0; border:none;">
 
@@ -1097,7 +1097,7 @@
     booking form or the message form. It confirms the request was received.
     JavaScript swaps in the right message text depending on which form was sent.
 -->
-<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouLabel" aria-hidden="true">
+<div class="modal fade" id="thankYouModal" role="dialog" tabindex="-1" aria-labelledby="thankYouLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="border-radius:0; border:none; text-align:center;">
       <div class="modal-body" style="padding:48px 32px; background-color:#F5F2EC;">

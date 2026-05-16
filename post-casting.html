@@ -325,20 +325,20 @@
         <!-- The navigation links — Casting Calls is marked active because this page is part of that section -->
         <div class="collapse navbar-collapse" id="navbarContent">
 
-          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
-            <li class="nav-item" role="listitem">
+          <ul class="navbar-nav mx-auto gap-lg-4">
+            <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="models.html">Models</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="casting-calls.html">Casting Calls</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="become-a-model.html">Become A Model</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
@@ -533,8 +533,7 @@
                     before they can submit the form
                 -->
                 <div class="pc-terms-row">
-                  <input class="pc-checkbox" type="checkbox" id="pc-terms" name="terms" required
-                    aria-required="true" />
+                  <input class="pc-checkbox" type="checkbox" id="pc-terms" name="terms" required />
                   <label class="pc-terms-text" for="pc-terms">
                     I confirm that all information provided is accurate and I agree to the platform's
                     terms and conditions.
@@ -569,7 +568,7 @@
 
 
   <!-- The site footer with links and social media icons -->
-  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+  <footer class="mudelli-footer" aria-label="Site footer">
     <div class="container-xxl px-4">
 
       <div class="row g-5 py-5">
@@ -585,7 +584,7 @@
 
         <!-- Column 2 — quick navigation links -->
         <div class="col-lg-2 col-md-4 col-6">
-          <h3 class="footer-heading">Quick Links</h3>
+          <h2 class="footer-heading">Quick Links</h2>
           <nav aria-label="Footer quick links navigation">
             <ul class="footer-links list-unstyled">
               <li><a href="models.html">Browse Models</a></li>
@@ -613,13 +612,13 @@
         <div class="col-lg-4 col-md-4">
           <h3 class="footer-heading">Follow Us</h3>
           <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram">
               <i class="bi bi-instagram" aria-hidden="true"></i>
             </a>
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook">
               <i class="bi bi-facebook" aria-hidden="true"></i>
             </a>
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)">
               <i class="bi bi-twitter-x" aria-hidden="true"></i>
             </a>
           </div>
@@ -655,7 +654,7 @@
       This is the thank you pop-up that appears after the user clicks Submit Casting.
       It tells them their casting has been received and is under review by the team.
   -->
-  <div class="modal fade" id="castingThankYouModal" tabindex="-1"
+  <div class="modal fade" id="castingThankYouModal" role="dialog" tabindex="-1"
     aria-labelledby="castingThankYouLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content" style="border-radius:0; border:none;">
