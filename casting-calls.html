@@ -103,12 +103,19 @@
       background-color: var(--mud-cream);
       margin-bottom: 24px;
       overflow: hidden;
+      height: 380px;
+    }
+
+    /* makes the Bootstrap row inside the card fill the full card height */
+    .cc-card .row {
+      height: 100%;
+      align-items: stretch;
     }
 
     /* the photo for each casting listing */
     .cc-card-img {
       width: 100%;
-      height: 380px;
+      height: 100%;
       object-fit: cover;
       object-position: center;
       display: block;
@@ -202,6 +209,7 @@
       gap: 16px;
       flex-wrap: wrap;
       margin-top: auto;
+      justify-content: flex-end;
     }
 
     .btn-apply,
@@ -213,18 +221,20 @@
       font-weight: 600;
       border: none;
       border-radius: 0;
-      padding: 14px 32px;
+      padding: 14px 36px;
       text-decoration: none;
-      display: inline-block;
-      transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s, color 0.2s;
     }
 
     .btn-apply:hover,
     .btn-apply:focus,
     .btn-view-details:hover,
     .btn-view-details:focus {
-      opacity: 0.88;
-      color: var(--mud-navy);
+      background-color: #1E2D4D;
+      color: #C9A84E;
     }
 
     /*
@@ -303,6 +313,11 @@
         font-size: 16px;
       }
 
+      /* columns stack vertically at tablet so card height must be automatic */
+      .cc-card {
+        height: auto;
+      }
+
       .cc-card-img {
         height: 260px;
       }
@@ -327,7 +342,6 @@
 
       .cc-card-img {
         height: 220px;
-        min-height: 220px;
       }
 
       .cc-card-title {
@@ -614,173 +628,14 @@
         <!--
             CASTING 1 — Editorial Shoot in Paris
         -->
-        <article class="cc-card" aria-label="Casting: Editorial Shoot">
-          <div class="row g-0">
-
-            <!--
-                Photo for this casting listing
-            -->
-            <div class="col-lg-5">
-              <img src="images/casting-list-images1.jpg"
-                alt="Editorial shoot casting — high fashion photography in Paris"
-                class="cc-card-img" loading="lazy" />
-            </div>
-
-            <!--
-                Text content: title, description, location/date/rate, and buttons
-            -->
-            <div class="col-lg-7">
-              <div class="cc-card-body">
-
-                <!--
-                    Verified badge — this casting has been checked and approved by Mudelli
-                -->
-                <div class="cc-verified" role="note" aria-label="Verified casting">
-                  <span class="cc-verified-icon" aria-hidden="true">
-                    <i class="bi bi-check"></i>
-                  </span>
-                  <span class="cc-verified-text">Verified</span>
-                </div>
-
-                <h3 class="cc-card-title">Editorial Shoot</h3>
-
-                <p class="cc-card-desc">
-                  High-fashion editorial for an online magazine. Creative direction with bold styling
-                  and artistic concepts.
-                </p>
-
-                <!--
-                    Key details for this casting — location, date, and pay rate
-                -->
-                <ul class="cc-detail-list" aria-label="Casting details">
-                  <li><strong>Location:</strong> Paris</li>
-                  <li><strong>Date:</strong> 20 June</li>
-                  <li><strong>Rate:</strong> €200</li>
-                </ul>
-
-                <!--
-                    Two action buttons — apply directly or read more details first
-                -->
-                <div class="cc-card-actions">
-                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
-                  <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Editorial Shoot casting">View Details</a>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </article>
-
-
         <!--
-            CASTING 2 — Commercial Ad shoot in London
-        -->
-        <article class="cc-card" aria-label="Casting: Commercial Ad">
-          <div class="row g-0">
-
-            <div class="col-lg-5">
-              <img src="images/casting-list-images2.jpg"
-                alt="Commercial ad casting — skincare brand shoot in London"
-                class="cc-card-img" loading="lazy" />
-            </div>
-
-            <div class="col-lg-7">
-              <div class="cc-card-body">
-
-                <!--
-                    Verified badge — this casting has been checked and approved by Mudelli
-                -->
-                <div class="cc-verified" role="note" aria-label="Verified casting">
-                  <span class="cc-verified-icon" aria-hidden="true">
-                    <i class="bi bi-check"></i>
-                  </span>
-                  <span class="cc-verified-text">Verified</span>
-                </div>
-
-                <h3 class="cc-card-title">Commercial Ad</h3>
-
-                <p class="cc-card-desc">
-                  Commercial shoot for a skincare brand focusing on clean, natural beauty.
-                  Close-up shots and simple expressions.
-                </p>
-
-                <ul class="cc-detail-list" aria-label="Casting details">
-                  <li><strong>Location:</strong> London</li>
-                  <li><strong>Dates:</strong> 10–11 June</li>
-                  <li><strong>Rate:</strong> €350/day</li>
-                </ul>
-
-                <div class="cc-card-actions">
-                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal" aria-label="Apply for the Commercial Ad casting">Apply Now!</button>
-                  <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Commercial Ad casting">View Details</a>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </article>
-
-
-        <!--
-            CASTING 3 — Fitness Shoot in Barcelona
-        -->
-        <article class="cc-card" aria-label="Casting: Fitness Shoot">
-          <div class="row g-0">
-
-            <div class="col-lg-5">
-              <img src="images/casting-list-images3.jpg"
-                alt="Fitness shoot casting — activewear campaign in Barcelona"
-                class="cc-card-img" loading="lazy" />
-            </div>
-
-            <div class="col-lg-7">
-              <div class="cc-card-body">
-
-                <!--
-                    Verified badge — this casting has been checked and approved by Mudelli
-                -->
-                <div class="cc-verified" role="note" aria-label="Verified casting">
-                  <span class="cc-verified-icon" aria-hidden="true">
-                    <i class="bi bi-check"></i>
-                  </span>
-                  <span class="cc-verified-text">Verified</span>
-                </div>
-
-                <h3 class="cc-card-title">Fitness Shoot</h3>
-
-                <p class="cc-card-desc">
-                  Activewear brand campaign featuring movement and fitness-based shots.
-                  Energetic and athletic models preferred.
-                </p>
-
-                <ul class="cc-detail-list" aria-label="Casting details">
-                  <li><strong>Location:</strong> Barcelona</li>
-                  <li><strong>Date:</strong> 18 June</li>
-                  <li><strong>Rate:</strong> €220</li>
-                </ul>
-
-                <div class="cc-card-actions">
-                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal" aria-label="Apply for the Fitness Shoot casting">Apply Now!</button>
-                  <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Fitness Shoot casting">View Details</a>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </article>
-
-
-        <!--
-            CASTING 4 — Summer Campaign in Malta (Verified)
+            CASTING 1 — Summer Campaign in Malta — shown first as it has a full detail page
         -->
         <article class="cc-card" aria-label="Casting: Summer Campaign — Verified by Mudelli">
           <div class="row g-0">
 
             <div class="col-lg-5">
-              <img src="images/casting-list-images4.jpg"
+              <img src="images/casting-list-images5.jpg"
                 alt="Summer campaign casting — lifestyle brand shoot in Malta"
                 class="cc-card-img" loading="lazy" />
             </div>
@@ -824,13 +679,163 @@
 
 
         <!--
-            CASTING 5 — Runway Show in Milan (Verified)
+            CASTING 2 — Editorial Shoot in Paris
+        -->
+        <article class="cc-card" aria-label="Casting: Editorial Shoot">
+          <div class="row g-0">
+
+            <div class="col-lg-5">
+              <img src="images/casting-list-images2.jpg"
+                alt="Editorial shoot casting — high fashion photography in Paris"
+                class="cc-card-img" loading="lazy" />
+            </div>
+
+            <div class="col-lg-7">
+              <div class="cc-card-body">
+
+                <!--
+                    Verified badge — this casting has been checked and approved by Mudelli
+                -->
+                <div class="cc-verified" role="note" aria-label="Verified casting">
+                  <span class="cc-verified-icon" aria-hidden="true">
+                    <i class="bi bi-check"></i>
+                  </span>
+                  <span class="cc-verified-text">Verified</span>
+                </div>
+
+                <h3 class="cc-card-title">Editorial Shoot</h3>
+
+                <p class="cc-card-desc">
+                  High-fashion editorial for an online magazine. Creative direction with bold styling
+                  and artistic concepts.
+                </p>
+
+                <ul class="cc-detail-list" aria-label="Casting details">
+                  <li><strong>Location:</strong> Paris</li>
+                  <li><strong>Date:</strong> 20 June</li>
+                  <li><strong>Rate:</strong> €200</li>
+                </ul>
+
+                <div class="cc-card-actions">
+                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal" aria-label="Apply for the Editorial Shoot casting">Apply Now</button>
+                  <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Editorial Shoot casting">View Details</a>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!--
+            CASTING 3 — Commercial Ad shoot in London
+        -->
+        <article class="cc-card" aria-label="Casting: Commercial Ad">
+          <div class="row g-0">
+
+            <div class="col-lg-5">
+              <img src="images/casting-list-images3.jpg"
+                alt="Commercial ad casting — skincare brand shoot in London"
+                class="cc-card-img" loading="lazy" />
+            </div>
+
+            <div class="col-lg-7">
+              <div class="cc-card-body">
+
+                <!--
+                    Verified badge — this casting has been checked and approved by Mudelli
+                -->
+                <div class="cc-verified" role="note" aria-label="Verified casting">
+                  <span class="cc-verified-icon" aria-hidden="true">
+                    <i class="bi bi-check"></i>
+                  </span>
+                  <span class="cc-verified-text">Verified</span>
+                </div>
+
+                <h3 class="cc-card-title">Commercial Ad</h3>
+
+                <p class="cc-card-desc">
+                  Commercial shoot for a skincare brand focusing on clean, natural beauty.
+                  Close-up shots and simple expressions.
+                </p>
+
+                <ul class="cc-detail-list" aria-label="Casting details">
+                  <li><strong>Location:</strong> London</li>
+                  <li><strong>Dates:</strong> 10–11 June</li>
+                  <li><strong>Rate:</strong> €350/day</li>
+                </ul>
+
+                <div class="cc-card-actions">
+                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal" aria-label="Apply for the Commercial Ad casting">Apply Now!</button>
+                  <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Commercial Ad casting">View Details</a>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!--
+            CASTING 4 — Fitness Shoot in Barcelona
+        -->
+        <article class="cc-card" aria-label="Casting: Fitness Shoot">
+          <div class="row g-0">
+
+            <div class="col-lg-5">
+              <img src="images/casting-list-images1.jpg"
+                alt="Fitness shoot casting — activewear campaign in Barcelona"
+                class="cc-card-img" loading="lazy" />
+            </div>
+
+            <div class="col-lg-7">
+              <div class="cc-card-body">
+
+                <!--
+                    Verified badge — this casting has been checked and approved by Mudelli
+                -->
+                <div class="cc-verified" role="note" aria-label="Verified casting">
+                  <span class="cc-verified-icon" aria-hidden="true">
+                    <i class="bi bi-check"></i>
+                  </span>
+                  <span class="cc-verified-text">Verified</span>
+                </div>
+
+                <h3 class="cc-card-title">Fitness Shoot</h3>
+
+                <p class="cc-card-desc">
+                  Activewear brand campaign featuring movement and fitness-based shots.
+                  Energetic and athletic models preferred.
+                </p>
+
+                <ul class="cc-detail-list" aria-label="Casting details">
+                  <li><strong>Location:</strong> Barcelona</li>
+                  <li><strong>Date:</strong> 18 June</li>
+                  <li><strong>Rate:</strong> €220</li>
+                </ul>
+
+                <div class="cc-card-actions">
+                  <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal" aria-label="Apply for the Fitness Shoot casting">Apply Now!</button>
+                  <a href="casting-detail.html" class="btn-view-details" aria-label="View full details for the Fitness Shoot casting">View Details</a>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!--
+            CASTING 5 — Runway Show in Milan
         -->
         <article class="cc-card" aria-label="Casting: Runway Show — Verified by Mudelli">
           <div class="row g-0">
 
             <div class="col-lg-5">
-              <img src="images/casting-list-images5.jpg"
+              <img src="images/casting-list-images4.jpg"
                 alt="Runway show casting — fashion week presentation in Milan"
                 class="cc-card-img" loading="lazy" />
             </div>
