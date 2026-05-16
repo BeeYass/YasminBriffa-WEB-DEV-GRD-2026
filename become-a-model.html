@@ -393,21 +393,21 @@
         <!-- Collapsible navigation links — Become A Model is marked as the active page -->
         <div class="collapse navbar-collapse" id="navbarContent">
 
-          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
-            <li class="nav-item" role="listitem">
+          <ul class="navbar-nav mx-auto gap-lg-4">
+            <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="models.html">Models</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="casting-calls.html">Casting Calls</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <!-- aria-current="page" tells screen readers this is the current page -->
               <a class="nav-link active" aria-current="page" href="become-a-model.html">Become A Model</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
@@ -499,7 +499,7 @@
                     </label>
                     <input class="bam-input" type="text" id="first-name" name="first_name"
                       placeholder="First name" autocomplete="given-name"
-                      required aria-required="true" />
+                      required />
                   </div>
                 </div>
 
@@ -510,7 +510,7 @@
                     </label>
                     <input class="bam-input" type="text" id="last-name" name="last_name"
                       placeholder="Last name" autocomplete="family-name"
-                      required aria-required="true" />
+                      required />
                   </div>
                 </div>
 
@@ -521,7 +521,7 @@
                     </label>
                     <input class="bam-input" type="tel" id="phone" name="phone"
                       placeholder="356 XXXX XXXX" autocomplete="tel"
-                      required aria-required="true" />
+                      required />
                   </div>
                 </div>
 
@@ -532,7 +532,7 @@
                     </label>
                     <input class="bam-input" type="email" id="email" name="email"
                       placeholder="Email address" autocomplete="email"
-                      required aria-required="true" />
+                      required />
                   </div>
                 </div>
 
@@ -543,7 +543,7 @@
                     </label>
                     <input class="bam-input" type="date" id="dob" name="dob"
                       autocomplete="bday"
-                      required aria-required="true" />
+                      required />
                   </div>
                 </div>
 
@@ -553,7 +553,7 @@
                       Gender <span class="bam-required" aria-hidden="true">*</span>
                     </label>
                     <select class="bam-input bam-select" id="gender" name="gender"
-                      required aria-required="true">
+                      required>
                       <option value="" disabled selected>Select gender</option>
                       <option value="female">Female</option>
                       <option value="male">Male</option>
@@ -570,7 +570,7 @@
                     </label>
                     <input class="bam-input" type="text" id="city" name="city"
                       placeholder="City" autocomplete="address-level2"
-                      required aria-required="true" />
+                      required />
                   </div>
                 </div>
 
@@ -581,7 +581,7 @@
                     </label>
                     <input class="bam-input" type="text" id="postcode" name="postcode"
                       placeholder="Postcode" autocomplete="postal-code"
-                      required aria-required="true" />
+                      required />
                   </div>
                 </div>
 
@@ -592,7 +592,7 @@
                     </label>
                     <input class="bam-input" type="text" id="country" name="country"
                       placeholder="Country" autocomplete="country-name"
-                      required aria-required="true" />
+                      required />
                   </div>
                 </div>
 
@@ -603,7 +603,7 @@
                     </label>
                     <input class="bam-input" type="text" id="nationality" name="nationality"
                       placeholder="Nationality"
-                      required aria-required="true" />
+                      required />
                   </div>
                 </div>
 
@@ -846,7 +846,7 @@
               <legend class="bam-legend">Acknowledgement</legend>
 
               <label class="bam-ack-label">
-                <input type="checkbox" name="privacy_accepted" required aria-required="true" />
+                <input type="checkbox" name="privacy_accepted" required />
                 I acknowledge that I have read, and do hereby accept the
                 <a href="#">Privacy Policy</a>.
               </label>
@@ -875,7 +875,7 @@
 
 
   <!-- Site footer with links and social media icons -->
-  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+  <footer class="mudelli-footer" aria-label="Site footer">
     <div class="container-xxl px-4">
 
       <div class="row g-5 py-5">
@@ -921,13 +921,13 @@
           <h3 class="footer-heading">Follow Us</h3>
           <!-- Each link has a descriptive aria-label for screen readers -->
           <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram">
               <i class="bi bi-instagram" aria-hidden="true"></i>
             </a>
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook">
               <i class="bi bi-facebook" aria-hidden="true"></i>
             </a>
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)">
               <i class="bi bi-twitter-x" aria-hidden="true"></i>
             </a>
           </div>
@@ -954,7 +954,7 @@
 
 
   <!-- Thank you pop-up that appears after the user clicks Submit Application -->
-  <div class="modal fade" id="applicationThankYouModal" tabindex="-1"
+  <div class="modal fade" id="applicationThankYouModal" role="dialog" tabindex="-1"
     aria-labelledby="applicationThankYouLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content" style="border-radius:0; border:none;">
