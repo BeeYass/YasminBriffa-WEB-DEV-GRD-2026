@@ -254,6 +254,96 @@
         height: 260px;
       }
     }
+
+
+    /* ================================================================
+       FILTER PANEL — the collapsible panel that slides open below
+       the search bar when the user clicks the Filters button
+    ================================================================ */
+
+    /* the dark navy box that wraps all the filter groups */
+    .models-filter-panel {
+      background-color: var(--mud-navy);
+      padding: 32px;
+      text-align: left;
+      margin-top: 12px;
+    }
+
+    /* the small uppercase gold label that sits above each filter group */
+    .filter-group-heading {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--mud-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(201, 168, 78, 0.30);
+    }
+
+    /* each individual filter option — the checkbox or radio sits next to its label */
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #ffffff;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    /* style the checkbox and radio inputs with gold accent colour */
+    .filter-option input[type="checkbox"],
+    .filter-option input[type="radio"] {
+      accent-color: var(--mud-gold);
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    /* the gold "Apply Filters" button */
+    .btn-filter-apply {
+      background-color: var(--mud-gold);
+      color: var(--mud-navy);
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0;
+      padding: 12px 32px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-filter-apply:hover,
+    .btn-filter-apply:focus {
+      opacity: 0.88;
+      color: var(--mud-navy);
+    }
+
+    /* the outlined "Clear Filters" button */
+    .btn-filter-clear {
+      background-color: transparent;
+      color: var(--mud-gold);
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      border: 2px solid var(--mud-gold);
+      border-radius: 0;
+      padding: 10px 32px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-filter-clear:hover,
+    .btn-filter-clear:focus {
+      opacity: 0.75;
+      color: var(--mud-gold);
+    }
   </style>
 </head>
 
@@ -367,11 +457,188 @@
             class="models-search-input"
             placeholder="Search by name, location, or category..."
             aria-label="Search models by name, location, or category" />
-          <button class="btn-models-filter" type="button" aria-label="Open filter options">
+          <!--
+              This button uses Bootstrap's collapse feature to show or hide
+              the filter panel below. data-bs-target tells Bootstrap which
+              element to open when this button is clicked.
+          -->
+          <button class="btn-models-filter" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#modelsFilterPanel"
+            aria-expanded="false"
+            aria-controls="modelsFilterPanel"
+            aria-label="Open or close the filter options">
             <i class="bi bi-sliders" aria-hidden="true"></i>
             Filters
           </button>
         </div>
+
+        <!--
+            This is the filter panel that slides open below the search bar
+            when the user clicks the Filters button. Bootstrap's "collapse"
+            class keeps it hidden until the button is clicked.
+        -->
+        <div class="collapse" id="modelsFilterPanel">
+          <div class="models-filter-panel">
+            <div class="row g-4">
+
+              <!--
+                  LOCATION filter group — lets the user pick which location
+                  they want to see models from. They can tick more than one.
+              -->
+              <div class="col-lg-4 col-md-6">
+                <p class="filter-group-heading">Location</p>
+                <label class="filter-option">
+                  <input type="checkbox" name="location" value="malta" /> Malta
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="location" value="gozo" /> Gozo
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="location" value="international" /> International
+                </label>
+              </div>
+
+              <!--
+                  CATEGORY filter group — lets the user narrow down the type
+                  of modelling work. Multiple categories can be selected.
+              -->
+              <div class="col-lg-4 col-md-6">
+                <p class="filter-group-heading">Category</p>
+                <label class="filter-option">
+                  <input type="checkbox" name="category" value="fashion" /> Fashion
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="category" value="commercial" /> Commercial
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="category" value="editorial" /> Editorial
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="category" value="runway" /> Runway
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="category" value="fitness" /> Fitness
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="category" value="lingerie" /> Lingerie
+                </label>
+              </div>
+
+              <!--
+                  EXPERIENCE LEVEL filter group — radio buttons so only one
+                  experience level can be selected at a time.
+              -->
+              <div class="col-lg-4 col-md-6">
+                <p class="filter-group-heading">Experience Level</p>
+                <label class="filter-option">
+                  <input type="radio" name="experience" value="beginner" /> Beginner
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="experience" value="intermediate" /> Intermediate
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="experience" value="professional" /> Professional
+                </label>
+              </div>
+
+              <!--
+                  SKILLS filter group — lets the user find models who also
+                  offer creative skills like photography or styling.
+              -->
+              <div class="col-lg-4 col-md-6">
+                <p class="filter-group-heading">Skills</p>
+                <label class="filter-option">
+                  <input type="checkbox" name="skills" value="makeup" /> Make up
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="skills" value="fashion-stylist" /> Fashion stylists
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="skills" value="hair-stylist" /> Hair stylists
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="skills" value="photographer" /> Photographers
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="skills" value="videographer" /> Videographers
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="skills" value="content-creator" /> Content creator
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="skills" value="influencer" /> Influencer
+                </label>
+              </div>
+
+              <!--
+                  SPECIAL TAGS filter group — lets the user find models with
+                  specific characteristics or profile types.
+              -->
+              <div class="col-lg-4 col-md-6">
+                <p class="filter-group-heading">Special Tags</p>
+                <label class="filter-option">
+                  <input type="checkbox" name="tags" value="tattoo" /> Tattoo
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="tags" value="new-faces" /> New faces
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="tags" value="senior" /> Senior
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="tags" value="swimwear" /> Swimwear
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="tags" value="featured" /> Featured models
+                </label>
+                <label class="filter-option">
+                  <input type="checkbox" name="tags" value="plus-size" /> Plus size / Curvy
+                </label>
+              </div>
+
+              <!--
+                  HEIGHT filter group — radio buttons so only one height
+                  range can be selected at a time.
+              -->
+              <div class="col-lg-4 col-md-6">
+                <p class="filter-group-heading">Height</p>
+                <label class="filter-option">
+                  <input type="radio" name="height" value="all" checked /> All Heights
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="height" value="160-170" /> 160–170cm
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="height" value="170-180" /> 170–180cm
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="height" value="180-190" /> 180–190cm
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="height" value="190plus" /> 190cm+
+                </label>
+              </div>
+
+            </div>
+            <!--
+                end of filter groups grid
+            -->
+
+            <!--
+                The two action buttons at the bottom of the filter panel.
+                Apply Filters submits the selection. Clear Filters resets everything.
+            -->
+            <div class="d-flex gap-3 mt-4">
+              <button type="button" class="btn-filter-apply">Apply Filters</button>
+              <button type="button" class="btn-filter-clear" id="clearModelsFilters">Clear Filters</button>
+            </div>
+
+          </div>
+        </div>
+        <!--
+            end of filter panel
+        -->
 
       </div>
     </section>
@@ -874,11 +1141,21 @@
 
 
   <!--
-      Bootstrap 5 JS bundle (needed for the mobile navbar toggle)
+      Bootstrap 5 JS bundle — needed for the navbar toggle and the collapse filter panel
   -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!--
+      This script resets all the filter checkboxes and radio buttons back
+      to their empty/default state when the Clear Filters button is clicked.
+  -->
+  <script>
+    document.getElementById('clearModelsFilters').addEventListener('click', function () {
+      var panel = document.getElementById('modelsFilterPanel');
+      panel.querySelectorAll('input[type="checkbox"]').forEach(function (cb) { cb.checked = false; });
+      panel.querySelectorAll('input[type="radio"]').forEach(function (r) { r.checked = false; });
+    });
+  </script>
 
   <!--
       turns the navbar solid navy once the user scrolls down
