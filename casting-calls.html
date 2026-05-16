@@ -76,6 +76,60 @@
     opacity: 1;
 }
 
+    /* filter panel that slides down below the controls bar */
+    .cc-filter-panel {
+      background-color: var(--mud-white);
+      border-bottom: 1px solid var(--mud-light-gray);
+      padding: 24px 0;
+    }
+    .cc-filter-group-label {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--mud-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .cc-filter-check {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--mud-navy);
+    }
+    .cc-filter-check .form-check-input:checked {
+      background-color: var(--mud-gold);
+      border-color: var(--mud-gold);
+    }
+    .cc-filter-check .form-check-input:focus {
+      box-shadow: 0 0 0 3px rgba(201,168,78,0.25);
+    }
+    .btn-filter-apply {
+      background-color: var(--mud-navy);
+      color: var(--mud-gold);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 0;
+      padding: 10px 28px;
+      transition: opacity 0.2s;
+    }
+    .btn-filter-apply:hover,
+    .btn-filter-apply:focus {
+      opacity: 0.85;
+      color: var(--mud-gold);
+    }
+    .btn-filter-reset {
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--mud-navy);
+      text-decoration: underline;
+      padding: 10px 0;
+      cursor: pointer;
+    }
+
     /* white filter button with a sliders icon */
     .btn-filters {
       background-color: var(--mud-white);
@@ -610,11 +664,71 @@
         <!--
             Button to open filter options so users can narrow down the list
         -->
-        <button class="btn-filters" type="button" aria-label="Open casting filters" aria-expanded="false">
+        <button class="btn-filters" type="button"
+          data-bs-toggle="collapse" data-bs-target="#filterPanel"
+          aria-controls="filterPanel" aria-expanded="false"
+          aria-label="Open casting filters">
           <i class="bi bi-sliders" aria-hidden="true"></i>
           Filters
         </button>
 
+      </div>
+    </div>
+
+    <!-- Filter panel — hidden until the Filters button is clicked -->
+    <div class="collapse cc-filter-panel" id="filterPanel">
+      <div class="container-xxl px-4">
+        <div class="row g-4">
+
+          <!-- Category filter -->
+          <div class="col-sm-6 col-lg-3">
+            <p class="cc-filter-group-label">Category</p>
+            <div class="form-check cc-filter-check mb-2">
+              <input class="form-check-input" type="checkbox" id="filterFashion">
+              <label class="form-check-label" for="filterFashion">Fashion</label>
+            </div>
+            <div class="form-check cc-filter-check mb-2">
+              <input class="form-check-input" type="checkbox" id="filterCommercial">
+              <label class="form-check-label" for="filterCommercial">Commercial</label>
+            </div>
+            <div class="form-check cc-filter-check mb-2">
+              <input class="form-check-input" type="checkbox" id="filterEditorial">
+              <label class="form-check-label" for="filterEditorial">Editorial</label>
+            </div>
+            <div class="form-check cc-filter-check mb-2">
+              <input class="form-check-input" type="checkbox" id="filterFitness">
+              <label class="form-check-label" for="filterFitness">Fitness</label>
+            </div>
+            <div class="form-check cc-filter-check">
+              <input class="form-check-input" type="checkbox" id="filterRunway">
+              <label class="form-check-label" for="filterRunway">Runway</label>
+            </div>
+          </div>
+
+          <!-- Location filter -->
+          <div class="col-sm-6 col-lg-3">
+            <p class="cc-filter-group-label">Location</p>
+            <div class="form-check cc-filter-check mb-2">
+              <input class="form-check-input" type="checkbox" id="filterMalta">
+              <label class="form-check-label" for="filterMalta">Malta</label>
+            </div>
+            <div class="form-check cc-filter-check mb-2">
+              <input class="form-check-input" type="checkbox" id="filterParis">
+              <label class="form-check-label" for="filterParis">Paris</label>
+            </div>
+            <div class="form-check cc-filter-check">
+              <input class="form-check-input" type="checkbox" id="filterAbroad">
+              <label class="form-check-label" for="filterAbroad">Abroad</label>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="col-12 d-flex align-items-end gap-3">
+            <button class="btn-filter-apply" type="button">Apply Filters</button>
+            <button class="btn-filter-reset" type="button">Reset</button>
+          </div>
+
+        </div>
       </div>
     </div>
 
