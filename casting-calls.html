@@ -500,23 +500,23 @@
           <!--
               Main nav links — Casting Calls is marked active because we are on this page
           -->
-          <ul class="navbar-nav mx-auto gap-lg-4" role="list">
-            <li class="nav-item" role="listitem">
+          <ul class="navbar-nav mx-auto gap-lg-4">
+            <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="models.html">Models</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <!--
                   aria-current="page" tells screen readers this is the current page
               -->
               <a class="nav-link active" aria-current="page" href="casting-calls.html">Casting Calls</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="become-a-model.html">Become A Model</a>
             </li>
-            <li class="nav-item" role="listitem">
+            <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
@@ -1011,7 +1011,7 @@
       FOOTER — dark navy bar with brand info, links, and social icons
       Same footer used on every page of the site
   -->
-  <footer class="mudelli-footer" role="contentinfo" aria-label="Site footer">
+  <footer class="mudelli-footer" aria-label="Site footer">
     <div class="container-xxl px-4">
 
       <div class="row g-5 py-5">
@@ -1070,13 +1070,13 @@
               Each link has an aria-label describing the platform
           -->
           <div class="social-icons d-flex gap-3" role="list" aria-label="Social media links">
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Instagram">
               <i class="bi bi-instagram" aria-hidden="true"></i>
             </a>
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on Facebook">
               <i class="bi bi-facebook" aria-hidden="true"></i>
             </a>
-            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)" role="listitem">
+            <a href="#" class="social-icon" aria-label="Follow Mudelli on X (Twitter)">
               <i class="bi bi-twitter-x" aria-hidden="true"></i>
             </a>
           </div>
@@ -1125,7 +1125,7 @@
       This pop-up appears when the user clicks any "Apply Now!" button on this page.
       It collects the applicant's basic details and a short message.
   -->
-  <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+  <div class="modal fade" id="applyModal" role="dialog" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content" style="border-radius:0; border:none;">
 
@@ -1225,7 +1225,7 @@
       This pop-up is shown automatically after the application form is submitted.
       It confirms that the application was received.
   -->
-  <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouLabel" aria-hidden="true">
+  <div class="modal fade" id="thankYouModal" role="dialog" tabindex="-1" aria-labelledby="thankYouLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content" style="border-radius:0; border:none; text-align:center;">
         <div class="modal-body" style="padding:48px 32px; background-color:#F5F2EC;">
