@@ -44,34 +44,6 @@
   <style>
 
     /*
-     * BANNER — the dark header section at the top of the page
-     * with the page title and subtitle
-     */
-    .cc-banner {
-      background-color: #000;
-      padding-top: 120px;
-      padding-bottom: 60px;
-      text-align: center;
-    }
-
-    .cc-banner-title {
-      font-family: var(--font-display);
-      font-size: 56px;
-      font-weight: 700;
-      color: var(--mud-gold);
-      margin-bottom: 16px;
-    }
-
-    .cc-banner-subtitle {
-      font-family: var(--font-body);
-      font-size: 18px;
-      color: var(--mud-gold);
-      max-width: 580px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /*
      * CONTROLS BAR — the row with the Post a Casting and Filters buttons
      */
     .cc-controls {
@@ -81,7 +53,6 @@
     }
 
     /* gold button to post a new casting */
-    
     .btn-post-casting {
       background-color: var(--mud-gold);
       color: var(--mud-navy);
@@ -102,7 +73,7 @@
       color: var(--mud-navy);
     }
 
-    <!-- white filter button with a sliders icon -->
+    /* white filter button with a sliders icon */
     .btn-filters {
       background-color: var(--mud-white);
       color: var(--mud-navy);
@@ -124,18 +95,17 @@
       color: var(--mud-navy);
     }
 
-    <!--
+    /*
      * CASTING CARD — each listing in the casting list
      * Cream background, image on the left, text on the right
      */
-     <!--
     .cc-card {
       background-color: var(--mud-cream);
       margin-bottom: 24px;
       overflow: hidden;
     }
 
-    <!-- the photo for each casting listing -->
+    /* the photo for each casting listing */
     .cc-card-img {
       width: 100%;
       height: 100%;
@@ -151,7 +121,7 @@
       flex-direction: column;
     }
 
-    <!-- large uppercase title for the casting type -->
+    /* large uppercase title for the casting type */
     .cc-card-title {
       font-family: var(--font-display);
       font-size: 32px;
@@ -162,7 +132,7 @@
       margin-bottom: 14px;
     }
 
-    <!-- short paragraph describing the shoot -->
+    /* short paragraph describing the shoot */
     .cc-card-desc {
       font-family: var(--font-body);
       font-size: 16px;
@@ -171,7 +141,7 @@
       margin-bottom: 22px;
     }
 
-    <!-- the three detail lines: location, date, rate -->
+    /* the three detail lines: location, date, rate */
     .cc-detail-list {
       list-style: none;
       padding: 0;
@@ -190,10 +160,10 @@
       margin-right: 4px;
     }
 
-    <!--
-     VERIFIED BADGE — shown on castings that have been checked by Mudelli
-     Navy background, gold circle with a tick, gold "Verified" text
-      -->
+    /*
+     * VERIFIED BADGE — shown on castings that have been checked by Mudelli
+     * Navy background, gold circle with a tick, gold "Verified" text
+     */
     .cc-verified {
       display: inline-flex;
       align-items: center;
@@ -224,10 +194,10 @@
       color: var(--mud-gold);
     }
 
-    <!--
+    /*
      * ACTION BUTTONS — Apply Now and View Details buttons at the bottom
      * of each casting card
-    -->
+     */
     .cc-card-actions {
       display: flex;
       gap: 16px;
@@ -259,11 +229,49 @@
     }
 
     /*
-     * CAROUSEL SECTION — the automatic photo slideshow at the bottom
+     * CAROUSEL SECTION — the automatic photo slideshow at the top of the page
      */
     .cc-carousel-section {
       background-color: var(--mud-navy);
       padding: 0;
+      position: relative;
+      padding-top: 80px;
+    }
+
+    /* dark semi-transparent overlay so the text is readable over the photos */
+    .cc-carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 5;
+    }
+
+    /* caption box centred over the carousel images */
+    .cc-carousel-caption {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+      width: 100%;
+    }
+
+    .cc-banner-title {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--mud-gold);
+      margin-bottom: 16px;
+    }
+
+    .cc-banner-subtitle {
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--mud-gold);
+      max-width: 580px;
+      margin: 0 auto;
     }
 
     .cc-carousel-img {
@@ -380,94 +388,6 @@
       margin-top: 0;
     }
 
-
-    /* ================================================================
-       FILTER PANEL — the collapsible panel that slides open below the
-       controls bar when the user clicks the Filters button
-    ================================================================ */
-
-    /* the dark navy background box that wraps all the filter groups */
-    .castings-filter-panel {
-      background-color: var(--mud-navy);
-      padding: 32px 0;
-    }
-
-    /* the small uppercase gold label that sits above each filter group */
-    .filter-group-heading {
-      font-family: var(--font-display);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--mud-gold);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid rgba(201, 168, 78, 0.30);
-    }
-
-    /* each individual filter option — checkbox or radio sits next to its label */
-    .filter-option {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: #ffffff;
-      margin-bottom: 8px;
-      cursor: pointer;
-    }
-
-    /* the checkbox and radio inputs styled with gold accent colour */
-    .filter-option input[type="checkbox"],
-    .filter-option input[type="radio"] {
-      accent-color: var(--mud-gold);
-      width: 15px;
-      height: 15px;
-      flex-shrink: 0;
-      cursor: pointer;
-      margin: 0;
-    }
-
-    /* the gold Apply Filters button */
-    .btn-filter-apply {
-      background-color: var(--mud-gold);
-      color: var(--mud-navy);
-      font-family: var(--font-display);
-      font-size: 16px;
-      font-weight: 700;
-      border: none;
-      border-radius: 0;
-      padding: 12px 32px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-
-    .btn-filter-apply:hover,
-    .btn-filter-apply:focus {
-      opacity: 0.88;
-      color: var(--mud-navy);
-    }
-
-    /* the outlined Clear Filters button */
-    .btn-filter-clear {
-      background-color: transparent;
-      color: var(--mud-gold);
-      font-family: var(--font-display);
-      font-size: 16px;
-      font-weight: 700;
-      border: 2px solid var(--mud-gold);
-      border-radius: 0;
-      padding: 10px 32px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-
-    .btn-filter-clear:hover,
-    .btn-filter-clear:focus {
-      opacity: 0.75;
-      color: var(--mud-gold);
-    }
-
   </style>
 
 </head>
@@ -559,17 +479,103 @@
   -->
   <main id="main-content">
 
+
+    
+
     <!--
-        BANNER — dark header section with the page title and a short description
-        of what this page is for
+        PHOTO CAROUSEL — a full-width slideshow of casting photography
+        It runs through automatically and the user can also click the arrows
     -->
-    <section class="cc-banner" aria-labelledby="cc-banner-heading">
-      <div class="container-xxl px-4">
-        <h1 class="cc-banner-title" id="cc-banner-heading">Discover Castings</h1>
-        <p class="cc-banner-subtitle">
-          Apply to roles that match your talent, or post castings to find the right faces.
-        </p>
+    <section class="cc-carousel-section" aria-label="Casting photography slideshow">
+
+      <!--
+          Dark overlay that sits on top of the photos so the text is easy to read
+      -->
+      <div class="cc-carousel-overlay" aria-hidden="true"></div>
+
+      <!--
+          Title and subtitle centred over the carousel images
+      -->
+      <div class="cc-carousel-caption">
+        <h1 class="cc-banner-title">Discover Castings</h1>
+        <p class="cc-banner-subtitle">Apply to roles that match your talent, or post castings to find the right faces.</p>
       </div>
+
+      <div id="castingsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+
+        <!--
+            Dot indicators at the bottom — one dot per slide, the filled
+            dot shows which slide is currently showing
+        -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#castingsCarousel" data-bs-slide-to="0"
+            class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#castingsCarousel" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#castingsCarousel" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#castingsCarousel" data-bs-slide-to="3"
+            aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#castingsCarousel" data-bs-slide-to="4"
+            aria-label="Slide 5"></button>
+        </div>
+
+        <!--
+            The five carousel slides — each one is a full-width photo
+        -->
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <img src="images/castings-carousel-images1.jpg"
+              alt="Casting photography — slide 1"
+              class="cc-carousel-img" />
+          </div>
+
+          <div class="carousel-item">
+            <img src="images/castings-carousel-images2.jpg"
+              alt="Casting photography — slide 2"
+              class="cc-carousel-img" />
+          </div>
+
+          <div class="carousel-item">
+            <img src="images/castings-carousel-images3.jpg"
+              alt="Casting photography — slide 3"
+              class="cc-carousel-img" />
+          </div>
+
+          <div class="carousel-item">
+            <img src="images/castings-carousel-images4.jpg"
+              alt="Casting photography — slide 4"
+              class="cc-carousel-img" />
+          </div>
+
+          <div class="carousel-item">
+            <img src="images/castings-carousel-images6.jpg"
+              alt="Casting photography — slide 5"
+              class="cc-carousel-img" />
+          </div>
+
+        </div>
+        <!--
+            end of carousel slides
+        -->
+
+        <!--
+            Previous and Next arrow buttons for manually moving between slides
+        -->
+        <button class="carousel-control-prev" type="button"
+          data-bs-target="#castingsCarousel" data-bs-slide="prev"
+          aria-label="Previous slide">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button"
+          data-bs-target="#castingsCarousel" data-bs-slide="next"
+          aria-label="Next slide">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+
+      </div>
+
     </section>
 
 
@@ -588,134 +594,15 @@
         </a>
 
         <!--
-            This Filters button uses Bootstrap's collapse feature to show or hide
-            the filter panel below. data-bs-target tells Bootstrap which element
-            to open when this button is clicked.
+            Button to open filter options so users can narrow down the list
         -->
-        <button class="btn-filters" type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#castingsFilterPanel"
-          aria-expanded="false"
-          aria-controls="castingsFilterPanel"
-          aria-label="Open or close the casting filter options">
+        <button class="btn-filters" type="button" aria-label="Open casting filters" aria-expanded="false">
           <i class="bi bi-sliders" aria-hidden="true"></i>
           Filters
         </button>
 
       </div>
     </div>
-
-
-    <!--
-        This is the filter panel that slides open below the controls bar
-        when the user clicks the Filters button. Bootstrap's "collapse"
-        class keeps it hidden until the button is clicked.
-    -->
-    <div class="collapse" id="castingsFilterPanel">
-      <div class="castings-filter-panel">
-        <div class="container-xxl px-4">
-          <div class="row g-4">
-
-            <!--
-                LOCATION filter group — lets the user pick which location
-                they want to see castings from. They can tick more than one.
-            -->
-            <div class="col-lg-3 col-md-6">
-              <p class="filter-group-heading">Location</p>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-location" value="malta" /> Malta
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-location" value="gozo" /> Gozo
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-location" value="international" /> International
-              </label>
-            </div>
-
-            <!--
-                CATEGORY filter group — lets the user narrow down the type
-                of casting they are looking for. Multiple can be selected.
-            -->
-            <div class="col-lg-3 col-md-6">
-              <p class="filter-group-heading">Category</p>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-category" value="fashion" /> Fashion
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-category" value="commercial" /> Commercial
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-category" value="editorial" /> Editorial
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-category" value="runway" /> Runway
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-category" value="fitness" /> Fitness
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-category" value="lingerie" /> Lingerie
-              </label>
-            </div>
-
-            <!--
-                EXPERIENCE LEVEL filter group — radio buttons so only one
-                experience level can be selected at a time.
-            -->
-            <div class="col-lg-3 col-md-6">
-              <p class="filter-group-heading">Experience Level</p>
-              <label class="filter-option">
-                <input type="radio" name="cc-experience" value="beginner" /> Beginner
-              </label>
-              <label class="filter-option">
-                <input type="radio" name="cc-experience" value="intermediate" /> Intermediate
-              </label>
-              <label class="filter-option">
-                <input type="radio" name="cc-experience" value="professional" /> Professional
-              </label>
-            </div>
-
-            <!--
-                EVENTS filter group — lets the user filter castings by the
-                type of event or organisation running them.
-            -->
-            <div class="col-lg-3 col-md-6">
-              <p class="filter-group-heading">Events</p>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-events" value="agency" /> Agency
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-events" value="fashion-show" /> Fashion show
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-events" value="fashion-week" /> Fashion week
-              </label>
-              <label class="filter-option">
-                <input type="checkbox" name="cc-events" value="fashion-brands" /> Fashion brands
-              </label>
-            </div>
-
-          </div>
-          <!--
-              end of filter groups grid
-          -->
-
-          <!--
-              The two action buttons at the bottom of the filter panel.
-              Apply Filters submits the selection. Clear Filters resets everything.
-          -->
-          <div class="d-flex gap-3 mt-4">
-            <button type="button" class="btn-filter-apply">Apply Filters</button>
-            <button type="button" class="btn-filter-clear" id="clearCastingsFilters">Clear Filters</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--
-        end of filter panel
-    -->
 
 
     <!--
@@ -964,88 +851,6 @@
     </section>
 
 
-    <!--
-        PHOTO CAROUSEL — a full-width slideshow of casting photography
-        It runs automatically and the user can also click the arrows
-    -->
-    <section class="cc-carousel-section" aria-label="Casting photography slideshow">
-
-      <div id="castingsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-
-        <!--
-            Dot indicators at the bottom — one dot per slide, the filled
-            dot shows which slide is currently showing
-        -->
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#castingsCarousel" data-bs-slide-to="0"
-            class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#castingsCarousel" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#castingsCarousel" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#castingsCarousel" data-bs-slide-to="3"
-            aria-label="Slide 4"></button>
-          <button type="button" data-bs-target="#castingsCarousel" data-bs-slide-to="4"
-            aria-label="Slide 5"></button>
-        </div>
-
-        <!--
-            The five carousel slides — each one is a full-width photo
-        -->
-        <div class="carousel-inner">
-
-          <div class="carousel-item active">
-            <img src="images/castings-carousel-images1.jpg"
-              alt="Casting photography — slide 1"
-              class="cc-carousel-img" />
-          </div>
-
-          <div class="carousel-item">
-            <img src="images/castings-carousel-images2.jpg"
-              alt="Casting photography — slide 2"
-              class="cc-carousel-img" />
-          </div>
-
-          <div class="carousel-item">
-            <img src="images/castings-carousel-images3.jpg"
-              alt="Casting photography — slide 3"
-              class="cc-carousel-img" />
-          </div>
-
-          <div class="carousel-item">
-            <img src="images/castings-carousel-images4.jpg"
-              alt="Casting photography — slide 4"
-              class="cc-carousel-img" />
-          </div>
-
-          <div class="carousel-item">
-            <img src="images/castings-carousel-images6.jpg"
-              alt="Casting photography — slide 5"
-              class="cc-carousel-img" />
-          </div>
-
-        </div>
-        <!--
-            end of carousel slides
-        -->
-
-        <!--
-            Previous and Next arrow buttons for manually moving between slides
-        -->
-        <button class="carousel-control-prev" type="button"
-          data-bs-target="#castingsCarousel" data-bs-slide="prev"
-          aria-label="Previous slide">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button"
-          data-bs-target="#castingsCarousel" data-bs-slide="next"
-          aria-label="Next slide">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-
-      </div>
-
-    </section>
 
   </main>
   <!--
@@ -1313,7 +1118,7 @@
       1. Stops the page from reloading.
       2. Closes the apply modal.
       3. Opens the thank you modal after a short delay so Bootstrap
-         has time to finish closing the first modal before opening the second.
+      has time to finish closing the first modal before opening the second.
   -->
   <script>
     document.getElementById('applyForm').addEventListener('submit', function(e) {
@@ -1322,18 +1127,6 @@
       setTimeout(function() {
         new bootstrap.Modal(document.getElementById('thankYouModal')).show();
       }, 400);
-    });
-  </script>
-
-  <!--
-      This script resets all the filter checkboxes and radio buttons back
-      to their empty state when the Clear Filters button is clicked.
-  -->
-  <script>
-    document.getElementById('clearCastingsFilters').addEventListener('click', function () {
-      var panel = document.getElementById('castingsFilterPanel');
-      panel.querySelectorAll('input[type="checkbox"]').forEach(function (cb) { cb.checked = false; });
-      panel.querySelectorAll('input[type="radio"]').forEach(function (r) { r.checked = false; });
     });
   </script>
 
