@@ -16,8 +16,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous" />
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"></script>
-  <!--
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>  <!--
       Bootstrap Icons 1.11
   -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
@@ -32,6 +33,41 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Navbar overlays the hero on this page — transparent background until scroll */
+    #mainNav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1030;
+    }
+
+    /* Hero section fills full viewport height */
+    #hero {
+      height: 100vh;
+    }
+
+    /* Carousel and inner div fill the full hero height */
+    #hero .carousel,
+    #hero .carousel-inner {
+      height: 100%;
+    }
+
+    /* Each slide fills full height with a premium ease-in-out transition */
+    #hero .carousel-item {
+      height: 100%;
+      transition: transform 0.9s ease-in-out !important;
+    }
+
+    /* Images cover the full slide without distortion */
+    #hero .hero-img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+  </style>
 </head>
 
 <body>
@@ -131,7 +167,7 @@
     -->
     <section id="hero" aria-label="Hero — featured imagery slideshow">
 
-      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="images/hero1.jpg" class="d-block w-100 hero-img" alt="Mudelli hero slide 1">
@@ -931,13 +967,6 @@
 
 
   <!--
-      BOOTSTRAP 5 BUNDLE — includes Popper for dropdowns/tooltips
-  -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmA36oqMWERKf0aCMtX6tkTQlCiW"
-    crossorigin="anonymous"></script>
-
-  <!--
       Navbar scroll effect
   -->
   <script>
@@ -945,21 +974,6 @@
       var nav = document.getElementById('mainNav');
       if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 80);
     }, { passive: true });
-  </script>
-
-  <!--
-      Hero carousel autoplay
-  -->
-  <script>
-    window.onload = function() {
-      var myCarousel = document.querySelector('#heroCarousel');
-      var carousel = new bootstrap.Carousel(myCarousel, {
-        interval: 3000,
-        wrap: true,
-        ride: 'carousel'
-      });
-      carousel.cycle();
-    };
   </script>
 
   <!--
